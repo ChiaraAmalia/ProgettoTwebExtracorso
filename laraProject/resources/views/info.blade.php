@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 margin">
                     <div class="news-box">
-                        <figure><img src="images/logone.jpg" alt="img" /></figure>
+                        <figure><img src="images/logone1.jpg" alt="img" /></figure>
                         <h3>Chi siamo?</h3>
                         
                         <p> Bigliettone è un sito che si occupa della compravendita di biglietti

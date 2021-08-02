@@ -1,4 +1,4 @@
-<img src="CasaDiscografica.jpeg" width="626" height="313" border="0" usemap="#map" />
+<img src="[mappa1] (importata)" width="1000" height="562" border="0" usemap="#map" />
 
 <map name="map">
 <!-- #$-:Image map file created by GIMP Image Map plug-in -->
@@ -6,5 +6,5 @@
 <!-- #$-:Please do not edit lines starting with "#$" -->
 <!-- #$VERSION:2.3 -->
 <!-- #$AUTHOR:chiar -->
-<area shape="rect" coords="51,156,129,296" href="http://documento1.html" />
+<area shape="rect" coords="432,111,564,444"  nohref="nohref" />
 </map>

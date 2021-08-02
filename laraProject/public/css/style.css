@@ -1288,8 +1288,8 @@
 .header {
      background: black;
      padding: 23px 0px;
-     border-top: #cf2323 solid 5px;
-     border-bottom: #cf2323 solid 5px;
+     border-top: #c76d00 solid 5px;
+     border-bottom: #c76d00 solid 5px;
 }
  .logo a {
      font-size: 40px;
@@ -1300,7 +1300,7 @@
 }
  .relative {
      position: absolute;
-     top: 50%;
+     
      transform: translateY(-50%);
      text-align: center;
      right: 0;
@@ -2899,7 +2899,7 @@ Primary style
 }
 /*---------------------------------------------------Tabella Utenti-----------------------------------------------------------------------------------*/
 .headertable {
-   background-color:#a80016 ;
+   background-color:#c76d00 ;
    color: white;
    font-size: 1.5em;
    padding: 1rem;
@@ -2992,7 +2992,7 @@ table.user {
 @media screen and (max-width: 500px) {
    .header {
       background-color: transparent;
-      color: lighten(#a80016, 60%);
+      color: lighten(#c76d00, 60%);
       font-size: 2em;
       font-weight: 700;
       padding: 0;
@@ -3084,7 +3084,7 @@ a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #a80016;
+    background: #c76d00;
     color: #fff;
     transition: all 0.3s;
 }
@@ -3095,7 +3095,7 @@ a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #a80016;
+    background: #c76d00;
 }
 
 #sidebar ul.components {
