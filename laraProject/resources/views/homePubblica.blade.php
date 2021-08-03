@@ -21,7 +21,13 @@
                 <div class="col-md-12">
                     <div class="titlepage">
                         <h2>ElectroStar</h2>
-                        <p>Aggiungi altro</p>
+                        <p style='text-align: justify'>ElectroStar mette a disposizione dei propri centri assistenza questo sito, in modo tale che i nostri
+                            tecnici specializzati possano prestare assistenza ai nostri clienti, nel miglior modo possibile.
+                        L'azienda nasce con lo scopo di offrire ai propri clienti i migliori elettrodomestici sul mercato e un
+                        servizio di supporto post-vendita per la risoluzione dei malfunzionamenti dei nostri prodotti.
+                        La sede centrale dell'azienda si trova in Viale della libertà, 34 - 60125 Ancona (AN).<br>
+                        Tel. 0714599670<br>
+                        e-mail: info@electrostar.it</p>
                     </div>
                 </div>
             </div>
