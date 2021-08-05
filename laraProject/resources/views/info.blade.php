@@ -86,31 +86,33 @@
             <br><br><h1>Centri assistenza presenti sul nostro territorio</h1>
             <div>
                 <table class="tab-info" align="right">
-                    <tr><th>Luogo</th><th>Indirizzo</th></tr> 
-                    <tr><th>Ancona</th><td>Via della Rinascita, 3 - 60123 Ancona</td></tr>
-                    <tr><th>Milano</th><td>Via Rossi, 32 - 60100 Milano</td></tr>
-                    <tr><th>Torino</th><td>Via Guidi, 12 - 62347 Torino</td></tr>
-                    <tr><th>Roma</th><td>Via Risi, 29 - 65698 Roma</td></tr>
-                    <tr><th>Firenze</th><td>Via Salsa, 21 - 69765 Firenze</td></tr>
-                    <tr><th>Genova</th><td>Via Quadro, 45 - 61143 Genova</td></tr>
-                    <tr><th>Bari</th><td>Via Virtù, 46 - 63485 Bari</td></tr>
-                    <tr><th>Bologna</th><td>Via Pioppi, 29 - 62938 Bologna</td></tr>
-                    <tr><th>Perugia</th><td>Via Rimini, 67 - 65748 Perugia</td></tr>
+                    
+                    <tr><th colspan="2">Centri assistenza esterni all'azienda</th></tr> 
+                    <tr><th>Nome Centro</th><th>Indirizzo e città</th></tr> 
+                    <tr><th >RipariAmo elettrodomestici</th><td>Via Lago, 66 - 66547 Pescara</td></tr>
+                    <tr><th>ElectroRepair</th><td>Via Verdi, 52 - 63829 Napoli</td></tr>
+                    <tr><th>HomeHelp</th><td>Via Gigli, 37 - 68687 Palermo</td></tr>
+                    <tr><th>HandyMan</th><td>Via Timo, 9 - 62145 Lecce</td></tr>
+                    <tr><th>Praticaggiusta</th><td>Via della Rosa, 24 - 60526 Potenza</td></tr>
                  </table>
             </div>
             <div>
                 <table class="tab-info" >
-                    <tr><th>Luogo</th><th>Indirizzo</th></tr> 
-                    <tr><th>Reggio Calabria</th><td>Via Asti, 89 - 67745 Reggio Calabria</td></tr>
-                    <tr><th>Cagliari</th><td>Via Eia, 44 - 63958 Cagliari</td></tr>
-                    <tr><th>Trieste</th><td>Via Paride, 53 - 62289 Trieste</td></tr>
-                    <tr><th>Pescara</th><td>Via Lago, 66 - 66547 Pescara</td></tr>
-                    <tr><th>Napoli</th><td>Via Verdi, 52 - 63829 Napoli</td></tr>
-                    <tr><th>Palermo</th><td>Via Gigli, 37 - 68687 Palermo</td></tr>
-                    <tr><th>Lecce</th><td>Via Timo, 9 - 62145 Lecce</td></tr>
-                    <tr><th>Potenza</th><td>Via della Rosa, 24 - 60526 Potenza</td></tr>
-                    <tr><th>Campobasso</th><td>Via Roma, 55 - 62039 Campobasso</td></tr>
+                    <tr><th colspan="2">Centri assistenza interni all'azienda</th></tr> 
+                    <tr><th>Nome Centro</th><th>Indirizzo e città</th></tr>
+                    <tr><th>ElectroStar Ancona</th><td>Via Rinascita, 3 - 60123 Ancona</td></tr>
+                    <tr><th>ElectroStar Milano</th><td>Via Rossi, 32 - 60100 Milano</td></tr>
+                    <tr><th>ElectroStar Firenze</th><td>Via Salsa, 21 - 69765 Firenze</td></tr>
+                    <tr><th>ElectroStar Genova</th><td>Via Quadro, 45 - 61143 Genova</td></tr>
+                    <tr><th>ElectroStar Roma</th><td>Via Risi, 29 - 65698 Roma</td></tr>
                  </table>     
+            </div>
+            <br><br>
+            <div>
+                <h1>Mappa della sede centrale ElectroStar</h1>
+                <center>           
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.110011460128!2d13.506017515496074!3d43.604250979123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d7f856874db67%3A0x23cd0db55ee899c9!2sVia%20della%20Ricostruzione%2C%2034%2C%2060127%20Ancona%20AN!5e0!3m2!1sit!2sit!4v1628061608257!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                
+                </center>
             </div>
         </div>
     </div>

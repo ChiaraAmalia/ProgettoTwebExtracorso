@@ -131,7 +131,7 @@
     }
     });
     </script>
-<div class="aboutbg">
+    <div class="aboutbg" style='background-color: #daa520;'>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -149,8 +149,8 @@
         <ul id="basics" class="faq-group">
             <li class="faq-title">
                 <center>
-                    <h2>Le risposte alle domande che ci vengono poste più di frequente, clicca sulla domanda di interesse per
-                    visualizzare la risposta.</h2>
+                    <h2>FAQ relative all'azienda e alle funzionalità del nostro sito per il supporto post-vendita ai nostri tecnici.<br>
+                    Clicca sulla domanda per visualizzare la risposta.</h2>
                 </center>
             </li>
               
@@ -158,7 +158,7 @@
     @foreach ($faq as $domanda)
 
             <li>
-                <a class="trigger" href="#0">{{ $domanda->domanda }}</a>
+                <a class="trigger" href="#0" style="color: #ff8c00;">{{ $domanda->domanda }}</a>
                 <div class="faq-content">
                     <p>{{ $domanda->risposta }}</p>
                 </div> <!-- faq-content -->

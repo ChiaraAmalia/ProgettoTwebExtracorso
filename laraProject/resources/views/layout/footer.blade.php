@@ -2,7 +2,7 @@
         <div class="footer" style="display: block; padding: 50px;">
                 <ul>
                             <li>ElectroStar s.r.l.</li>
-                            <li>Viale della Libertà, 34 - 60125 Ancona (AN)</li>
+                            <li>Via della Ricostruzione, 34 - 60127 Ancona (AN)</li>
                             <li>Tel. 0714599670</li>
                             <li>e-mail: info@electrostar.it</li>
                             <li>P.IVA: 0123456789</li>

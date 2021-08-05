@@ -1734,7 +1734,8 @@
      margin-top: 90px;
 }
  .aboutbg {
-     background-color: #ff1d00;
+     background-color: #daa520;
+
 }
  .contact-page .send {
     background: #000;
@@ -2441,7 +2442,7 @@ Primary style
   }
   
   a {
-    color: #ff3e13;
+    color: #daa520;
     text-decoration: none;
   }
   
@@ -2762,7 +2763,7 @@ Primary style
       top: 50%;
       height: 2px;
       width: 13px;
-      background: #ff3e13;
+      background: #daa520;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       -webkit-transition-property: -webkit-transform;
