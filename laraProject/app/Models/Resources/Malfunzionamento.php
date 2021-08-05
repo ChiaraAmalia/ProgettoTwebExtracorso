@@ -14,7 +14,7 @@ class Malfunzionamento extends Model{
     protected $primaryKey = 'codice_malfunzionamento';
     public $timestamps = false;
     protected $guarded = ['codice_malfunzionamento'];
-    protected $fillable = ['titolo', 'descrizione',];
+    protected $fillable = ['titolo', 'descrizione'];
     
     // Realazione One-To-One con Prodotto
     public function codProdotto() {
