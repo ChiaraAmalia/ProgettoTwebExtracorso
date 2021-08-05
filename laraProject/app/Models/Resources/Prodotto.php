@@ -16,5 +16,6 @@ class Prodotto extends Model{
     protected $guarded = ['codice_prodotto'];
     protected $fillable = [
 		'nome_prodotto', 'tipologia','rumore', 'consumo',
-                'luce_interna','programmi','classe_energetica','descrizione'];
+                'luce_interna','programmi','classe_energetica','descrizione',
+                'immagine','tecniche_buonuso','modalita_installazione'];
 }

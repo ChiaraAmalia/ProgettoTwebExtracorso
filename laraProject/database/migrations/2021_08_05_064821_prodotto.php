@@ -22,7 +22,10 @@ class Prodotto extends Migration
             $table->string('luce_interna')->nullable();
             $table->string('programmi')->nullable();
             $table->enum('classe_energetica',['A++','A+','A','B','C','D','E','F','G'])->nullable();
-            $table->string('descrizione')->nullable();
+            $table->string('descrizione',2500)->nullable();
+            $table->text('immagine')->nullable();
+            $table->string('tecniche_buonuso',2500)->nullable();
+            $table->string('modalita_installazione',2500)->nullable();
         });
     }
 
