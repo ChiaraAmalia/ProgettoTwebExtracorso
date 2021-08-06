@@ -17,7 +17,7 @@ class Utente extends Migration
             $table->bigIncrements('id')->unsigned()->index();
             $table->enum('categoria',['tecnico','staff','amministratore']);
             $table->enum('specializzazione',['lavatrice','lavastoviglie','forno','frigorifero','congelatore','asciugatrice'])->nullable();
-            $table->enum('occupazione',['interna','esterna']);
+            $table->enum('occupazione',['interna','esterna'])->nullable();
             $table->string('nome_centro',200)->nullable();
             $table->string('email',40)->unique();
             $table->string('username',20);
