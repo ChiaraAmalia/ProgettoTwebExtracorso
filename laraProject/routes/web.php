@@ -32,7 +32,7 @@ Route::post('/catalogo', 'ControllerPubblico@mostraCatalogoFiltrato')
         ->name('catalogoFiltrato')
         ->middleware('preventBackHistory');
 
-Route::get('/catalogo/dettagliEvento/{codice_evento}', 'ControllerPubblico@mostraDettagli')
+Route::get('/catalogo/dettagliProdotto/{codice_prodotto}', 'ControllerPubblico@mostraDettagli')
         ->name('dettagliEvento')
         ->middleware('preventBackHistory');
 
@@ -45,61 +45,14 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')
         ->name('logout');
 //FINE
-// ROTTE REGISTRAZIONE
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')
-        ->name('register');
-
-Route::post('register', 'Auth\RegisterController@register');
-//FINE
 // ROTTE POST AUTENTICAZIONE
-//rotte cliente
-Route::view('/cliente', 'AreaUtente2')
-        ->name('cliente')
-        ->middleware('can:isUser')
+//rotte tecnico
+Route::view('/tecnico', 'AreaUtente2')
+        ->name('tecnico')
+        ->middleware('can:isTecnico')
         ->middleware('preventBackHistory');
 
-Route::get('/catalogo/acquisto/{codice_evento}', 'ControllerLivello2@acquisto')
-        ->name('acquisto')
-        ->middleware('can:isUser')
-        ->middleware('preventBackHistory');
-
-Route::get('/storico/{id}', 'ControllerLivello2@mostraStorico')
-        ->name('storico')
-        ->middleware('can:isUser')
-        ->middleware('preventBackHistory');
-
-Route::get('/partecipero/{id}', 'ControllerLivello2@mostraCatalogo')
-        ->name('partecipero')
-        ->middleware('can:isUser')
-        ->middleware('preventBackHistory');
-
-Route::view('/modificalivello2', 'ModificaUtente2')
-        ->name('modificalivello2')
-        ->middleware('can:isUser')
-        ->middleware('preventBackHistory');
-
-Route::get('/qrcode/{stringa}', function ($stringa) {
-    return QrCode::size(250)
-                    ->backgroundColor(224, 122, 114)
-                    ->generate("$stringa");})
-        ->name('qrcode')
-        ->middleware('can:isUser')
-        ->middleware('preventBackHistory');
-
-Route::resource('user', 'ControllerLivello2');
-
-Route::post('creaBiglietto', 'ControllerLivello2@creaBiglietto')
-        ->name('creaBiglietto')
-        ->middleware('can:isUser');
-
-Route::post('partecipero', 'ControllerLivello2@partecipero')
-        ->name('partecipero')
-        ->middleware('can:isUser');
-
-Route::get('vedipartecipero/{id}','ControllerLivello2@vedipartecipero')
-        ->name('vedipartecipero')
-        ->middleware('can:isUser')
-        ->middleware('preventBackHistory');
+Route::resource('tecnico', 'ControllerLivello2');
 
 //rotte amministratore
 Route::view('/amministratore', 'AreaAdmin')
@@ -156,14 +109,9 @@ Route::get('/modificafaq/{id}/modifica', 'AdminController@FormFAQ')
         ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
-Route::get('/statistiche/{id}/vedi', 'AdminController@statistiche')
-        ->name('statistiche')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
 //rotte organizzatore (utente livello 3)
-Route::view('/organizzatore', 'AreaUtente3')
-        ->name('organizzatore')
+Route::view('/staff', 'AreaUtente3')
+        ->name('staff')
         ->middleware('can:isOrganizer')
         ->middleware('preventBackHistory');
 
@@ -186,7 +134,7 @@ Route::get('/EliminaEvento/{id}', 'ControllerLivello3@eliminaEvento')
         ->name('EliminaEvento')
         ->middleware('can:isOrganizer');
 
-Route::resource('organizer', 'ControllerLivello3');
+Route::resource('staff', 'ControllerLivello3');
 
 Route::get('/ModificaEvento/{id}/modifica', 'ControllerLivello3@modificaEvento')
         ->name('ModificaEvento')

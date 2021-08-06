@@ -8,7 +8,7 @@
             <div id="formContent">
 
                 <!-- Tab Title -->
-                <h2 class="active"> Accedi all'area riservata </h2>
+                <h2 class="active" style='border-bottom: 2px solid orange;'> Accedi all'area riservata </h2>
 
             {{ Form::open(array('route' => 'login', 'class' => 'contact-form')) }}
 
@@ -42,11 +42,6 @@
             </div>
             
             {{ Form::close() }}
-
-            <!-- Iscrizione -->
-            <div id="formFooter">
-                <a class="underlineHover" href="{{route('register')}}">Iscriviti</a>
-              </div>
         </div>
         </div>
     </div>
