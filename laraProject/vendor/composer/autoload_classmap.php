@@ -34,6 +34,7 @@ return array(
     'App\\Http\\Requests\\NuovoOrganizzatoreRequest' => $baseDir . '/app/Http/Requests/NuovoOrganizzatoreRequest.php',
     'App\\Models\\Catalogo' => $baseDir . '/app/Models/Catalogo.php',
     'App\\Models\\Resources\\FAQ' => $baseDir . '/app/Models/Resources/FAQ.php',
+    'App\\Models\\Resources\\Intervento' => $baseDir . '/app/Models/Resources/Intervento.php',
     'App\\Models\\Resources\\Malfunzionamento' => $baseDir . '/app/Models/Resources/Malfunzionamento.php',
     'App\\Models\\Resources\\Prodotto' => $baseDir . '/app/Models/Resources/Prodotto.php',
     'App\\Models\\Resources\\Utente' => $baseDir . '/app/Models/Resources/Utente.php',

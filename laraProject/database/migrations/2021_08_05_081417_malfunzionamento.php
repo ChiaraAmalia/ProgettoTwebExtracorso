@@ -17,8 +17,8 @@ class Malfunzionamento extends Migration
             $table->bigIncrements('codice_malfunzionamento')->unsigned()->index();
             $table->bigInteger('codice_prodotto')->unsigned()->index()->nullable();
             $table->foreign('codice_prodotto')->references('codice_prodotto')->onDelete('SET NULL')->on('prodotto');
-            $table->string('titolo');
-            $table->string('descrizione');
+            $table->string('titolo',500);
+            $table->string('descrizione',2500);
         });
     }
 

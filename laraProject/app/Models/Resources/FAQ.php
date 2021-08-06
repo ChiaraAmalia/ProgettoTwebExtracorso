@@ -9,6 +9,7 @@ class FAQ extends Model{
     protected $table = 'faq';
     protected $primaryKey = 'id_faq';
     public $timestamps = false;
+    protected $guarded = ['id_faq'];
     protected $fillable = ['domanda','risposta'];
     
     public function getfaq() {
