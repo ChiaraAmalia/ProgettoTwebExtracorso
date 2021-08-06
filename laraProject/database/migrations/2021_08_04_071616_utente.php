@@ -15,13 +15,13 @@ class Utente extends Migration
     {
         Schema::create('users', function (Blueprint $table){
             $table->bigIncrements('id')->unsigned()->index();
+            $table->string('username',20);
+            $table->string('password');
             $table->enum('categoria',['tecnico','staff','amministratore']);
             $table->enum('specializzazione',['lavatrice','lavastoviglie','forno','frigorifero','congelatore','asciugatrice'])->nullable();
             $table->enum('occupazione',['interna','esterna'])->nullable();
             $table->string('nome_centro',200)->nullable();
             $table->string('email',40)->unique();
-            $table->string('username',20);
-            $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('nome',30)->nullable();
             $table->string('cognome',30)->nullable();
