@@ -25,9 +25,9 @@ use AuthenticatesUsers;
             //redirect sulla pagina competente rispetto al livello di utente
             case 'amministratore': return '/amministratore';
                 break;
-            case 'cliente': return '/cliente';
+            case 'tecnico': return '/tecnico';
                 break;
-            case 'organizzatore': return '/organizzatore';
+            case 'staff': return '/staff';
                 break;
             default: return '/';
         };

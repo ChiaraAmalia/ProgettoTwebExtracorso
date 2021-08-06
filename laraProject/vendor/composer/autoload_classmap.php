@@ -33,6 +33,7 @@ return array(
     'App\\Http\\Requests\\NuovoEventoRequest' => $baseDir . '/app/Http/Requests/NuovoEventoRequest.php',
     'App\\Http\\Requests\\NuovoOrganizzatoreRequest' => $baseDir . '/app/Http/Requests/NuovoOrganizzatoreRequest.php',
     'App\\Models\\Catalogo' => $baseDir . '/app/Models/Catalogo.php',
+    'App\\Models\\Resources\\CentroAssistenza' => $baseDir . '/app/Models/Resources/CentroAssistenza.php',
     'App\\Models\\Resources\\FAQ' => $baseDir . '/app/Models/Resources/FAQ.php',
     'App\\Models\\Resources\\Intervento' => $baseDir . '/app/Models/Resources/Intervento.php',
     'App\\Models\\Resources\\Malfunzionamento' => $baseDir . '/app/Models/Resources/Malfunzionamento.php',

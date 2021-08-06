@@ -484,6 +484,7 @@ class ComposerStaticInit786d54b7a32e7fc62cb444a73ed76b5c
         'App\\Http\\Requests\\NuovoEventoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NuovoEventoRequest.php',
         'App\\Http\\Requests\\NuovoOrganizzatoreRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NuovoOrganizzatoreRequest.php',
         'App\\Models\\Catalogo' => __DIR__ . '/../..' . '/app/Models/Catalogo.php',
+        'App\\Models\\Resources\\CentroAssistenza' => __DIR__ . '/../..' . '/app/Models/Resources/CentroAssistenza.php',
         'App\\Models\\Resources\\FAQ' => __DIR__ . '/../..' . '/app/Models/Resources/FAQ.php',
         'App\\Models\\Resources\\Intervento' => __DIR__ . '/../..' . '/app/Models/Resources/Intervento.php',
         'App\\Models\\Resources\\Malfunzionamento' => __DIR__ . '/../..' . '/app/Models/Resources/Malfunzionamento.php',
