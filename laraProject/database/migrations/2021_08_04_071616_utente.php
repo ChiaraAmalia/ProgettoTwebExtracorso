@@ -27,9 +27,9 @@ class Utente extends Migration
             $table->string('cognome',30)->nullable();
             $table->string('via',30)->nullable();
             $table->string('citta',40)->nullable();
-            $table->Integer('cap')->nullable();
+            $table->integer('cap')->nullable();
             $table->string('sesso')->nullable();
-            $table->Integer('cellulare',10)->nullable();
+            $table->integer('cellulare')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
