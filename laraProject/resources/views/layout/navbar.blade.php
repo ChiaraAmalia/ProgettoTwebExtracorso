@@ -12,12 +12,12 @@
     <li><a href="{{ route('amministratore') }}" title="Home Admin">Area privata Amministratore</a></li>
 @endcan
 
-@can('isOrganizer')
-    <li><a href="{{ route('organizzatore') }}" title="Home Organizzatore">Area privata Organizzatore</a></li>
+@can('isStaff')
+    <li><a href="{{ route('staff') }}" title="Home Staff">Area privata Staff</a></li>
 @endcan
 
-@can('isUser')
-    <li><a href="{{ route('cliente') }}" title="Home User">Area privata Cliente</a></li>
+@can('isTecn')
+    <li><a href="{{ route('tecnico') }}" title="Home Tecnico">Area privata Tecnico</a></li>
 @endcan
 
 @auth

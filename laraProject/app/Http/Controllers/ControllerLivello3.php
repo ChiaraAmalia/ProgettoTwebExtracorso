@@ -2,12 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use App\Models\Resources\Utente;
-use App\Models\Resources\Biglietto;
-use App\Models\Resources\Evento;
-use App\Models\Resources\Partecipero;
-use App\Models\Resources\GestioneEvento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -17,19 +12,19 @@ use Carbon\Carbon;
 
 class ControllerLivello3 extends Controller {
 
-    protected $_gestioneEventoModel;
     protected $_utenteModel;
 
     public function __construct() {
 
-        $this->middleware('can:isOrganizer');
-        $this->_gestioneEventoModel = new GestioneEvento;
+        $this->middleware('can:isStaff');
         $this->_utenteModel = new Utente;
     }
     
         public function index() {
         return view('AreaOrganizzatore');
     }
+    
+    /*
     
     public function mostraGestioneEventi($id) {
         $utente = $this->_utenteModel->getUtenteById($id);
@@ -149,5 +144,7 @@ class ControllerLivello3 extends Controller {
         return view('statisticheOrganizzatore')
                                 ->with('statistica', $statistica); 
     }
+     * 
+     */
 
 }

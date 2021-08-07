@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Resources\Utente;
-use App\Models\Resources\Biglietto;
-use App\Models\Resources\Evento;
-use App\Models\Resources\Partecipero;
 use App\Models\Catalogo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\NuovoBigliettoRequest;
 
 
 
@@ -16,24 +12,21 @@ class ControllerLivello2 extends Controller {
 
     protected $_catalogoModel;
     protected $_utenteModel;
-    protected $_bigliettogoModel;
-    protected $_eventoModel;
 
 
     
     
     public function __construct() {
-        $this->middleware('can:isUser');
+        $this->middleware('can:isTecnico');
         $this->_utenteModel = new Utente;
-        $this->_catalogoModel = new Catalogo; 
-        $this->_bigliettoModel = new Biglietto;
-        $this->_eventoModel = new Evento;
-        $this->_parteciperoModel = new Partecipero; 
+        $this->_catalogoModel = new Catalogo;  
     }
     
     public function index() {
         return view('AreaUtente2');
     }
+    
+    /*
 
     public function acquisto($codice_evento) {
 
@@ -131,5 +124,7 @@ class ControllerLivello2 extends Controller {
         return view('partecipero', ['partecip' => $partecip,
                                             'eventi'=>$eventi]);
     }
+     * 
+     */
 }
 

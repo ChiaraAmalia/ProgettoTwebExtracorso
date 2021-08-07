@@ -109,10 +109,10 @@ Route::get('/modificafaq/{id}/modifica', 'AdminController@FormFAQ')
         ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
-//rotte organizzatore (utente livello 3)
+//rotte staff (utente livello 3)
 Route::view('/staff', 'AreaUtente3')
         ->name('staff')
-        ->middleware('can:isOrganizer')
+        ->middleware('can:isStaff')
         ->middleware('preventBackHistory');
 
 Route::get('/gestioneEventi/{id}', 'ControllerLivello3@mostraGestioneEventi')

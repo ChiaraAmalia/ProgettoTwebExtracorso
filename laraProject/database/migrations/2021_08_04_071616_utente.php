@@ -29,7 +29,7 @@ class Utente extends Migration
             $table->string('citta',40)->nullable();
             $table->integer('cap')->nullable();
             $table->string('sesso')->nullable();
-            $table->integer('cellulare')->nullable();
+            $table->string('cellulare')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
