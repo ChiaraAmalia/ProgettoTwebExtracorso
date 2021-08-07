@@ -59,11 +59,11 @@
             </div>
             <div>
                 <br><center>
-                 @can('isUser')
+                 @can('isTecnico')
                     <h1 style="font-weight: bold; font-family: Verdana">CLICCA SUL FRIGORIFERO PER TORNARE ALL'AREA RISERVATA</h1>
                       <img alt="Immagine elettrodomestici" src="images/mappa1.jpg" usemap="#map">
                       <map name="map">
-                          <area shape="rect" alt="Login" title="Effettua il login" coords="432,111,564,444" href="{{ route('cliente') }}">
+                          <area shape="rect" alt="Login" title="Effettua il login" coords="432,111,564,444" href="{{ route('tecnico.index') }}">
                       </map>
                  @endcan
                  @can('isAdmin')
@@ -73,11 +73,11 @@
                           <area shape="rect" alt="Login" title="Effettua il login" coords="432,111,564,444" href="{{ route('amministratore') }}">
                       </map>
                  @endcan  
-                @can('isOrganizer')
+                @can('isStaff')
                     <h1 style="font-weight: bold; font-family: Verdana">CLICCA SUL FRIGORIFERO PER TORNARE ALL'AREA RISERVATA</h1>
                       <img alt="Immagine elettrodomestici" src="images/mappa1.jpg" usemap="#map">
                       <map name="map">
-                          <area shape="rect" alt="Login" title="Effettua il login" coords="432,111,564,444" href="{{ route('organizzatore') }}">
+                          <area shape="rect" alt="Login" title="Effettua il login" coords="432,111,564,444" href="{{ route('staff.index') }}">
                       </map>
                  @endcan
                  @guest

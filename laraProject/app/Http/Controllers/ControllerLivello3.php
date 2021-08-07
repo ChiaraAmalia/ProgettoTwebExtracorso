@@ -20,10 +20,10 @@ class ControllerLivello3 extends Controller {
         $this->_utenteModel = new Utente;
     }
     
-        public function index() {
-        return view('AreaOrganizzatore');
+    public function index() {
+        return view('AreaUtente3');
     }
-    
+   
     /*
     
     public function mostraGestioneEventi($id) {

@@ -28,7 +28,10 @@ class DatabaseSeeder extends Seeder
               'cap' => '60121', 'sesso' => 'M', 'cellulare' => '3556768542'],
             [ 'username' => 'tecntecn', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'tecnico', 'specializzazione' => 'lavatrice', 'occupazione' => 'interna',
               'nome_centro' => Null, 'email' => 'maria.cerrato5@smail.com', 'email_verified_at' => Null, 'nome' => 'Maria', 'cognome' => 'Cerrato', 'via' => 'Donnola', 'citta' => 'Perugia',
-              'cap' => '59439', 'sesso' => 'F', 'cellulare' => '3542047281'],             
+              'cap' => '59439', 'sesso' => 'F', 'cellulare' => '3542047281'],
+            [ 'username' => 'staffstaff', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'staff', 'specializzazione' => NULL, 'occupazione' => NULL,
+              'nome_centro' => Null, 'email' => 'marco.rerrero7@pmail.com', 'email_verified_at' => Null, 'nome' => 'Marco', 'cognome' => 'Ferrero', 'via' => 'Sudini', 'citta' => 'Roma',
+              'cap' => '23918', 'sesso' => 'M', 'cellulare' => '3920173645'],
         ]);
     }
 }

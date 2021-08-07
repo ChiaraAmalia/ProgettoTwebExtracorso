@@ -13,11 +13,11 @@
 @endcan
 
 @can('isStaff')
-    <li><a href="{{ route('staff') }}" title="Home Staff">Area privata Staff</a></li>
+    <li><a href="{{ route('staff.index') }}" title="Home Staff">Area privata Staff</a></li>
 @endcan
 
-@can('isTecn')
-    <li><a href="{{ route('tecnico') }}" title="Home Tecnico">Area privata Tecnico</a></li>
+@can('isTecnico')
+    <li><a href="{{ route('tecnico.index') }}" title="Home Tecnico">Area privata Tecnico</a></li>
 @endcan
 
 @auth

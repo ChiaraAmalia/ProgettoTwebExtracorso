@@ -14,8 +14,6 @@ class ControllerLivello2 extends Controller {
     protected $_utenteModel;
 
 
-    
-    
     public function __construct() {
         $this->middleware('can:isTecnico');
         $this->_utenteModel = new Utente;
