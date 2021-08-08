@@ -44,47 +44,38 @@ class ControllerPubblico extends Controller {
                         ->with('faq', $faq);
     }
 
-    /*
-    public function mostraDettagli($codice_evento) {
+    
+    public function mostraDettagli($codice_prodotto) {
 
         //Mostra la finestra con i dettagli dell'evento selezionato
-        $evento = $this->_catalogoModel->getEventoByCodice($codice_evento);
-        $titolo = $evento->titolo;
-        $prezzo = $evento->prezzo_biglietto;
-        $organizzatore = $evento->societa_organizzatrice;
-        $data_ora = $evento->data_ora;
-        $informazioni = $evento->informazioni;
-        $coordinate_maps = $evento->coordinate_maps;
-        $luogo = $evento->luogo;
-        $stato_evento = $evento->stato_evento;
-        $locandina = $evento->locandina;
-        $biglietto_scontato = $evento->biglietto_scontato;
-        $sconto = $evento->sconto;
-        $programma_evento = $evento->programma_evento;
-        $indicazioni = $evento->indicazioni;
-        $biglietti_rimanenti = $evento->biglietti_rimanenti;
-
-        $partecipero = Partecipero::where('codice_evento', '=', $codice_evento)->count();
-
-
-        return view('dettagliEvento', ['evento' => $evento,
-            'biglietto_scontato' => $biglietto_scontato,
-            'sconto' => $sconto,
-            'titolo' => $titolo,
-            'prezzo' => $prezzo,
-            'organizzatore' => $organizzatore,
-            'data_ora' => $data_ora,
-            'informazioni' => $informazioni,
-            'coordinate_maps' => $coordinate_maps,
-            'luogo' => $luogo,
-            'stato_evento' => $stato_evento,
-            'locandina' => $locandina,
-            'programma_evento' => $programma_evento,
-            'indicazioni' => $indicazioni,
-            'partecipero' => $partecipero,
-            'biglietti_rimanenti' => $biglietti_rimanenti,
-            'sconto' => $sconto
+        $prodotto = $this->_catalogoModel->getProdottoByCodice($codice_prodotto);
+        $nome_prodotto = $prodotto->nome_prodotto;
+        $tipologia = $prodotto->tipologia;
+        $rumore = $prodotto->rumore;
+        $consumo_en_annuo = $prodotto->consumo_en_annuo;
+        $descrizione = $prodotto->descrizione;
+        $luce_interna = $prodotto->luce_interna;
+        $programmi = $prodotto->programmi;
+        $classe_energetica = $prodotto->classe_energetica;
+        $immagine = $prodotto->immagine;
+        $tecniche_buonuso = $prodotto->tecniche_buonuso;
+        $modalita_installazione = $prodotto->modalita_installazione;
+        
+        //vedere funzione partecipero in altro progetto per implementare i malfunzionamenti
+        
+        return view('dettagliProdotto', ['prodotto' => $prodotto,
+            'nome_prodotto' => $nome_prodotto,
+            'tipologia' => $tipologia,
+            'rumore' => $rumore,
+            'consumo_en_annuo' => $consumo_en_annuo,
+            'descrizione' => $descrizione,
+            'luce_interna' => $luce_interna,
+            'programmi' => $programmi,
+            'classe_energetica' => $classe_energetica,
+            'immagine' => $immagine,
+            'tecniche_buonuso' => $tecniche_buonuso,
+            'modalita_installazione' => $modalita_installazione
         ]);
-    }*/
+    }
 
 }

@@ -23,10 +23,14 @@ class Catalogo {
 
     public function getProdottiFiltrati($descrizione = null) {
         
-        $asterisco = str_replace("*", "", $descrizione);
-        return Prodotto::where('descrizione', 'LIKE', '%' . $asterisco . '%')
-                        ->get();
-        
+        $nasterisco = substr_count($descrizione, '*');
+        if($nasterisco == 1){
+            $asterisco = str_replace("*", "", $descrizione);
+            return Prodotto::where('descrizione', 'LIKE', '%' . $asterisco . '%')->get();                      
+        }
+        else if($nasterisco == 0){
+            return Prodotto::where('descrizione', 'LIKE', '%' . $descrizione . '%')->get(); 
+        }
     }
 
     

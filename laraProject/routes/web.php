@@ -33,7 +33,7 @@ Route::post('/catalogo', 'ControllerPubblico@mostraCatalogoFiltrato')
         ->middleware('preventBackHistory');
 
 Route::get('/catalogo/dettagliProdotto/{codice_prodotto}', 'ControllerPubblico@mostraDettagli')
-        ->name('dettagliEvento')
+        ->name('dettagliProdotto')
         ->middleware('preventBackHistory');
 
 // ROTTE PER AUTENTICAZIONE
