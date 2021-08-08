@@ -2,46 +2,31 @@
 
 namespace App\Models;
 
-use App\Models\Resources\Evento;
+use App\Models\Resources\Prodotto;
 
 class Catalogo {
 
-    public function getTabellaEventi() {
+    public function getTabellaProdotti() {
 
-        return Evento::all();
+        return Prodotto::all();
     }
 
-    public function getTuttiEventi() {
+    public function getTuttiProdotti() {
 
-        return Evento::paginate(4);
+        return Prodotto::paginate(4);
     }
 
-    public function getEventoByCodice($codice_evento) {
+    public function getProdottoByCodice($codice_prodotto) {
 
-        return Evento::where('codice_evento', $codice_evento)->first();
+        return Prodotto::where('codice_prodotto', $codice_prodotto)->first();
     }
 
-    
-
-    public function getEventiFiltrati($luogo = null, $societa = null, $data = null, $descrizione = null) {
-        if ($data != '01-0000') {
-            return Evento::where('informazioni', 'LIKE', '%' . $descrizione . '%')
-                            ->where('luogo', 'LIKE', '%' . $luogo . '%')
-                            ->where('societa_organizzatrice', 'LIKE', '%' . $societa . '%')
-                            ->whereYear('data_ora', substr($data, 3, 7))
-                            ->whereMonth('data_ora', substr($data, 0, 2))
-                            ->get();
-        }
-        return Evento::where('informazioni', 'LIKE', '%' . $descrizione . '%')
-                        ->where('luogo', 'LIKE', '%' . $luogo . '%')
-                        ->where('societa_organizzatrice', 'LIKE', '%' . $societa . '%')
+    public function getProdottiFiltrati($descrizione = null) {
+        
+        $asterisco = str_replace("*", "", $descrizione);
+        return Prodotto::where('descrizione', 'LIKE', '%' . $asterisco . '%')
                         ->get();
         
-    }
-
-    public function getEventoConFiltri($descr = null, $luogo = null, $data = null) {
-        
-        return Evento::where('luogo', $luogo)->first();
     }
 
     

@@ -18,10 +18,10 @@ class Prodotto extends Migration
             $table->string('nome_prodotto')->nullable();
             $table->enum('tipologia',['lavatrice','lavastoviglie','forno','frigorifero','congelatore','asciugatrice']);
             $table->string('rumore')->nullable();
-            $table->string('consumo')->nullable();
+            $table->string('consumo_en_annuo')->nullable();
             $table->string('luce_interna')->nullable();
-            $table->string('programmi')->nullable();
-            $table->enum('classe_energetica',['A++','A+','A','B','C','D','E','F','G'])->nullable();
+            $table->string('programmi',2500)->nullable();
+            $table->enum('classe_energetica',['A+++','A++','A+','A','B','C','D','E','F','G'])->nullable();
             $table->string('descrizione',2500)->nullable();
             $table->text('immagine')->nullable();
             $table->string('tecniche_buonuso',2500)->nullable();
