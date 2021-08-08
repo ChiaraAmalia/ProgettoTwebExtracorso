@@ -8,8 +8,8 @@
             <!--<img src="images/banner2.jpg" />-->
             <img src="{{ asset('/images/elettrodomestici.jpg') }}" class="megaBanner"/>
             <div class="container">
-                <div class="text-bg relative">
-                    <h1 style="text-shadow: 2px 2px 4px black;">ElectroStar<br><br>Gli elettrodomestici a portata di click!</h1>
+                <div class="text-bg relative" style="top: 50%;">
+                    <h1 style="text-shadow: 2px 2px 4px black;padding-bottom: 10px ">ElectroStar<br><br>Gli elettrodomestici a portata di click!</h1>
                 </div>
             </div>
         </div>
