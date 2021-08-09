@@ -18,4 +18,10 @@ class Prodotto extends Model{
 		'nome_prodotto', 'tipologia','rumore', 'consumo',
                 'luce_interna','programmi','classe_energetica','descrizione',
                 'immagine','tecniche_buonuso','modalita_installazione'];
+    
+    public function getProdottobySpecializzazione($specializzazione) {
+        
+        return Prodotto::where('tipologia', $specializzazione)
+                        ->paginate(4);
+    }
 }

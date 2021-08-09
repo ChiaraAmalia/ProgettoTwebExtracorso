@@ -16,7 +16,7 @@ class Intervento extends Migration
         Schema::create('intervento', function (Blueprint $table){
             $table->bigIncrements('codice_intervento')->unsigned()->index();
             $table->bigInteger('codice_malfunzionamento')->unsigned()->index()->nullable();
-            $table->foreign('codice_malfunzionamento')->references('codice_malfunzionamento')->onDelete('SET NULL')->on('malfunzionamento');
+            $table->foreign('codice_malfunzionamento')->references('codice_malfunzionamento')->onDelete('CASCADE')->on('malfunzionamento');
             $table->string('descrizione',2500);
         });
     }

@@ -19,24 +19,24 @@
 
 <div class="container">
 
-    <h1>{{ $titolo }}</h1>
+    <h1><br>{{ $titolo }}</h1>
             <div>
                <br><br><b>DESCRIZIONE DEL MALFUNZIONAMENTO:</b><br> 
                {{ $descrizione }}
             </div>
             <div>
-                <br><b>SOLUZIONI</b><br>
+                <br><b>INTERVENTI</b><br>
                     @isset($interventi)
                     @foreach ($interventi as $intervento)
-                    <ol>
-                        <li>{{$intervento->descrizione}}</li>
-                    </ol>
+                    <br><span class="dot" style='background-color: #ff8c00'></span><span>{{$intervento->descrizione}}<br></span>
+                    @endforeach
+                    @endisset
             </div>
             <div>
                 <a href="{{route('dettagliProdotto',[$malfunzionamento->codice_prodotto])}}">
-                    <p><b>RITORNA AL PRODOTTO</b></p>
+                    <p><b><br>RITORNA AL PRODOTTO</b></p>
                 </a> 
             </div>
-    </div>
+</div>
 
 @endsection

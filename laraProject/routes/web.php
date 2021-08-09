@@ -57,6 +57,11 @@ Route::view('/tecnico', 'AreaUtente2')
         ->middleware('can:isTecnico')
         ->middleware('preventBackHistory');
 
+Route::get('/gestioneProdotti/{id}', 'ControllerLivello3@mostraGestioneProdotti')
+        ->name('gestioneProdotti')
+        ->middleware('can:isTecnico')
+        ->middleware('preventBackHistory');
+
 Route::resource('tecnico', 'ControllerLivello2');
 
 //rotte amministratore
@@ -118,11 +123,6 @@ Route::get('/modificafaq/{id}/modifica', 'AdminController@FormFAQ')
 Route::view('/staff', 'AreaUtente3')
         ->name('staff')
         ->middleware('can:isStaff')
-        ->middleware('preventBackHistory');
-
-Route::get('/gestioneEventi/{id}', 'ControllerLivello3@mostraGestioneEventi')
-        ->name('gestioneEventi')
-        ->middleware('can:isOrganizer')
         ->middleware('preventBackHistory');
 
 Route::get('/inserisciEvento', 'ControllerLivello3@mostraFormInserimento')

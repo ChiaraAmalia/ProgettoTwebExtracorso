@@ -71,19 +71,17 @@
             </div>
             @can('showMalfunzionamenti')
             <div>
-                <br><b>MALFUNZIONAMENTI:</b><br><br>
+                <br>
+                <button id="menuButton" style="border-bottom: 5px solid orange">VISUALIZZA I MALFUNZIONAMENTI:</button>
+                <div id="menu" style="display:none;">
                     @isset($malfunzionamenti)
                     @foreach ($malfunzionamenti as $malfunzionamento)
-                <button id="menuButton" style="border-bottom: 5px solid orange">{{$malfunzionamento->titolo}}</button>
-                <div id="menu" style="display:none;">
-                    <p><br>{{ $malfunzionamento->descrizione }}</p>
                     <a href="{{route('dettagliMalfunzionamento',[$prodotto, $malfunzionamento->codice_malfunzionamento])}}">
-                        <p><b>Clicca qui per visualizzare i passaggi per la risoluzione</b></p>
-                    </a>                        
-                    
-                </div>
+                        <br><span class="dot" style='background-color: #ff8c00'></span><span><b>{{$malfunzionamento->titolo}}</b></span>
+                    </a>
                     @endforeach
-                    @endisset()                   
+                    @endisset()
+                </div>                   
             </div>
             @endcan
     </div>
