@@ -11,8 +11,8 @@
             <h2 class="active">Benvenuto {{ Auth::user()->nome }} {{ Auth::user()->cognome }}<h2>
 
          <div class="wrapper fadeInDown">
-                <a href="{{ route('gestioneProdotti', [Auth::user()->id]) }}" title="Visualizza i tuoi prodotti di competenza">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Prodotti di competenza"/>
+                <a href="{{ route('catalogo') }}" title="Visualizza i prodotti da catalogo">
+                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Prodotti"/>
                 </a>
         </div>
     </div>

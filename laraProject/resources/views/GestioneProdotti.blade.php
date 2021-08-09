@@ -70,7 +70,7 @@
     @endforeach
 
     <!--Paginazione-->
-    @include('pagination.paginator', ['paginator' => $eventi])
+    @include('pagination.paginator', ['paginator' => $prodotti])
 
     @endisset()
     @endsection

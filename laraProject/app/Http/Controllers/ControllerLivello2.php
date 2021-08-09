@@ -27,14 +27,6 @@ class ControllerLivello2 extends Controller {
         return view('AreaUtente2');
     }
     
-     public function mostraGestioneProdotti($id) {
-        $utente = $this->_utenteModel->getUtenteById($id);
-        $specializzazione = $utente->pluck('specializzazione');
-        $prodotti = $this->_prodottoModel->getProdottobySpecializzazione($specializzazione[0]);
-        return view('GestioneProdotti')
-                        ->with('prodotti', $prodotti);
-    }
-    
     /*
 
     public function acquisto($codice_evento) {

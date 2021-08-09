@@ -3,27 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resources\Utente;
+use App\Models\Resources\Prodotto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\AggiornamentoEventoRequest;
-use App\Http\Requests\NuovoEventoRequest;
 use Carbon\Carbon;
 
 class ControllerLivello3 extends Controller {
 
     protected $_utenteModel;
+    protected $prodottoModel;
 
     public function __construct() {
 
         $this->middleware('can:isStaff');
         $this->_utenteModel = new Utente;
+        $this->_prodottoModel = new Prodotto; 
     }
     
     public function index() {
         return view('AreaUtente3');
     }
    
+    public function mostraGestioneProdotti($id) {
+        $utente = $this->_utenteModel->getUtenteById($id);
+        $specializzazione = $utente->pluck('specializzazione');
+        $prodotti = $this->_prodottoModel->getProdottobySpecializzazione($specializzazione[0]);
+        return view('GestioneProdotti')
+                        ->with('prodotti', $prodotti);
+    }
     /*
     
     public function mostraGestioneEventi($id) {
