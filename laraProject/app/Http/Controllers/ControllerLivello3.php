@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -33,14 +33,6 @@ class ControllerLivello3 extends Controller {
                         ->with('prodotti', $prodotti);
     }
     /*
-    
-    public function mostraGestioneEventi($id) {
-        $utente = $this->_utenteModel->getUtenteById($id);
-        $societa = $utente->pluck('nome_societa_organizzatrice');
-        $eventi = $this->_gestioneEventoModel->getEventiBySocieta($societa[0]);
-        return view('GestioneEventi')
-                        ->with('eventi', $eventi);
-    }
 
     public function mostraFormInserimento() {
         return view('InserimentoEvento');
