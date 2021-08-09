@@ -36,6 +36,11 @@ Route::get('/catalogo/dettagliProdotto/{codice_prodotto}', 'ControllerPubblico@m
         ->name('dettagliProdotto')
         ->middleware('preventBackHistory');
 
+Route::get('/catalogo/dettagliProdotto/{codice_prodotto}/dettagliMalfunzionamento/{codice_malfunzionamento}', 'ControllerPubblico@mostraMalfunzionamenti')
+        ->name('dettagliMalfunzionamento')
+        ->middleware('can:showMalfunzionamenti')
+        ->middleware('preventBackHistory');
+
 // ROTTE PER AUTENTICAZIONE
 Route::get('login', 'Auth\LoginController@showLoginForm')
         ->name('login');

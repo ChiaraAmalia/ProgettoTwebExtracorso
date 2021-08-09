@@ -17,6 +17,18 @@
 
 @section('title', 'Dettaglio')
 
+@section('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#menuButton").click(function(){
+      $("#menu").slideToggle();
+    }); 
+  });
+
+</script>
+@endsection
+
 @section('content')
 <div class="container">
 
@@ -57,15 +69,23 @@
                 <br><b>MODALITÀ DI INSTALLAZIONE:</b><br>
                 {{$modalita_installazione}}
             </div>
+            @can('showMalfunzionamenti')
             <div>
-                
-                <br><b>MALFUNZIONAMENTI:</b><br>
-                
+                <br><b>MALFUNZIONAMENTI:</b><br><br>
+                    @isset($malfunzionamenti)
+                    @foreach ($malfunzionamenti as $malfunzionamento)
+                <button id="menuButton" style="border-bottom: 5px solid orange">{{$malfunzionamento->titolo}}</button>
+                <div id="menu" style="display:none;">
+                    <p><br>{{ $malfunzionamento->descrizione }}</p>
+                    <a href="{{route('dettagliMalfunzionamento',[$prodotto, $malfunzionamento->codice_malfunzionamento])}}">
+                        <p><b>Clicca qui per visualizzare i passaggi per la risoluzione</b></p>
+                    </a>                        
+                    
+                </div>
+                    @endforeach
+                    @endisset()                   
             </div>
-        </div>
-
-
-
+            @endcan
     </div>
 </div>
 

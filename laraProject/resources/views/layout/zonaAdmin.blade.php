@@ -7,7 +7,10 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="icon" href="{!! asset('images/music-icon-ico-25.ico') !!}"/>
 
-
+        @show
+        @section('scripts')
+        @show
+     
     <!-- basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

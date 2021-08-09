@@ -36,7 +36,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRole('staff');
         });
 
-         Gate::define('show-malfunzionamenti', function ($user) {
+         Gate::define('showMalfunzionamenti', function ($user) {
             return $user->hasRole(['tecnico', 'staff', 'amministratore']);
         }); 
     }

@@ -25,4 +25,8 @@ class Malfunzionamento extends Model{
          $malfunzionamenti=Malfunzionamento::where('codice_prodotto',$codice_prodotto)->get();
          return $malfunzionamenti->all();
     }
+    
+    public function getMalfunzionamentoByCodice($codice_malfunzionamento) {
+        return Malfunzionamento::where('codice_malfunzionamento', $codice_malfunzionamento)->first();
+    }
 }

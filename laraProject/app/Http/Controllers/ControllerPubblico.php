@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalogo;
 use App\Models\Resources\FAQ;
+use App\Models\Resources\Malfunzionamento;
+use App\Models\Resources\Intervento;
 use App\Http\Requests\FiltroRequest;
 
 class ControllerPubblico extends Controller {
 
     protected $_catalogoModel;
     protected $_faqModel;
+    protected $_malfunzionamentiModel;
+    protected $_interventiModel;
 
     public function __construct() {
         $this->_catalogoModel = new Catalogo;
         $this->_faqModel = new FAQ;
+        $this->_malfunzionamentiModel = new Malfunzionamento;
+        $this->_interventiModel = new Intervento;
     }
 
     public function mostraCatalogo() {
@@ -43,12 +49,12 @@ class ControllerPubblico extends Controller {
         return view('faq')
                         ->with('faq', $faq);
     }
-
-    
+ 
     public function mostraDettagli($codice_prodotto) {
 
         //Mostra la finestra con i dettagli dell'evento selezionato
         $prodotto = $this->_catalogoModel->getProdottoByCodice($codice_prodotto);
+        $malfunzionamenti = $this->_malfunzionamentiModel->getMalfunzionamentiProdottto($codice_prodotto);
         $nome_prodotto = $prodotto->nome_prodotto;
         $tipologia = $prodotto->tipologia;
         $rumore = $prodotto->rumore;
@@ -60,9 +66,7 @@ class ControllerPubblico extends Controller {
         $immagine = $prodotto->immagine;
         $tecniche_buonuso = $prodotto->tecniche_buonuso;
         $modalita_installazione = $prodotto->modalita_installazione;
-        
-        //vedere funzione partecipero in altro progetto per implementare i malfunzionamenti
-        
+               
         return view('dettagliProdotto', ['prodotto' => $prodotto,
             'nome_prodotto' => $nome_prodotto,
             'tipologia' => $tipologia,
@@ -74,7 +78,21 @@ class ControllerPubblico extends Controller {
             'classe_energetica' => $classe_energetica,
             'immagine' => $immagine,
             'tecniche_buonuso' => $tecniche_buonuso,
-            'modalita_installazione' => $modalita_installazione
+            'modalita_installazione' => $modalita_installazione,
+            'malfunzionamenti' => $malfunzionamenti   
+        ]);
+    }
+    
+    public function mostraMalfunzionamenti($codiceProdotto,$codice_malfunzionamento){
+        $malfunzionamento = $this->_malfunzionamentiModel->getMalfunzionamentoByCodice($codice_malfunzionamento);
+        $interventi = $this->_interventiModel->getInterventiMalfunzionamento($codice_malfunzionamento);
+        $titolo = $malfunzionamento->titolo;
+        $descrizione = $malfunzionamento->descrizione;
+        
+        return view('dettagliMalfunzionamento', ['malfunzionamento' => $malfunzionamento,
+            'titolo' => $titolo,
+            'descrizione' => $descrizione,
+            'interventi' => $interventi
         ]);
     }
 
