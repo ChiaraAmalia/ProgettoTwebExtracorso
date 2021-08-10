@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
 
 
-@extends('layout.zonaAdmin')
+@extends('layout.zonaUtente3')
 
 @section('title', 'Gestione Utenti')
 
@@ -34,9 +34,15 @@
           <td><b>{{ $malfunzionamento->titolo }}</b></td>
          <td>{{ $malfunzionamento->descrizione }}</td>
          <td>&nbsp;&nbsp;</td>
+         
          <td> <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-primary btn-sm" type="button">Elimina</button></a> </td>
          <td> <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-primary btn-sm" type="button">Modifica</button></a> </td>
+         @can('isStaff')
          <td> <a href="{{route('gestioneInterventi',[Auth::user()->id, $malfunzionamento->codice_prodotto, $malfunzionamento->codice_malfunzionamento])}}"><button class="btn btn-primary btn-sm" type="button">Gestione Interventi</button></a> </td>
+         @endcan
+         @can('isAdmin')
+         <td> <a href="{{route('gestioneInterventiProdotto',[Auth::user()->id, $malfunzionamento->codice_prodotto, $malfunzionamento->codice_malfunzionamento])}}"><button class="btn btn-primary btn-sm" type="button">Gestione Interventi</button></a> </td>
+         @endcan
       </tr>
     @endforeach
     @endisset()

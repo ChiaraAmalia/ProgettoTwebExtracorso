@@ -114,6 +114,22 @@ Route::get('/modificafaq/{id}/modifica', 'AdminController@FormFAQ')
         ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
+//ADMIN gestione prodotto
+
+Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}', 'AdminController@AdminGestioneMalfunzionamenti')
+        ->name('gestioneMalfunzionamentiProdotto')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}', 'AdminController@AdminGestioneInterventi')
+        ->name('gestioneInterventiProdotto')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::get('/EliminaProdotto/{id}', 'AdminController@eliminaProdotto')
+        ->name('EliminaProdotto')
+        ->middleware('can:isAdmin');
+
 //rotte staff (utente livello 3)
 Route::view('/staff', 'AreaUtente3')
         ->name('staff')
@@ -144,10 +160,6 @@ Route::post('/inserisciEvento', 'ControllerLivello3@inserisciEvento')
         ->name('inserisci')
         ->middleware('can:isOrganizer')
         ->middleware('preventBackHistory');
-
-Route::get('/EliminaEvento/{id}', 'ControllerLivello3@eliminaEvento')
-        ->name('EliminaEvento')
-        ->middleware('can:isOrganizer');
 
 Route::resource('staff', 'ControllerLivello3');
 

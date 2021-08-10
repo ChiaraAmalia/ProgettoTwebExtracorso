@@ -1,5 +1,16 @@
 @extends('layout.zonaPubblica')
 
+<script>
+  function ConfirmDelete()
+  {
+  var x = confirm("Sei sicuro? I dati verranno persi se procedi");
+  if (x)
+    return true;
+  else
+    return false;
+  };
+</script>
+
 @section('title', 'Catalogo')
 
 @section('content')
@@ -56,8 +67,30 @@
                     <p class="text-justify text-truncate para mb-0">{{ $prodotto->descrizione }}<br><br></p>
                 </div>
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                    <div class="d-flex flex-column mt-4"><a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}"><button class="btn btn-primary btn-sm" type="button" style='background-color: #ff8c00;text-shadow: 2px 2px 4px black;'>Dettagli</button></a>
-
+                    <div class="d-flex flex-column mt-4">
+                        <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
+                            <button class="btn btn-primary btn-sm" type="button" style='background-color: #ff8c00;text-shadow: 2px 2px 4px black;'>Dettagli</button>
+                        </a>
+                        @can('isStaff')
+                        @if($prodotto->tipologia==Auth::user()->specializzazione)
+                        <a href="{{route('gestioneMalfunzionamenti',[Auth::user()->id,$prodotto->codice_prodotto])}}">
+                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Gestione Malfunzionamenti</button>
+                        </a>
+                        @else
+                        <p class='finito'>Non hai i permessi per gestire i malfunzionamenti di questo prodotto!</p>
+                        @endif
+                        @endcan
+                        @can('isAdmin')
+                        <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
+                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Modifica</button>
+                        </a>
+                        <a href="{{route('EliminaProdotto',[$prodotto->codice_prodotto])}}" onclick="return ConfirmDelete()">
+                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Elimina</button>
+                        </a>
+                        <a href="{{route('gestioneMalfunzionamentiProdotto',[Auth::user()->id,$prodotto->codice_prodotto])}}">
+                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Gestione Malfunzionamenti</button>
+                        </a>
+                        @endcan
                     </div>
                 </div>
             </div>

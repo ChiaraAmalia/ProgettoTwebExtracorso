@@ -16,6 +16,17 @@
 
 @section('title', 'Gestione Utenti')
 
+<script>
+  function ConfirmDelete()
+  {
+  var x = confirm("Sei sicuro? I dati verranno persi se procedi");
+  if (x)
+    return true;
+  else
+    return false;
+  };
+</script>
+
 @section('content')
 
 <div class="table-users">
@@ -33,8 +44,8 @@
       <tr>
          <td>{{ $fa->domanda }}</td>
          <td>{{ $fa->risposta }}</td>
-         <td> <a href="{{route('EliminaFAQ',[$fa->id_faq])}}"><button class="btn btn-primary btn-sm" type="button">Elimina</button></a> </td>
-         <td> <a href="{{route('modificafaq',[$fa])}}"><button class="btn btn-primary btn-sm" type="button">Modifica</button></a> </td>
+         <td> <a href="{{route('EliminaFAQ',[$fa->id_faq])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button"  style="background-color: #0080FF;border: none">Elimina</button></a> </td>
+         <td> <a href="{{route('modificafaq',[$fa])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
       </tr>
     @endforeach
     @endisset()

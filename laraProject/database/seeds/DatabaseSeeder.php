@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
             ['domanda' => 'Come posso effettuare il login?', 'risposta' => 'Nella barra di navigazione in alto basta cliccare sul link di Log-In e procedere con l\'autenticazione, oppure nella home, cliccando nell\'immagine in fondo, sul frigorifero.'],
         ]);
         
+        DB::table('centroAssistenza')->insert([
+            
+        ]);
+        
         
         DB::table('users')->insert([
             [ 'username' => 'adminadmin', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'amministratore', 'specializzazione' => Null, 'occupazione' => Null,

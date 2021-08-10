@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Resources\Utente;
-use App\Models\Resources\Biglietto;
-use App\Models\Resources\Evento;
+use App\Models\Resources\Prodotto;
+use App\Models\Resources\Malfunzionamento;
+use App\Models\Resources\Intervento;
+use App\Models\Resources\CentroAssistenza;
 use App\Models\Resources\FAQ;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,17 +22,32 @@ class AdminController extends Controller {
     protected $_adminModel;
     protected $_utenteModel;
     protected $_faqModel;
+    protected $_malfunzionamentiModel;
+    protected $_interventiModel;
 
     public function __construct() {
         $this->middleware('can:isAdmin');
         $this->_utenteModel = new Utente;
         $this->_faqModel = new FAQ;
+        $this->_malfunzionamentiModel = new Malfunzionamento;
+        $this->_interventiModel = new Intervento;
     }
 
     public function index() {
         return view('AreaAdmin');
     }
 
+    public function AdminGestioneMalfunzionamenti($id,$codice_prodotto) {
+        $malfunzionamenti = $this->_malfunzionamentiModel->getMalfunzionamentiProdotto($codice_prodotto);
+        return view('GestioneMalfunzionamenti')
+                        ->with('malfunzionamenti', $malfunzionamenti);
+    }
+    
+    public function AdminGestioneInterventi($id,$codice_prodotto,$codice_malfunzionamento) {
+        $interventi = $this->_interventiModel->getInterventiMalfunzionamento($codice_malfunzionamento);
+        return view('GestioneInterventi')
+                        ->with('interventi', $interventi);
+    }
     
     public function mostrafaq() {
 
@@ -55,27 +72,42 @@ class AdminController extends Controller {
         return redirect('gestioneFAQ');
     }
     
-
-
-public function FormFAQ($id) {
-    $faq= FAQ::find($id);
-    return view('ModificaFaq', ['faq' => $faq]);
+    public function FormFAQ($id) {
+        $faq= FAQ::find($id);
+        return view('ModificaFaq', ['faq' => $faq]);
+    }
     
-}
+    public function eliminaProdotto($id) {
+        Prodotto::find($id)->delete();
+        return redirect('catalogo');
+    }
 
     public function vediUtenti(){
         $utenti=Utente::all();
-        $clienti=[];
-        $organizzatori=[];
+        $centri = CentroAssistenza::all();
+        $tecniciInterni=[];
+        $tecniciEsterni=[];
+        $staff=[];
+        $centriEsterni=[];
         foreach ($utenti as $utente){
-            if ($utente->categoria=='organizzatore'){
-                array_push($organizzatori,$utente);
-            } else if ($utente->categoria=='cliente'){
-                array_push($clienti,$utente);
+            if ($utente->categoria=='staff'){
+                array_push($staff,$utente);
+            }else if ($utente->categoria=='tecnico' and $utente->occupazione=='interna'){
+                array_push($tecniciInterni,$utente);
+            }else if ($utente->categoria=='tecnico' and $utente->occupazione=='interna'){
+                array_push($tecniciEsterni,$utente);
             }
         }
-        return view('gestioneUtenti', ['clienti' => $clienti,
-                                    'organizzatori'=>$organizzatori]);
+        foreach ($centri as $centro){
+            if ($centro->tipologia=='esterna'){
+                array_push($centriEsterni,$centro);
+            }    
+        }
+            
+        return view('gestioneUtenti', ['staff' => $staff,
+                                    'tecniciInterni'=>$tecniciInterni,
+                                    'tecniciEsterni'=>$tecniciEsterni,
+                                    'centriEsterni'=>$centriEsterni]);
     }
     
     public function aggiungiOrganizzatore(NuovoOrganizzatoreRequest $request) {

@@ -63,12 +63,6 @@
                         <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
                             <button class="btn btn-outline-primary btn-sm mt-2" type="button">Dettagli</button>
                         </a>
-                        <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
-                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Modifica Prodotto</button>
-                        </a>
-                        <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
-                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Elimina Prodotto</button>
-                        </a>
                         <a href="{{route('gestioneMalfunzionamenti',[Auth::user()->id,$prodotto->codice_prodotto])}}">
                             <button class="btn btn-outline-primary btn-sm mt-2" type="button">Gestione Malfunzionamenti</button>
                         </a>

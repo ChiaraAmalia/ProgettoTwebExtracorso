@@ -94,11 +94,7 @@ class ControllerLivello3 extends Controller {
         return response()->json(['redirect' => route('organizzatore')]);
     }
 
-    public function eliminaEvento($id) {
-        Evento::find($id)->delete();
-        Partecipero::where('codice_evento', '=', $id)->delete();
-        return redirect('organizzatore');
-    }
+
 
     public function modificaEvento($id) {
         $evento = Evento::find($id);
