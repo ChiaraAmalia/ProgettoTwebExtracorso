@@ -94,6 +94,10 @@ Route::get('EliminaUtente/{id}', 'AdminController@cancella')
         ->name('EliminaUtente')
         ->middleware('can:isAdmin');
 
+Route::get('EliminaCentro/{codice_centro}', 'AdminController@eliminaCentro')
+        ->name('eliminaCentro')
+        ->middleware('can:isAdmin');
+
 //ADMIN gestione FAQ
 Route::get('EliminaFAQ/{id}', 'AdminController@cancellafaq')
         ->name('EliminaFAQ')

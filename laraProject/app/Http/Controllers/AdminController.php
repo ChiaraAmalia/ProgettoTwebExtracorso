@@ -165,14 +165,22 @@ class AdminController extends Controller {
 
     return redirect('gestioneUtenti');
 }
-public function FormOrganizzatori($id) {
-    $organizzatore= Utente::find($id);
-    return view('ModificaOrganizzatore', ['organizzatore' => $organizzatore]);
-    
-}
+
+    public function FormOrganizzatori($id) {
+        
+        $organizzatore= Utente::find($id);
+        return view('ModificaOrganizzatore', ['organizzatore' => $organizzatore]);
+    }
 
     public function cancella($id) {
+        
         Utente::find($id)->delete();
+        return redirect('gestioneUtenti');
+    }
+    
+    public function eliminaCentro($codice_centro) {
+        
+        CentroAssistenza::find($codice_centro)->delete();
         return redirect('gestioneUtenti');
     }
     
