@@ -47,8 +47,22 @@ class ControllerLivello3 extends Controller {
     
     public function mostraGestioneInterventi($id,$codice_prodotto,$codice_malfunzionamento) {
         $interventi = $this->_interventiModel->getInterventiMalfunzionamento($codice_malfunzionamento);
+        $malfunzionamento = $this->_malfunzionamentiModel->getMalfunzionamentoByCodice($codice_malfunzionamento);
         return view('GestioneInterventi')
-                        ->with('interventi', $interventi);
+                        ->with('interventi', $interventi)
+                        ->with('malfunzionamento', $malfunzionamento);
+    }
+    
+    public function eliminaMalfunzionamento($id,$codice_prodotto,$codice_malfunzionamento){
+        
+        Malfunzionamento::find($codice_malfunzionamento)->delete();
+        return redirect('staff');
+    }
+    
+    public function eliminaIntervento($id,$codice_prodotto,$codice_malfunzionamento,$codice_intervento){
+        
+        Intervento::find($codice_intervento)->delete();        
+        return redirect('staff');
     }
     
     /*

@@ -28,6 +28,6 @@ class Intervento extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('malfunzionamento');
+        Schema::dropIfExists('intervento');
     }
 }

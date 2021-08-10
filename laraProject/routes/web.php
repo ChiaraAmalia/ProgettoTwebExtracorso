@@ -130,6 +130,14 @@ Route::get('/EliminaProdotto/{id}', 'AdminController@eliminaProdotto')
         ->name('EliminaProdotto')
         ->middleware('can:isAdmin');
 
+Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/EliminaMalfunzionamento/{codice_malfunzionamento}', 'AdminController@eliminaMalfunzionamento')
+        ->name('eliminaMalfuzionamentoAdmin')
+        ->middleware('can:isAdmin');
+
+Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}/EliminaIntervento/{codice_intervento}', 'AdminController@eliminaIntervento')
+        ->name('eliminaInterventoAdmin')
+        ->middleware('can:isAdmin');
+
 //rotte staff (utente livello 3)
 Route::view('/staff', 'AreaUtente3')
         ->name('staff')
@@ -150,6 +158,14 @@ Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/Ge
         ->name('gestioneInterventi')
         ->middleware('can:isStaff')
         ->middleware('preventBackHistory');
+
+Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/EliminaMalfunzionamento/{codice_malfunzionamento}', 'ControllerLivello3@eliminaMalfunzionamento')
+        ->name('eliminaMalfunzionamentoStaff')
+        ->middleware('can:isStaff');
+
+Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}/EliminaIntervento/{codice_intervento}', 'ControllerLivello3@eliminaIntervento')
+        ->name('eliminaInterventoStaff')
+        ->middleware('can:isStaff');
 
 Route::get('/inserisciEvento', 'ControllerLivello3@mostraFormInserimento')
         ->name('inserisciEvento')
