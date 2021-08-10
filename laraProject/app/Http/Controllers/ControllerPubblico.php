@@ -54,7 +54,7 @@ class ControllerPubblico extends Controller {
 
         //Mostra la finestra con i dettagli dell'evento selezionato
         $prodotto = $this->_catalogoModel->getProdottoByCodice($codice_prodotto);
-        $malfunzionamenti = $this->_malfunzionamentiModel->getMalfunzionamentiProdottto($codice_prodotto);
+        $malfunzionamenti = $this->_malfunzionamentiModel->getMalfunzionamentiProdotto($codice_prodotto);
         $nome_prodotto = $prodotto->nome_prodotto;
         $tipologia = $prodotto->tipologia;
         $rumore = $prodotto->rumore;

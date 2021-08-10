@@ -125,6 +125,16 @@ Route::get('/gestioneProdotti/{id}', 'ControllerLivello3@mostraGestioneProdotti'
         ->middleware('can:isStaff')
         ->middleware('preventBackHistory');
 
+Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}', 'ControllerLivello3@mostraGestioneMalfunzionamenti')
+        ->name('gestioneMalfunzionamenti')
+        ->middleware('can:isStaff')
+        ->middleware('preventBackHistory');
+
+Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}', 'ControllerLivello3@mostraGestioneInterventi')
+        ->name('gestioneInterventi')
+        ->middleware('can:isStaff')
+        ->middleware('preventBackHistory');
+
 Route::get('/inserisciEvento', 'ControllerLivello3@mostraFormInserimento')
         ->name('inserisciEvento')
         ->middleware('can:isOrganizer')

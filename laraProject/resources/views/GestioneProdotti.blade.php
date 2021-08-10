@@ -59,8 +59,19 @@
                     <p class="text-justify text-truncate para mb-0">{{ $prodotto->descrizione }}<br><br></p>
                 </div>
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                    <div class="d-flex flex-column mt-4"><a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}"><button class="btn btn-primary btn-sm" type="button" style='background-color: #ff8c00;text-shadow: 2px 2px 4px black;'>Dettagli</button></a>
-
+                    <div class="d-flex flex-column mt-4">
+                        <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
+                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Dettagli</button>
+                        </a>
+                        <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
+                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Modifica Prodotto</button>
+                        </a>
+                        <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
+                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Elimina Prodotto</button>
+                        </a>
+                        <a href="{{route('gestioneMalfunzionamenti',[Auth::user()->id,$prodotto->codice_prodotto])}}">
+                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Gestione Malfunzionamenti</button>
+                        </a>
                     </div>
                 </div>
             </div>

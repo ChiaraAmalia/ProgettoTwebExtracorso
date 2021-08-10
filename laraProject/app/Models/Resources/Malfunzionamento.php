@@ -21,7 +21,7 @@ class Malfunzionamento extends Model{
         return $this->hasOne(Prodotto::class, 'codice_prodotto', 'codice_prodotto');
     }
     
-    public function getMalfunzionamentiProdottto($codice_prodotto){
+    public function getMalfunzionamentiProdotto($codice_prodotto){
          $malfunzionamenti=Malfunzionamento::where('codice_prodotto',$codice_prodotto)->get();
          return $malfunzionamenti->all();
     }

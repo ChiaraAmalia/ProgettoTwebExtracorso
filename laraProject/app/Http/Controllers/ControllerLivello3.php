@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Resources\Utente;
 use App\Models\Resources\Prodotto;
+use App\Models\Resources\Malfunzionamento;
+use App\Models\Resources\Intervento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -13,12 +15,16 @@ class ControllerLivello3 extends Controller {
 
     protected $_utenteModel;
     protected $prodottoModel;
+    protected $_malfunzionamentiModel;
+    protected $_interventiModel;
 
     public function __construct() {
 
         $this->middleware('can:isStaff');
         $this->_utenteModel = new Utente;
-        $this->_prodottoModel = new Prodotto; 
+        $this->_prodottoModel = new Prodotto;
+        $this->_malfunzionamentiModel = new Malfunzionamento;
+        $this->_interventiModel = new Intervento;
     }
     
     public function index() {
@@ -32,6 +38,19 @@ class ControllerLivello3 extends Controller {
         return view('GestioneProdotti')
                         ->with('prodotti', $prodotti);
     }
+    
+    public function mostraGestioneMalfunzionamenti($id,$codice_prodotto) {
+        $malfunzionamenti = $this->_malfunzionamentiModel->getMalfunzionamentiProdotto($codice_prodotto);
+        return view('GestioneMalfunzionamenti')
+                        ->with('malfunzionamenti', $malfunzionamenti);
+    }
+    
+    public function mostraGestioneInterventi($id,$codice_prodotto,$codice_malfunzionamento) {
+        $interventi = $this->_interventiModel->getInterventiMalfunzionamento($codice_malfunzionamento);
+        return view('GestioneInterventi')
+                        ->with('interventi', $interventi);
+    }
+    
     /*
 
     public function mostraFormInserimento() {
