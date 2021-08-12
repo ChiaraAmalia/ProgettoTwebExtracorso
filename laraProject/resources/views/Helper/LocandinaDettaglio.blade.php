@@ -1,6 +1,6 @@
 @php
         if (empty($imgFile)) {
-            $imgFile = 'default.jpg';
+            $imgFile = 'default1.jpg';
         }
         
 
