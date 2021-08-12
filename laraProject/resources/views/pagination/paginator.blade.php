@@ -1,6 +1,6 @@
 @if ($paginator->lastPage() != 1)
 <div id="pagination" >
-    {{ $paginator->firstItem() }} - {{ $paginator->lastItem() }} di {{ $paginator->total() }} 💿️🎸💿️
+    {{ $paginator->firstItem() }} - {{ $paginator->lastItem() }} di {{ $paginator->total() }} 🌟
 
     
     @if (!$paginator->onFirstPage())
