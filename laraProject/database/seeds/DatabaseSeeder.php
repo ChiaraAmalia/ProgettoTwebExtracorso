@@ -60,6 +60,18 @@ class DatabaseSeeder extends Seeder
             [
               'codice_prodotto' => '1', 'titolo' => 'SOSTITUZIONE CINGHIA SPEZZATA', 'descrizione' => 'Capire che la cinghia della lavatrice è rotta, non è particolarmente complicato: i segnali di un malfunzionamento o guasto sono abbastanza evidenti e difficili da ignorare. Ci sono delle situazioni specifiche che possono farti sorgere il dubbio: il cestello della lavatrice si blocca spesso durante il lavaggio, il cestello della lavatrice non gira, la tua lavatrice fa rumore quando è in funzione, in particolare dovresti sentire dei rumori striduli provenire dall’interno dell’elettrodomestico.'  
             ],
+            [
+              'codice_prodotto' => '1', 'titolo' => 'PULIZIA POMPA DI SCARICO', 'descrizione' => 'Nelle lavatrici prodotte con marchi diversi, sarà necessario raggiungere la pompa di scarico in diversi modi. Si può raggiungere la pompa attraverso la parte inferiore dell alloggiamento, poiché la parte inferiore potrebbe essere assente o svitata facilmente.'  
+            ],
+            [
+              'codice_prodotto' => '2', 'titolo' => 'SOSTITUZIONE GRUPPO GALLEGGIANTE', 'descrizione' => 'Nella lavastoviglie Bosch, il gruppo interruttore a galleggiante è collegato al braccio inferiore e al gruppo pompa di scarico, mentre il gruppo interruttore a galleggiante contiene l interruttore a galleggiante che determina la quantità di acqua consentita nella lavastoviglie. Se si nota che il braccio spruzzatore disperde troppo o non abbastanza acqua, è possibile che sia presente un gruppo interruttore a galleggiante rotto. È possibile sostituire la parte del gruppo interruttore a galleggi.'  
+            ],
+            [
+              'codice_prodotto' => '2', 'titolo' => 'SOSTIZIONE POMPA DI SCARICO', 'descrizione' => 'La pompa di scarico è naturalmente una parte molto importante della lavastoviglie. Senza questo dispositivo l acqua rimarrebbe nella lavastoviglie, oltre a tutti i possibili rischi che l acqua potrebbe dare, come per esempio cortocircuiti o peggio ancora. Se la pompa di scarico deve essere quindi sostituita, è importante farlo in maniera più saggia e sicuro possibile. Di seguito trovate le istruzioni per farlo in maniera semplice e giusta.'  
+            ],
+            [
+              'codice_prodotto' => '2', 'titolo' => 'SOSTITUZIONE ELETTROVALVOLA', 'descrizione' => 'Se si è notato un inefficiente funzionamento della lavastoviglie, forse il guasto dipende dall’elettrovalvola. Questo succede soprattutto quando l’elettrodomestico non carica acqua, oppure quando ne carica troppa o troppo poca. In queste condizioni, la lavastoviglie non è in grado di avviare il lavaggio. Per sostituire l’elettrovalvola devi dotarti degli strumenti necessari,ovvero la pinza a becco, i cacciaviti e ovviamente il pezzo di ricambio. Infine, per tua informazione e per organizzarti meglio durante questa fase, sappi che la sostituzione della vecchia elettrovalvola della lavastoviglie richiede circa 40 minuti. '  
+            ],
         ]);
         
         DB::table('intervento')->insert([
@@ -70,22 +82,76 @@ class DatabaseSeeder extends Seeder
               'codice_malfunzionamento' => '1', 'descrizione' => 'Aprire lo sportello e sfilare la guarnizione dello sportello, prendendo un cacciavite e facendo leva al suo interno, così da smontare l’anello di fissaggio.'  
             ],
             [
-              'codice_malfunzionamento' => '1', 'descrizione' => 'Una volta tolto l’anello, devi prendere il cacciavite e svitare le due viti che fissano il meccanismo del blocco porta.'  
+              'codice_malfunzionamento' => '1', 'descrizione' => 'Prendere il cacciavite e svitare le due viti che fissano il meccanismo del blocco porta.'  
             ],
             [
-              'codice_malfunzionamento' => '1', 'descrizione' => 'A questo punto puoi infilare la mano dal lato della guarnizione, sollevandola, per potere afferrare il corpo dell’elettroserratura e per poterla estrarre.'  
+              'codice_malfunzionamento' => '1', 'descrizione' => 'Infilare la mano dal lato della guarnizione, sollevandola, per potere afferrare il corpo dell’elettroserratura e per poterla estrarre.'  
             ],
             [
               'codice_malfunzionamento' => '2', 'descrizione' => 'Smontare il pannello posteriore della lavatrice. '
             ],
             [            
-              'codice_malfunzionamento' => '2', 'descrizione' => 'Qui, dovresti vedere la cinghia spezzata o fuori posto da andare a rimuovere. Raggiungi il bastone che si trova in basso e che è collegato al motore della lavatrice. All’estremità di esso, troverai una forma richettata su cui è inserita la cinghia. Staccala e rimuovila così da poter agganciare quella nuova.'
+              'codice_malfunzionamento' => '2', 'descrizione' => 'Raggiungere il bastone che si trova in basso e che è collegato al motore della lavatrice. All’estremità di esso, troverai una forma richettata su cui è inserita la cinghia. Staccala e rimuovila così da poter agganciare quella nuova.'
             ],
             [            
-              'codice_malfunzionamento' => '2', 'descrizione' => 'Una volta fatto questo, devi far passare la cinghia per il volano della puleggia. Questa è la fase più delicata. Inizia dal lato destro e poi fai ruotare la puleggia verso sinistra, così che la cinghia possa scorrere agilmente.'
+              'codice_malfunzionamento' => '2', 'descrizione' => 'Far passare la cinghia per il volano della puleggia. Questa è la fase più delicata. Inizia dal lato destro e poi fai ruotare la puleggia verso sinistra, così che la cinghia possa scorrere agilmente.'
             ],
             [            
               'codice_malfunzionamento' => '2', 'descrizione' => 'Richiudere il pannello e la lavatrice dovrebbe tornare a funzionare come se fosse nuova.'
+            ],
+            [
+              'codice_malfunzionamento' => '3', 'descrizione' => 'Aprire il pannello che si trova nella parte inferiore della lavatrice.'  
+            ],
+            [
+              'codice_malfunzionamento' => '3', 'descrizione' => 'Svitare la vite autofilettante che tiene il filtro di scarico nel corpo della macchina.'  
+            ],
+            [
+              'codice_malfunzionamento' => '3', 'descrizione' => 'Inclinare la macchina leggermente indietro e sostituiamo il contenitore sott acqua'  
+            ],
+            [
+              'codice_malfunzionamento' => '3', 'descrizione' => 'Svitare con cautela in senso antiorario il coperchio del filtro di scarico in modo che l acqua rimanente fuoriesca.'  
+            ],
+            [
+              'codice_malfunzionamento' => '4', 'descrizione' => 'Spegnere l alimentazione elettrica dalla lavastoviglie Bosch dall interruttore automatico della cucina.'  
+            ],
+            [
+              'codice_malfunzionamento' => '4', 'descrizione' => 'Spegnere la valvola di erogazione dell acqua alla lavastoviglie da sotto il lavandino ruotando la maniglia in senso orario.'  
+            ],
+            [
+              'codice_malfunzionamento' => '4', 'descrizione' => 'Rimuovere le viti dal pannello inferiore della pedana e sollevare il pannello per rimuoverlo completamente dalla lavastoviglie.'  
+            ],
+            [
+              'codice_malfunzionamento' => '4', 'descrizione' => 'Individuare il gruppo interruttore a galleggiante nella parte inferiore centrale della lavastoviglie, sotto il braccio irroratore. Rimuovere quindi i bulloni collegati al gruppo interruttore a galleggiante utilizzando una chiave regolabile.'  
+            ],
+            [
+              'codice_malfunzionamento' => '4', 'descrizione' => 'Scollegare l interruttore a leva dell attuatore collegato al gruppo galleggiante. Sollevare il gruppo dalla lavastoviglie. Inserire il nuovo gruppo interruttore a galleggiante nella stessa posizione e ricollegare l interruttore a leva dell attuatore.'  
+            ],
+            [
+              'codice_malfunzionamento' => '4', 'descrizione' => 'Reinserire i bulloni nel gruppo interruttore a galleggiante. Riposizionare il pannello inferiore della piastra di appoggio sulla lavastoviglie e reinserire le viti nel pannello. Riaccendere la valvola di alimentazione dell acqua e riaccendere l alimentazione dall interruttore automatico.'  
+            ],
+            [
+              'codice_malfunzionamento' => '5', 'descrizione' => 'Assicurarsi che la lavastoviglie non sia collegata alla presa della corrente.Chiudere eventuale rubinetto connesso alla lavastoviglie. Mettere la lavastoviglie a pancia in giù (porta sotto).'  
+            ],
+            [
+              'codice_malfunzionamento' => '5', 'descrizione' => 'Allentare le viti indicate nel video. Togliere anche le viti in fondo alla lavastoviglie. Rimuovere la valvola e il tubo di scarico.'  
+            ],
+             [
+              'codice_malfunzionamento' => '5', 'descrizione' => 'Rimuovere la piastra metallica in modo da rendere tutto più facile. Rimuovere le viti dalla pompa di scarico. Rimuovere i cavi dalla pompa di scarico. Rimuovere separatamente le viti dalla pompa di scarico così da sostituirla.'  
+            ],
+            [
+              'codice_malfunzionamento' => '5', 'descrizione' => 'Collegare la nuova pompa di scarico e avvitarla. Collegare i cavi elettrici. Fissare la placca metallica ed avvitarla. Ricollegare la valvola e il tubo di scarico. Avvitare le viti rimosse inizialmente.'  
+            ],
+            [
+              'codice_malfunzionamento' => '6', 'descrizione' => 'Staccare il cavo di alimentazione dell’elettrodomestico.'  
+            ],
+            [
+              'codice_malfunzionamento' => '6', 'descrizione' => 'Smontare la piastra che funziona da copertura della lavastoviglie.'  
+            ],
+            [
+              'codice_malfunzionamento' => '6', 'descrizione' => 'Svitare il tubo collegato all elettrovalvola rimuovendo le fascette che lo bloccano.'  
+            ],
+            [
+              'codice_malfunzionamento' => '6', 'descrizione' => 'Rimuovere anche i connettori e inserire la nuova elettrovalvola, che dovrà essere della medesima tipologia di quella vecchia.'  
             ],
         ]);
     }
