@@ -42,13 +42,12 @@
       <tr>
          <td>{{ $intervento->descrizione }}</td>
          <td>&nbsp;&nbsp;</td>
+         <td> <a href="{{route('ModificaIntervento', $intervento->codice_intervento)}}"><button class="btn btn-primary btn-sm" type="button">Modifica</button></a> </td>
          @can('isAdmin')
          <td> <a href="{{route('eliminaInterventoAdmin',[Auth::user()->id, $malfunzionamento->codice_prodotto, $intervento->codice_malfunzionamento, $intervento->codice_intervento])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button">Elimina</button></a> </td>
-         <td> <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-primary btn-sm" type="button">Modifica</button></a> </td>
          @endcan
          @can('isStaff')
          <td> <a href="{{route('eliminaInterventoStaff',[Auth::user()->id, $malfunzionamento->codice_prodotto, $intervento->codice_malfunzionamento, $intervento->codice_intervento])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button">Elimina</button></a> </td>
-         <td> <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-primary btn-sm" type="button">Modifica</button></a> </td>
          @endcan
       </tr>
     @endforeach

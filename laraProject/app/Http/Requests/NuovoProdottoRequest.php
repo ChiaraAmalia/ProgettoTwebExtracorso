@@ -10,7 +10,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
-class NuovoEventoRequest extends FormRequest {
+class NuovoProdottoRequest extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -29,15 +29,16 @@ class NuovoEventoRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'titolo' => 'required|max:40',
-            'societa_organizzatrice' => 'required|max:40',
-            'prezzo_biglietto' => 'required|numeric|min:0',
-            'totale_biglietti_evento' => 'required|numeric|min:0',
-            'coordinate_maps' => 'required|max:2500',
-            'luogo' => 'required|max:100',
-            'indicazioni' => 'required|max:2500',
-            'programma_evento' => 'required|max:2500',
-            'informazioni' => 'required|max:2500'
+            'nome_prodotto' => 'required|string',
+            'tipologia' => 'required|string',
+            'rumore' => 'required|string',
+            'consumo_en_annuo' => 'required|string',
+            'luce_interna' => 'required|string',
+            'programmi' => 'required|max:2500',
+            'classe_energetica' => 'required|string',
+            'descrizione' => 'required|max:2500',
+            'tecniche_buonuso' => 'required|max:2500',
+            'modalita_installazione' => 'required|max:2500'
         ];
     }
     

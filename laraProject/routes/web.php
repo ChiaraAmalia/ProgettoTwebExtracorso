@@ -142,6 +142,43 @@ Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneIn
         ->name('eliminaInterventoAdmin')
         ->middleware('can:isAdmin');
 
+//inserimento prodotto
+
+Route::get('/inserisciProdotto', 'AdminController@mostraFormInserimentoProdotto')
+        ->name('inserisciProdotto')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::post('/inserisciProdotto', 'AdminController@inserisci')
+        ->name('inserisci')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+//ADMIN modifica prodotto
+
+Route::get('/ModificaProdotto/{codice_prodotto}/modifica', 'AdminController@formModificaProdotto')
+        ->name('ModificaProdotto')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::resource('prod', 'ControllerProdotto')->middleware('can:isAdmin');
+
+//modifica malfunzionamento
+
+Route::get('/ModificaMalfunzionamento/{codice_malfunzionamento}/modifica', 'ControllerMalfunzionamento@formModificaMalfunzionamento')
+        ->name('ModificaMalfunzionamento')
+        ->middleware('preventBackHistory');
+
+Route::resource('malf', 'ControllerMalfunzionamento');
+
+//modifica intervento
+
+Route::get('/ModificaIntervento/{codice_intervento}/modifica', 'ControllerIntervento@formModificaIntervento')
+        ->name('ModificaIntervento')
+        ->middleware('preventBackHistory');
+
+Route::resource('interv', 'ControllerIntervento');
+
 //rotte staff (utente livello 3)
 Route::view('/staff', 'AreaUtente3')
         ->name('staff')
@@ -170,16 +207,6 @@ Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/El
 Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}/EliminaIntervento/{codice_intervento}', 'ControllerLivello3@eliminaIntervento')
         ->name('eliminaInterventoStaff')
         ->middleware('can:isStaff');
-
-Route::get('/inserisciEvento', 'ControllerLivello3@mostraFormInserimento')
-        ->name('inserisciEvento')
-        ->middleware('can:isOrganizer')
-        ->middleware('preventBackHistory');
-
-Route::post('/inserisciEvento', 'ControllerLivello3@inserisciEvento')
-        ->name('inserisci')
-        ->middleware('can:isOrganizer')
-        ->middleware('preventBackHistory');
 
 Route::resource('staff', 'ControllerLivello3');
 

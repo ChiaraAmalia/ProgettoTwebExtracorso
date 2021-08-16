@@ -47,12 +47,13 @@
          <td>&nbsp;&nbsp;</td>
          
          
-         <td> <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-primary btn-sm" type="button">Modifica</button></a> </td>
+         <td> <a href="{{route('ModificaMalfunzionamento', $malfunzionamento->codice_malfunzionamento)}}"><button class="btn btn-primary btn-sm" type="button">Modifica</button></a> </td>
          @can('isStaff')
          <td> <a href="{{route('eliminaMalfunzionamentoStaff',[Auth::user()->id,$malfunzionamento->codice_prodotto,$malfunzionamento->codice_malfunzionamento])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button">Elimina</button></a> </td>
          <td> <a href="{{route('gestioneInterventi',[Auth::user()->id, $malfunzionamento->codice_prodotto, $malfunzionamento->codice_malfunzionamento])}}"><button class="btn btn-primary btn-sm" type="button">Gestione Interventi</button></a> </td>
          @endcan
          @can('isAdmin')
+        
          <td> <a href="{{route('eliminaMalfuzionamentoAdmin',[Auth::user()->id,$malfunzionamento->codice_prodotto,$malfunzionamento->codice_malfunzionamento])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button">Elimina</button></a> </td>
          <td> <a href="{{route('gestioneInterventiProdotto',[Auth::user()->id, $malfunzionamento->codice_prodotto, $malfunzionamento->codice_malfunzionamento])}}"><button class="btn btn-primary btn-sm" type="button">Gestione Interventi</button></a> </td>
          @endcan

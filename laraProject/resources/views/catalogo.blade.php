@@ -40,6 +40,22 @@
     </div>
 </section>
 
+@can('isAdmin')
+<section class="search-sec">
+    <div class="container" >
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-12 p-0">                       
+                        <a href="{{route('inserisciProdotto')}}"><button class="input-group-text" type="button">Inserisci un prodotto</button></a>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</section>
+@endcan
+
 <div class="container">
     @isset($prodotti)
     @foreach ($prodotti as $prodotto)
@@ -81,7 +97,7 @@
                         @endif
                         @endcan
                         @can('isAdmin')
-                        <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
+                        <a href="{{route('ModificaProdotto',[$prodotto->codice_prodotto])}}">
                             <button class="btn btn-outline-primary btn-sm mt-2" type="button">Modifica</button>
                         </a>
                         <a href="{{route('EliminaProdotto',[$prodotto->codice_prodotto])}}" onclick="return ConfirmDelete()">

@@ -18,20 +18,6 @@
 
 @section('content')
 
-<section class="search-sec">
-    <div class="container" >
-        <div class="d-flex justify-content-center row">
-            <div class="col-md-10">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <a href="{{route('inserisciEvento')}}"><button class="input-group-text" type="button">Inserisci un nuovo evento</button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> 
-</section>
-
 <div class="container">
     @isset($prodotti)
     @foreach ($prodotti as $prodotto)

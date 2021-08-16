@@ -12,8 +12,8 @@ use App\Models\Resources\FAQ;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\NuovoProdottoRequest;
 use App\Http\Requests\NuovoOrganizzatoreRequest;
-use App\Http\Requests\AggiornamentoOrganizzatoreRequest;
 use App\Http\Requests\NuovaFaqRequest;
 
 
@@ -49,6 +49,52 @@ class AdminController extends Controller {
         return view('GestioneInterventi')
                         ->with('interventi', $interventi)
                         ->with('malfunzionamento', $malfunzionamento);
+    }
+    
+    public function mostraFormInserimentoProdotto() {
+        return view('InserimentoProdotto');
+    }
+    
+    public function inserisci(NuovoProdottoRequest $request) {
+        if ($request->hasFile('immagine')) {
+            $image = $request->file('immagine');
+            $imageName = $image->getClientOriginalName();
+        } else {
+            $imageName = NULL;
+        }
+
+        $prodotto = new Prodotto;
+        $prodotto->fill($request->validated());
+        $prodotto->nome_prodotto = $request->nome_prodotto;
+        $prodotto->immagine = $imageName;
+        $prodotto->tipologia = $request->tipologia;
+        $prodotto->rumore = $request->rumore;
+        $prodotto->consumo_en_annuo = $request->consumo_en_annuo;
+        $prodotto->luce_interna = $request->luce_interna;
+        $prodotto->programmi = $request->programmi;
+        $prodotto->classe_energetica = $request->classe_energetica;
+        $prodotto->descrizione = $request->descrizione;
+        $prodotto->tecniche_buonuso = $request->tecniche_buonuso;
+        $prodotto->modalita_installazione = $request->modalita_installazione;
+        $prodotto->save();
+
+        if (!is_null($imageName)) {
+            $destinationPath = public_path() . '/images/locandine';
+            $image->move($destinationPath, $imageName);
+        }
+
+        return response()->json(['redirect' => route('catalogo')]);
+    }
+    
+    public function formModificaProdotto($codice_prodotto) {
+        $prodotto = Prodotto::find($codice_prodotto);
+        return view('ModificaProdotto', ['prodotto' => $prodotto]);
+    }
+    
+    
+    public function eliminaProdotto($id) {
+        Prodotto::find($id)->delete();
+        return redirect('catalogo');
     }
     
     public function eliminaMalfunzionamento($id,$codice_prodotto,$codice_malfunzionamento){
@@ -90,11 +136,6 @@ class AdminController extends Controller {
         $faq= FAQ::find($id);
         return view('ModificaFaq', ['faq' => $faq]);
     }
-    
-    public function eliminaProdotto($id) {
-        Prodotto::find($id)->delete();
-        return redirect('catalogo');
-    }
 
     public function vediUtenti(){
         $utenti=Utente::all();
@@ -124,6 +165,18 @@ class AdminController extends Controller {
                                     'centriEsterni'=>$centriEsterni]);
     }
     
+    public function cancella($id) {
+        
+        Utente::find($id)->delete();
+        return redirect('gestioneUtenti');
+    }
+    
+    public function eliminaCentro($codice_centro) {
+        
+        CentroAssistenza::find($codice_centro)->delete();
+        return redirect('gestioneUtenti');
+    }
+    
     public function aggiungiOrganizzatore(NuovoOrganizzatoreRequest $request) {
         
         $organizzatore = new Utente;
@@ -145,26 +198,7 @@ class AdminController extends Controller {
         return redirect('/');
     }
     
-    public function update(AggiornamentoOrganizzatoreRequest $request, $id)
-{      
-        $organizzatore= Utente::find($id);
-        $organizzatore->fill($request->validated());
-        $organizzatore->categoria='organizzatore';
-        $organizzatore->nome=$request->nome;
-        $organizzatore->cognome=$request->cognome;
-        $organizzatore->email=$request->email;
-        $organizzatore->username=$request->username;
-        $organizzatore->via=$request->via;
-        $organizzatore->citta=$request->citta;
-        $organizzatore->cap=$request->cap;
-        $organizzatore->cellulare=$request->cellulare;
-        $organizzatore->nome_societa_organizzatrice=$request->nome_societa_organizzatrice;
-        $organizzatore->sesso=$request->sesso;
-        $organizzatore->save();
-  
 
-    return redirect('gestioneUtenti');
-}
 
     public function FormOrganizzatori($id) {
         
@@ -172,17 +206,7 @@ class AdminController extends Controller {
         return view('ModificaOrganizzatore', ['organizzatore' => $organizzatore]);
     }
 
-    public function cancella($id) {
-        
-        Utente::find($id)->delete();
-        return redirect('gestioneUtenti');
-    }
-    
-    public function eliminaCentro($codice_centro) {
-        
-        CentroAssistenza::find($codice_centro)->delete();
-        return redirect('gestioneUtenti');
-    }
+
     
     public function statistiche($id) {
         $organizzatore=Utente::find($id);
