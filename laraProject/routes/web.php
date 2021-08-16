@@ -134,9 +134,17 @@ Route::get('/EliminaProdotto/{id}', 'AdminController@eliminaProdotto')
         ->name('EliminaProdotto')
         ->middleware('can:isAdmin');
 
+//malfunzionamenti
+
 Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/EliminaMalfunzionamento/{codice_malfunzionamento}', 'AdminController@eliminaMalfunzionamento')
         ->name('eliminaMalfuzionamentoAdmin')
         ->middleware('can:isAdmin');
+
+Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'AdminController@formInserisciMalfunzionamentoAdmin')
+        ->name('inserisciMalfunzionamento');
+
+Route::post('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'AdminController@inserisciMalfunzionamentoAdmin')
+        ->name('AggiungiMalfunzionamento');
 
 Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}/EliminaIntervento/{codice_intervento}', 'AdminController@eliminaIntervento')
         ->name('eliminaInterventoAdmin')

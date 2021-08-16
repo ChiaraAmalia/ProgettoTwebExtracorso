@@ -31,7 +31,9 @@
 
 <div class="table-users">
    <div class="headertable">MALFUNZIONAMENTI PRODOTTO
-   <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
+   @can('isAdmin')
+   <a href="{{route('inserisciMalfunzionamento',[Auth::user()->id,$prodotto->codice_prodotto])}}"><button class="btn btn-sm" type="button">Inserisci nuovo malfunzionamento</button></a>
+   @endcan
    </div>
    <table class="faqs">
       <tr>

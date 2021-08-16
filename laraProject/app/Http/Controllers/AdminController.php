@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\NuovoProdottoRequest;
 use App\Http\Requests\NuovoOrganizzatoreRequest;
+use App\Http\Requests\NuovoMalfunzionamentoRequest;
 use App\Http\Requests\NuovaFaqRequest;
 
 
@@ -38,9 +39,11 @@ class AdminController extends Controller {
     }
 
     public function AdminGestioneMalfunzionamenti($id,$codice_prodotto) {
+        $prodotto = Prodotto::find($codice_prodotto);
         $malfunzionamenti = $this->_malfunzionamentiModel->getMalfunzionamentiProdotto($codice_prodotto);
         return view('GestioneMalfunzionamenti')
-                        ->with('malfunzionamenti', $malfunzionamenti);
+                        ->with('malfunzionamenti', $malfunzionamenti)
+                        ->with('prodotto', $prodotto);
     }
     
     public function AdminGestioneInterventi($id,$codice_prodotto,$codice_malfunzionamento) {
@@ -94,6 +97,24 @@ class AdminController extends Controller {
     
     public function eliminaProdotto($id) {
         Prodotto::find($id)->delete();
+        return redirect('catalogo');
+    }
+    
+    public function formInserisciMalfunzionamentoAdmin($id,$codice_prodotto) {
+        
+        $prodotto = Prodotto::find($codice_prodotto);
+        return view('InserimentoMalfunzionamento', ['prodotto' => $prodotto]);
+    }
+    
+    public function inserisciMalfunzionamentoAdmin(NuovoMalfunzionamentoRequest $request,$id,$codice_prodotto) {
+
+        $malfunzionamento= new Malfunzionamento;
+        $malfunzionamento->fill($request->validated());
+        $malfunzionamento->codice_prodotto = $codice_prodotto;
+        $malfunzionamento->titolo = $request->titolo;
+        $malfunzionamento->descrizione = $request->descrizione;
+        $malfunzionamento->save();
+
         return redirect('catalogo');
     }
     
