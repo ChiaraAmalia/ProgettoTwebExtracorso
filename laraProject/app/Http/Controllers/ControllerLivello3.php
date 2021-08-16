@@ -6,6 +6,7 @@ use App\Models\Resources\Utente;
 use App\Models\Resources\Prodotto;
 use App\Models\Resources\Malfunzionamento;
 use App\Models\Resources\Intervento;
+use App\Http\Requests\NuovoMalfunzionamentoRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -40,9 +41,11 @@ class ControllerLivello3 extends Controller {
     }
     
     public function mostraGestioneMalfunzionamenti($id,$codice_prodotto) {
+        $prodotto = Prodotto::find($codice_prodotto);
         $malfunzionamenti = $this->_malfunzionamentiModel->getMalfunzionamentiProdotto($codice_prodotto);
         return view('GestioneMalfunzionamenti')
-                        ->with('malfunzionamenti', $malfunzionamenti);
+                        ->with('malfunzionamenti', $malfunzionamenti)
+                        ->with('prodotto', $prodotto);
     }
     
     public function mostraGestioneInterventi($id,$codice_prodotto,$codice_malfunzionamento) {
@@ -51,6 +54,24 @@ class ControllerLivello3 extends Controller {
         return view('GestioneInterventi')
                         ->with('interventi', $interventi)
                         ->with('malfunzionamento', $malfunzionamento);
+    }
+    
+    public function formInserisciMalfunzionamento($id,$codice_prodotto) {
+        
+        $prodotto = Prodotto::find($codice_prodotto);
+        return view('InserimentoMalfunzionamentoStaff', ['prodotto' => $prodotto]);
+    }
+    
+    public function inserisciMalfunzionamento(NuovoMalfunzionamentoRequest $request,$id,$codice_prodotto) {
+
+        $malfunzionamento= new Malfunzionamento;
+        $malfunzionamento->fill($request->validated());
+        $malfunzionamento->codice_prodotto = $codice_prodotto;
+        $malfunzionamento->titolo = $request->titolo;
+        $malfunzionamento->descrizione = $request->descrizione;
+        $malfunzionamento->save();
+
+        return redirect('catalogo');
     }
     
     public function eliminaMalfunzionamento($id,$codice_prodotto,$codice_malfunzionamento){

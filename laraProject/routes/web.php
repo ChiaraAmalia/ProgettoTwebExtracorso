@@ -208,6 +208,12 @@ Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/Ge
         ->middleware('can:isStaff')
         ->middleware('preventBackHistory');
 
+Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'ControllerLivello3@formInserisciMalfunzionamento')
+        ->name('inserisciMalfunzionamentoStaff');
+
+Route::post('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'ControllerLivello3@inserisciMalfunzionamento')
+        ->name('AggiungiMalfunzionamentoStaff');
+
 Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/EliminaMalfunzionamento/{codice_malfunzionamento}', 'ControllerLivello3@eliminaMalfunzionamento')
         ->name('eliminaMalfunzionamentoStaff')
         ->middleware('can:isStaff');

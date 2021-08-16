@@ -34,6 +34,9 @@
    @can('isAdmin')
    <a href="{{route('inserisciMalfunzionamento',[Auth::user()->id,$prodotto->codice_prodotto])}}"><button class="btn btn-sm" type="button">Inserisci nuovo malfunzionamento</button></a>
    @endcan
+   @can('isStaff')
+   <a href="{{route('inserisciMalfunzionamentoStaff',[Auth::user()->id,$prodotto->codice_prodotto])}}"><button class="btn btn-sm" type="button">Inserisci nuovo malfunzionamento</button></a>
+   @endcan
    </div>
    <table class="faqs">
       <tr>
