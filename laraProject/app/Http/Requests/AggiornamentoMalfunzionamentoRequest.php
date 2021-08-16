@@ -35,7 +35,7 @@ class AggiornamentoMalfunzionamentoRequest extends FormRequest{
      */
     public function rules() {
         return [
-            'titolo' => 'required|string|max:500',
+            'titolo' => 'required|max:500',
             'descrizione' => 'required|max:2500'
         ];
     }

@@ -29,13 +29,13 @@ class NuovoProdottoRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'nome_prodotto' => 'required|string',
-            'tipologia' => 'required|string',
-            'rumore' => 'required|string',
-            'consumo_en_annuo' => 'required|string',
-            'luce_interna' => 'required|string',
+            'nome_prodotto' => 'required|max:100',
+            'tipologia' => 'required',
+            'rumore' => 'required|max:20',
+            'consumo_en_annuo' => 'required|max:20',
+            'luce_interna' => 'required',
             'programmi' => 'required|max:2500',
-            'classe_energetica' => 'required|string',
+            'classe_energetica' => 'required',
             'descrizione' => 'required|max:2500',
             'tecniche_buonuso' => 'required|max:2500',
             'modalita_installazione' => 'required|max:2500'

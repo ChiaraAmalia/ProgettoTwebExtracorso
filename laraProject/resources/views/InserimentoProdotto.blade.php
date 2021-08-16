@@ -1,15 +1,4 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/meanmenu.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/nice-select.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/searchbar.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
+
 @extends('layout.zonaAdmin')
 
 @section('title', 'Inserimento Evento')
