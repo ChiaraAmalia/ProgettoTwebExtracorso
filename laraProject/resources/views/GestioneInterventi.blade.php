@@ -31,7 +31,12 @@
 
 <div class="table-users">
    <div class="headertable">INTERVENTI MALFUNZIONAMENTO
-   <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
+   @can('isAdmin')    
+   <a href="{{route('inserisciIntervento',[Auth::user()->id,$prodotto->codice_prodotto,$malfunzionamento->codice_malfunzionamento])}}"><button class="btn btn-sm" type="button">Inserisci nuovo intervento</button></a>
+   @endcan
+   @can('isStaff')    
+   <a href="{{route('inserisciInterventoStaff',[Auth::user()->id,$prodotto->codice_prodotto,$malfunzionamento->codice_malfunzionamento])}}"><button class="btn btn-sm" type="button">Inserisci nuovo intervento</button></a>
+   @endcan
    </div>
    <table class="faqs" style="margin-left: auto; margin-right: auto">
       <tr>

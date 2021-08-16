@@ -7,6 +7,7 @@ use App\Models\Resources\Prodotto;
 use App\Models\Resources\Malfunzionamento;
 use App\Models\Resources\Intervento;
 use App\Http\Requests\NuovoMalfunzionamentoRequest;
+use App\Http\Requests\NuovoInterventoRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,11 +50,13 @@ class ControllerLivello3 extends Controller {
     }
     
     public function mostraGestioneInterventi($id,$codice_prodotto,$codice_malfunzionamento) {
+        $prodotto = Prodotto::find($codice_prodotto);
         $interventi = $this->_interventiModel->getInterventiMalfunzionamento($codice_malfunzionamento);
         $malfunzionamento = $this->_malfunzionamentiModel->getMalfunzionamentoByCodice($codice_malfunzionamento);
         return view('GestioneInterventi')
                         ->with('interventi', $interventi)
-                        ->with('malfunzionamento', $malfunzionamento);
+                        ->with('malfunzionamento', $malfunzionamento)
+                        ->with('prodotto', $prodotto);
     }
     
     public function formInserisciMalfunzionamento($id,$codice_prodotto) {
@@ -78,6 +81,24 @@ class ControllerLivello3 extends Controller {
         
         Malfunzionamento::find($codice_malfunzionamento)->delete();
         return redirect('staff');
+    }
+    
+    public function formInserisciIntervento($id,$codice_prodotto,$codice_malfunzionamento) {
+        
+        $prodotto = Prodotto::find($codice_prodotto);
+        $malfunzionamento = Malfunzionamento::find($codice_malfunzionamento);
+        return view('InserimentoInterventoStaff', ['prodotto' => $prodotto , 'malfunzionamento'=>$malfunzionamento]);
+    }
+    
+    public function inserisciIntervento(NuovoInterventoRequest $request,$id,$codice_prodotto,$codice_malfunzionamento) {
+
+        $intervento= new Intervento;
+        $intervento->fill($request->validated());
+        $intervento->codice_malfunzionamento = $codice_malfunzionamento;
+        $intervento->descrizione = $request->descrizione;
+        $intervento->save();
+
+        return redirect('catalogo');
     }
     
     public function eliminaIntervento($id,$codice_prodotto,$codice_malfunzionamento,$codice_intervento){

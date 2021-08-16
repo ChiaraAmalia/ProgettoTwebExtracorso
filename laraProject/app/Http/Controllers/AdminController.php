@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\NuovoProdottoRequest;
 use App\Http\Requests\NuovoOrganizzatoreRequest;
 use App\Http\Requests\NuovoMalfunzionamentoRequest;
+use App\Http\Requests\NuovoInterventoRequest;
 use App\Http\Requests\NuovaFaqRequest;
 
 
@@ -47,11 +48,13 @@ class AdminController extends Controller {
     }
     
     public function AdminGestioneInterventi($id,$codice_prodotto,$codice_malfunzionamento) {
+        $prodotto = Prodotto::find($codice_prodotto);
         $interventi = $this->_interventiModel->getInterventiMalfunzionamento($codice_malfunzionamento);
         $malfunzionamento = $this->_malfunzionamentiModel->getMalfunzionamentoByCodice($codice_malfunzionamento);
         return view('GestioneInterventi')
                         ->with('interventi', $interventi)
-                        ->with('malfunzionamento', $malfunzionamento);
+                        ->with('malfunzionamento', $malfunzionamento)
+                        ->with('prodotto', $prodotto);
     }
     
     public function mostraFormInserimentoProdotto() {
@@ -114,6 +117,24 @@ class AdminController extends Controller {
         $malfunzionamento->titolo = $request->titolo;
         $malfunzionamento->descrizione = $request->descrizione;
         $malfunzionamento->save();
+
+        return redirect('catalogo');
+    }
+    
+    public function formInserisciInterventoAdmin($id,$codice_prodotto,$codice_malfunzionamento) {
+        
+        $prodotto = Prodotto::find($codice_prodotto);
+        $malfunzionamento = Malfunzionamento::find($codice_malfunzionamento);
+        return view('InserimentoIntervento', ['prodotto' => $prodotto , 'malfunzionamento'=>$malfunzionamento]);
+    }
+    
+    public function inserisciInterventoAdmin(NuovoInterventoRequest $request,$id,$codice_prodotto,$codice_malfunzionamento) {
+
+        $intervento= new Intervento;
+        $intervento->fill($request->validated());
+        $intervento->codice_malfunzionamento = $codice_malfunzionamento;
+        $intervento->descrizione = $request->descrizione;
+        $intervento->save();
 
         return redirect('catalogo');
     }
