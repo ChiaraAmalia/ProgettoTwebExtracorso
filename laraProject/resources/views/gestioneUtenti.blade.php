@@ -80,6 +80,7 @@
          <th>Sesso</th>
          <th>Cellulare</th>
          <th>Nome Centro</th>
+         <th>Codice Centro</th>
          <th></th>
       </tr>
     @isset($tecniciEsterni)
@@ -95,6 +96,7 @@
          <td> {{ $tecnicoEsterno->sesso }} </td>
          <td> {{ $tecnicoEsterno->cellulare }} </td>
          <td> {{ $tecnicoEsterno->nome_centro }} </td>
+         <td> {{ $tecnicoEsterno->codice_centro }} </td>
          <td> <a href="{{route('EliminaUtente',[$tecnicoEsterno->id])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
          <td> <a href="{{route('modificaorganizzatore',[$tecnicoEsterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
       </tr>
@@ -143,6 +145,7 @@
 </div>
    <table class="user" cellspacing="0">
       <tr>
+         <th>Codice Centro</th>
          <th>Nome Centro</th>
          <th>Indirizzo</th>
          <th>Citta</th>
@@ -153,7 +156,8 @@
       </tr>
     @isset($centriEsterni)
     @foreach ($centriEsterni as $centroEsterno)
-      <tr> 
+      <tr>
+         <td>{{ $centroEsterno->codice_centro }}</td> 
          <td>{{ $centroEsterno->nome_centro }}</td>
          <td>{{ $centroEsterno->indirizzo }}</td>
          <td>{{ $centroEsterno->citta }} </td>
