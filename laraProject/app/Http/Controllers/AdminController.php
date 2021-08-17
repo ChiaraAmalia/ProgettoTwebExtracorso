@@ -26,6 +26,7 @@ class AdminController extends Controller {
     protected $_faqModel;
     protected $_malfunzionamentiModel;
     protected $_interventiModel;
+    protected $_centriAssistenzaModel;
 
     public function __construct() {
         $this->middleware('can:isAdmin');
@@ -33,6 +34,7 @@ class AdminController extends Controller {
         $this->_faqModel = new FAQ;
         $this->_malfunzionamentiModel = new Malfunzionamento;
         $this->_interventiModel = new Intervento;
+        $this->_centriAssistenzaModel = new CentroAssistenza;
     }
 
     public function index() {
@@ -191,7 +193,7 @@ class AdminController extends Controller {
                 array_push($staff,$utente);
             }else if ($utente->categoria=='tecnico' and $utente->occupazione=='interna'){
                 array_push($tecniciInterni,$utente);
-            }else if ($utente->categoria=='tecnico' and $utente->occupazione=='interna'){
+            }else if ($utente->categoria=='tecnico' and $utente->occupazione=='esterna'){
                 array_push($tecniciEsterni,$utente);
             }
         }
@@ -213,8 +215,9 @@ class AdminController extends Controller {
         return redirect('gestioneUtenti');
     }
     
-    public function eliminaCentro($codice_centro) {
-        
+    public function eliminaCentro($codice_centro) {       
+          
+        Utente::where('codice_centro', '=', $codice_centro)->delete();
         CentroAssistenza::find($codice_centro)->delete();
         return redirect('gestioneUtenti');
     }

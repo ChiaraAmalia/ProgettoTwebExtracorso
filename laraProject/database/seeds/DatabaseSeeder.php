@@ -45,13 +45,19 @@ class DatabaseSeeder extends Seeder
         ]);
                 
         DB::table('users')->insert([
-            [ 'username' => 'adminadmin', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'amministratore', 'specializzazione' => Null, 'occupazione' => Null,
+            [ 'codice_centro' => Null, 'username' => 'adminadmin', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'amministratore', 'specializzazione' => Null, 'occupazione' => Null,
               'nome_centro' => Null, 'email' => 'giuseppe.santi3@mail.com', 'email_verified_at' => Null, 'nome' => 'Giuseppe', 'cognome' => 'Santi', 'via' => 'Piagi', 'citta' => 'Ancona',
               'cap' => 60121, 'sesso' => 'M', 'cellulare' => 3556768542],
-            [ 'username' => 'tecntecn', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'tecnico', 'specializzazione' => Null, 'occupazione' => 'interna',
-              'nome_centro' => Null, 'email' => 'maria.cerrato5@smail.com', 'email_verified_at' => Null, 'nome' => 'Maria', 'cognome' => 'Cerrato', 'via' => 'Donnola', 'citta' => 'Perugia',
+            [ 'codice_centro' => 6, 'username' => 'tecntecn', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'tecnico', 'specializzazione' => Null, 'occupazione' => 'interna',
+              'nome_centro' => 'ElectroStar Ancona', 'email' => 'maria.cerrato5@smail.com', 'email_verified_at' => Null, 'nome' => 'Maria', 'cognome' => 'Cerrato', 'via' => 'Donnola', 'citta' => 'Perugia',
               'cap' => 59439, 'sesso' => 'F', 'cellulare' => 3542047281],
-            [ 'username' => 'staffstaff', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'staff', 'specializzazione' => 'lavatrice', 'occupazione' => NULL,
+            [ 'codice_centro' => 1, 'username' => 'tecnico1', 'password' => Hash::make('Ale76854'), 'categoria' => 'tecnico', 'specializzazione' => Null, 'occupazione' => 'esterna',
+              'nome_centro' => 'RipariAmo elettrodomestici', 'email' => 'alessandro.gallo6@tmail.com', 'email_verified_at' => Null,'nome' => 'Alessandro', 'cognome' => 'Gallo', 'via' => 'Bindi', 'citta' => 'Firenze',
+              'cap' => 38462, 'sesso' => 'M', 'cellulare' => 3924163529],
+            [ 'codice_centro' => 2, 'username' => 'tecnico2', 'password' => Hash::make('Francesca67'), 'categoria' => 'tecnico', 'specializzazione' => Null, 'occupazione' => 'esterna',
+              'nome_centro' => 'ElectroRepair', 'email' => 'fra.penna5@omail.com', 'email_verified_at' => Null, 'nome' => 'Fancesca', 'cognome' => 'Penna', 'via' => 'dei Sassi', 'citta' => 'Bologna',
+              'cap' => 49271, 'sesso' => 'F', 'cellulare' => 3684930603],
+            [ 'codice_centro' => Null, 'username' => 'staffstaff', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'staff', 'specializzazione' => 'lavatrice', 'occupazione' => NULL,
               'nome_centro' => Null, 'email' => 'marco.rerrero7@pmail.com', 'email_verified_at' => Null, 'nome' => 'Marco', 'cognome' => 'Ferrero', 'via' => 'Sudini', 'citta' => 'Roma',
               'cap' => 23918, 'sesso' => 'M', 'cellulare' => 3920173645],
         ]);

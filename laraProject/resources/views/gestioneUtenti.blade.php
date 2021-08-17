@@ -153,7 +153,7 @@
       </tr>
     @isset($centriEsterni)
     @foreach ($centriEsterni as $centroEsterno)
-      <tr>
+      <tr> 
          <td>{{ $centroEsterno->nome_centro }}</td>
          <td>{{ $centroEsterno->indirizzo }}</td>
          <td>{{ $centroEsterno->citta }} </td>

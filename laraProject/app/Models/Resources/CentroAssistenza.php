@@ -17,10 +17,9 @@ class CentroAssistenza extends Model{
     protected $fillable = ['nome_centro','indirizzo','citta',
                            'cap','telefono','descrizione'];
     
-    public function getCentriAssistenzaEsterni($codice_centro){
+    public function getCentriAssistenzaById($codice_centro){
         
-        $esterni = CentroAssistenza::where($codice_centro->$tipologia, '=', 'esterna');
-        return $esterni->all();
+        return CentroAssistenza::where('codice_centro', $codice_centro)->get();
     }
     
     public function getCentriAssistenza(){
