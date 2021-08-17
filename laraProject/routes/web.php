@@ -20,7 +20,7 @@ Route::get('/faq', 'ControllerPubblico@mostrafaq')
         ->name('faq')
         ->middleware('preventBackHistory');
 
-Route::view('/info', 'info')
+Route::get('/info', 'ControllerPubblico@mostraCentriAssistenza')
         ->name('info')
         ->middleware('preventBackHistory');
 

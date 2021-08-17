@@ -15,8 +15,6 @@ class Utente extends Migration
     {
         Schema::create('users', function (Blueprint $table){
             $table->bigIncrements('id')->unsigned()->index();
-            $table->bigInteger('codice_centro')->unsigned()->index()->nullable();
-            $table->foreign('codice_centro')->references('codice_centro')->onDelete('CASCADE')->on('centroAssistenza');
             $table->string('username',20);
             $table->string('password');
             $table->enum('categoria',['tecnico','staff','amministratore']);
@@ -31,7 +29,7 @@ class Utente extends Migration
             $table->string('citta',40)->nullable();
             $table->integer('cap')->nullable();
             $table->string('sesso')->nullable();
-            $table->string('cellulare')->nullable();
+            $table->bigInteger('cellulare')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

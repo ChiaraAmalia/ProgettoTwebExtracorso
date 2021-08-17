@@ -22,4 +22,8 @@ class CentroAssistenza extends Model{
         $esterni = CentroAssistenza::where($codice_centro->$tipologia, '=', 'esterna');
         return $esterni->all();
     }
+    
+    public function getCentriAssistenza(){
+        return CentroAssistenza::all();
+    }
 }

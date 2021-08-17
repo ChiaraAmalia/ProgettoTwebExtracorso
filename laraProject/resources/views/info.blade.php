@@ -85,27 +85,18 @@
        
             <br><br><h1>Centri assistenza presenti sul nostro territorio</h1>
             <div>
-                <table class="tab-info" align="right">
-                    
-                    <tr><th colspan="2">Centri assistenza esterni all'azienda</th></tr> 
-                    <tr><th>Nome Centro</th><th>Indirizzo e città</th></tr> 
-                    <tr><th >RipariAmo elettrodomestici</th><td>Via Lago, 66 - 66547 Pescara</td></tr>
-                    <tr><th>ElectroRepair</th><td>Via Verdi, 52 - 63829 Napoli</td></tr>
-                    <tr><th>HomeHelp</th><td>Via Gigli, 37 - 68687 Palermo</td></tr>
-                    <tr><th>HandyMan</th><td>Via Timo, 9 - 62145 Lecce</td></tr>
-                    <tr><th>Praticaggiusta</th><td>Via della Rosa, 24 - 60526 Potenza</td></tr>
-                 </table>
-            </div>
-            <div>
-                <table class="tab-info" >
-                    <tr><th colspan="2">Centri assistenza interni all'azienda</th></tr> 
-                    <tr><th>Nome Centro</th><th>Indirizzo e città</th></tr>
-                    <tr><th>ElectroStar Ancona</th><td>Via Rinascita, 3 - 60123 Ancona</td></tr>
-                    <tr><th>ElectroStar Milano</th><td>Via Rossi, 32 - 60100 Milano</td></tr>
-                    <tr><th>ElectroStar Firenze</th><td>Via Salsa, 21 - 69765 Firenze</td></tr>
-                    <tr><th>ElectroStar Genova</th><td>Via Quadro, 45 - 61143 Genova</td></tr>
-                    <tr><th>ElectroStar Roma</th><td>Via Risi, 29 - 65698 Roma</td></tr>
-                 </table>     
+                <center>
+                <table class="tab-info" style="width: 80%;">
+
+                    <tr><th colspan="6">Centri assistenza esterni all'azienda</th></tr> 
+                    <tr><th>Nome Centro</th><th>Indirizzo</th><th>Città</th><th>CAP</th><th>Telefono</th><th>Tipologia</th></tr> 
+                        @isset($centri)
+                        @foreach ($centri as $centro)
+                    <tr><th>{{ $centro->nome_centro }}</th><td>{{ $centro->indirizzo }}</td><td>{{ $centro->citta }}</td><td>{{ $centro->cap }}</td><td>{{ $centro->telefono }}</td><td>{{ $centro->tipologia }}</td></tr>
+                        @endforeach
+                        @endisset
+                </table>
+                </center>    
             </div>
             <br><br>
             <div>

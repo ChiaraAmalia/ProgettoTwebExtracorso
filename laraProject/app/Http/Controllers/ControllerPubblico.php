@@ -6,6 +6,7 @@ use App\Models\Catalogo;
 use App\Models\Resources\FAQ;
 use App\Models\Resources\Malfunzionamento;
 use App\Models\Resources\Intervento;
+use App\Models\Resources\CentroAssistenza;
 use App\Http\Requests\FiltroRequest;
 
 class ControllerPubblico extends Controller {
@@ -14,12 +15,14 @@ class ControllerPubblico extends Controller {
     protected $_faqModel;
     protected $_malfunzionamentiModel;
     protected $_interventiModel;
+    protected $_centriAssistenzaModel;
 
     public function __construct() {
         $this->_catalogoModel = new Catalogo;
         $this->_faqModel = new FAQ;
         $this->_malfunzionamentiModel = new Malfunzionamento;
         $this->_interventiModel = new Intervento;
+        $this->_centriAssistenzaModel = new CentroAssistenza;
     }
 
     public function mostraCatalogo() {
@@ -48,6 +51,14 @@ class ControllerPubblico extends Controller {
 
         return view('faq')
                         ->with('faq', $faq);
+    }
+    
+    public function mostraCentriAssistenza(){
+        
+        $centri = $this->_centriAssistenzaModel->getCentriAssistenza();
+        
+        return view('info')
+                ->with('centri', $centri);
     }
  
     public function mostraDettagli($codice_prodotto) {

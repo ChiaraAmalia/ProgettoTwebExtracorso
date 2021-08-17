@@ -18,8 +18,8 @@ class CentroAssistenza extends Migration
             $table->string('nome_centro',200);
             $table->string('indirizzo');
             $table->string('citta');
-            $table->Integer('cap');
-            $table->Integer('telefono');
+            $table->integer('cap');
+            $table->bigInteger('telefono');
             $table->enum('tipologia',['interna','esterna']);
             $table->string('descrizione',2500);
         });

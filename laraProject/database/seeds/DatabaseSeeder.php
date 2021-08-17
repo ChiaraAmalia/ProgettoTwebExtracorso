@@ -22,20 +22,38 @@ class DatabaseSeeder extends Seeder
         ]);
         
         DB::table('centroAssistenza')->insert([
-            
+            [ 'nome_centro' => 'RipariAmo elettrodomestici', 'indirizzo' => 'Via Lago, 66', 'citta' => 'Pescara', 'cap' => 66547, 'telefono' => 3394567284,
+              'tipologia' => 'esterna', 'descrizione' => 'RipariAmo elettrodomestici è un\'azienda esterna che ripara elettrodomestici di diverse aziende, ben fornita di materiali adatti alla sostituzione di componenti di elettrodomestici Electrostar.'],
+            [ 'nome_centro' => 'ElectroRepair', 'indirizzo' => 'Via Verdi, 52', 'citta' => 'Napoli', 'cap' => 63829, 'telefono' => 3456879898,
+              'tipologia' => 'esterna', 'descrizione' => 'ElectroRepair è un\'azienda esterna specializzata nella rivendita di materiali per la sostituzione dei componenenti della nostra azienda ElectroStar, fornendo anche un supporto con l\'aiuto di tecnici specializzati nella riparazione di elettrodomestici di loro competenza.'],
+            [ 'nome_centro' => 'HomeHelp', 'indirizzo' => 'Via Gigli, 37', 'citta' => 'Palermo', 'cap' => 68687, 'telefono' => 3329384586,
+              'tipologia' => 'esterna', 'descrizione' => 'HomeHelp è un\'azienda esterna avente alle sue dipendenze molti tecnici speciallizati nel supporto e nella riparazione di elettrodomestici di grandi marche.'],        
+            [ 'nome_centro' => 'HandyMan', 'indirizzo' => 'Via Timo, 9', 'citta' => 'Lecce', 'cap' => 62145, 'telefono' => 3492013928,
+              'tipologia' => 'esterna', 'descrizione' => 'HandyMan è un\'azienda esterna specializzata nella vendita di materiali per la risoluzione di malfunzionamenti su molti prodotti offerti dall\'azienda ElectroStar'],
+            [ 'nome_centro' => 'Praticaggiusta', 'indirizzo' => 'Via della Rosa, 24', 'citta' => 'Potenza', 'cap' => 60526, 'telefono' => 3920459482,
+              'tipologia' => 'esterna', 'descrizione' => 'Praticaggiusta è un\'azienda esterna che offre servizio di riparazione elettrodomestici attraverso i suoi tecnici specializzati'],
+            [ 'nome_centro' => 'ElectroStar Ancona', 'indirizzo' => 'Via Rinascita, 3', 'citta' => 'Ancona', 'cap' => 60123, 'telefono' => 3457382918,
+            'tipologia' => 'interna', 'descrizione' => ''],
+            [ 'nome_centro' => 'ElectroStar Milano', 'indirizzo' => 'Via Rossi, 32', 'citta' => 'Milano', 'cap' => 60100, 'telefono' => 3281938271,
+              'tipologia' => 'interna', 'descrizione' => ''],
+            [ 'nome_centro' => 'ElectroStar Firenze', 'indirizzo' => 'Via Salsa, 21', 'citta' => 'Firenze', 'cap' => 69765, 'telefono' => 3854910238,
+              'tipologia' => 'interna', 'descrizione' => ''],
+            [ 'nome_centro' => 'ElectroStar Genova', 'indirizzo' => 'Via Quadro, 45', 'citta' => 'Genova', 'cap' => 61143, 'telefono' => 3354829184,
+              'tipologia' => 'interna', 'descrizione' => ''],
+            [ 'nome_centro' => 'ElectroStar Roma', 'indirizzo' => 'Via Risi, 29', 'citta' => 'Roma', 'cap' => 65698, 'telefono' => 3482910239,
+              'tipologia' => 'interna', 'descrizione' => ''],
         ]);
-        
-        
+                
         DB::table('users')->insert([
             [ 'username' => 'adminadmin', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'amministratore', 'specializzazione' => Null, 'occupazione' => Null,
               'nome_centro' => Null, 'email' => 'giuseppe.santi3@mail.com', 'email_verified_at' => Null, 'nome' => 'Giuseppe', 'cognome' => 'Santi', 'via' => 'Piagi', 'citta' => 'Ancona',
-              'cap' => '60121', 'sesso' => 'M', 'cellulare' => '3556768542'],
+              'cap' => 60121, 'sesso' => 'M', 'cellulare' => 3556768542],
             [ 'username' => 'tecntecn', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'tecnico', 'specializzazione' => Null, 'occupazione' => 'interna',
               'nome_centro' => Null, 'email' => 'maria.cerrato5@smail.com', 'email_verified_at' => Null, 'nome' => 'Maria', 'cognome' => 'Cerrato', 'via' => 'Donnola', 'citta' => 'Perugia',
-              'cap' => '59439', 'sesso' => 'F', 'cellulare' => '3542047281'],
+              'cap' => 59439, 'sesso' => 'F', 'cellulare' => 3542047281],
             [ 'username' => 'staffstaff', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'staff', 'specializzazione' => 'lavatrice', 'occupazione' => NULL,
               'nome_centro' => Null, 'email' => 'marco.rerrero7@pmail.com', 'email_verified_at' => Null, 'nome' => 'Marco', 'cognome' => 'Ferrero', 'via' => 'Sudini', 'citta' => 'Roma',
-              'cap' => '23918', 'sesso' => 'M', 'cellulare' => '3920173645'],
+              'cap' => 23918, 'sesso' => 'M', 'cellulare' => 3920173645],
         ]);
         
         DB::table('prodotto')->insert([

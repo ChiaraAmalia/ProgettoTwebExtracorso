@@ -157,11 +157,11 @@
          <td>{{ $centroEsterno->nome_centro }}</td>
          <td>{{ $centroEsterno->indirizzo }}</td>
          <td>{{ $centroEsterno->citta }} </td>
-         <td>{{ $centroEsterno->cap }} </td>
+         <td>{{ $centroEsterno->cap }}</td>
          <td>{{ $centroEsterno->telefono }}</td>
          <td>{{ $centroEsterno->descrizione }}</td>
-         <td> <a href="{{route('eliminaCentro',[$centro_esterno->codice_centro])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
-         <td> <a href="{{route('modificaorganizzatore',[$centro_esterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
+         <td> <a href="{{route('eliminaCentro',[$centroEsterno->codice_centro])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
+         <td> <a href="{{route('modificaorganizzatore',[$centroEsterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
       </tr>
     @endforeach
     @endisset()
