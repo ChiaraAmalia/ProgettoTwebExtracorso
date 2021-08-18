@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\NuovoProdottoRequest;
-use App\Http\Requests\NuovoOrganizzatoreRequest;
+use App\Http\Requests\NuovoTecnicoEsternoRequest;
 use App\Http\Requests\NuovoMalfunzionamentoRequest;
 use App\Http\Requests\NuovoInterventoRequest;
 use App\Http\Requests\NuovaFaqRequest;
@@ -222,25 +222,36 @@ class AdminController extends Controller {
         return redirect('gestioneUtenti');
     }
     
-    public function aggiungiOrganizzatore(NuovoOrganizzatoreRequest $request) {
+    public function formAggiungiTecnicoEsterno(){
         
-        $organizzatore = new Utente;
-        $organizzatore->fill($request->validated());
-        $organizzatore->categoria='organizzatore';
-        $organizzatore->nome=$request->nome;
-        $organizzatore->cognome=$request->cognome;
-        $organizzatore->email=$request->email;
-        $organizzatore->username=$request->username;
-        $organizzatore->password=Hash::make($request->password);
-        $organizzatore->via=$request->via;
-        $organizzatore->citta=$request->citta;
-        $organizzatore->cap=$request->cap;
-        $organizzatore->cellulare=$request->cellulare;
-        $organizzatore->nome_societa_organizzatrice=$request->nome_societa_organizzatrice;
-        $organizzatore->sesso=$request->sesso;
-        $organizzatore->save();
+        $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenzaEsterni()->pluck('codice_centro','codice_centro');
+        return view('RegistrazioneTecnicoEsterno')
+                    ->with('filtro_codice', $filtro_codice);
+    }
+    
+    public function aggiungiTecnicoEsterno(NuovoTecnicoEsternoRequest $request) {
+        
+        $tecnico = new Utente;
+        $tecnico->fill($request->validated());
+        $centro = CentroAssistenza::where('codice_centro', '=', $request->codice_centro)->value('nome_centro');
+        $tecnico->codice_centro = $request->codice_centro;
+        $tecnico->username=$request->username;
+        $tecnico->password=Hash::make($request->password);
+        $tecnico->categoria='tecnico';
+        $tecnico->specializzazione = NULL;
+        $tecnico->occupazione = 'esterna';
+        $tecnico->nome_centro = $centro;
+        $tecnico->email=$request->email;
+        $tecnico->nome=$request->nome;
+        $tecnico->cognome=$request->cognome;
+        $tecnico->via=$request->via;
+        $tecnico->citta=$request->citta;
+        $tecnico->cap=$request->cap;
+        $tecnico->sesso=$request->sesso;
+        $tecnico->cellulare=$request->cellulare;
+        $tecnico->save();
 
-        return redirect('/');
+        return redirect('gestioneUtenti');
     }
     
 

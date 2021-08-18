@@ -10,8 +10,13 @@ class Utente extends Model{
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['email','nome_centro','username','nome','cognome',
+    protected $fillable = ['email','username','nome','cognome',
                            'password','via','citta','cap','sesso','cellulare'];
+    
+    // Realazione One-To-One con Prodotto
+    public function codCentro() {
+        return $this->hasOne(Utente::class, 'codice_centro', 'codice_centro');
+    }
     
     public function getUtenteById($id) {
         return Utente::where('id', $id)->get();
@@ -20,5 +25,5 @@ class Utente extends Model{
     public function getUtenti() {
         return Utente::all();      
     }
-    
+   
 }

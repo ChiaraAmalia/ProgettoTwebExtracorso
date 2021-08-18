@@ -31,7 +31,7 @@
 
 <div class="table-users">
    <div class="headertable">TECNICI INTERNI
-       <a href="{{route('AggiungiOrganizzatore')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
+       <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
    </div>
    <table class="user" cellspacing="0">
       <tr>
@@ -66,7 +66,7 @@
    </table>
    
    <div class="headertable">TECNICI ESTERNI
-   <a href="{{route('AggiungiOrganizzatore')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
+   <a href="{{route('formAggiungiTecnicoEsterno')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
    </div>
    <table class="user" cellspacing="0">
       <tr>
@@ -106,7 +106,7 @@
 
 
 <div class="headertable">STAFF
-    <a href="{{route('AggiungiOrganizzatore')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
+    <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
 </div>
    <table class="user" cellspacing="0">
       <tr>
@@ -141,7 +141,7 @@
    </table>
     
 <div class="headertable">CENTRI DI ASSISTENZA ESTERNI
-    <a href="{{route('AggiungiOrganizzatore')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
+    <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
 </div>
    <table class="user" cellspacing="0">
       <tr>
