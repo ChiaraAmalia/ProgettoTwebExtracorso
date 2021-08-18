@@ -5,15 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="address">
-                <div class="wrapper fadeInDown">AGGIUNGI TECNICO ESTERNO</div>
+                <div class="wrapper fadeInDown">AGGIUNGI TECNICO INTERNO</div>
 
                 <div class="address">
-                    {{ Form::open(array('route' => 'AggiungiTecnicoEsterno')) }}
+                    {{ Form::open(array('route' => 'AggiungiTecnicoInterno')) }}
                     
                         <!--Codice centro Utente Registrazione-->
                         <div class="address">
                             <div class="form-group row">
-                                {{ Form::label('codice_centro', 'Codice del centro esterno', ['class' => 'label-input']) }}
+                                {{ Form::label('codice_centro', 'Codice del centro interno', ['class' => 'label-input']) }}
                                 <div class="col-md-6">
                                 {{ Form::select('codice_centro', $filtro_codice, '',['class' => 'input', 'placeholder'=>'Scegli il codice del centro', 'id' => 'codice_centro']) }}
                                     @if ($errors->first('codice_centro'))

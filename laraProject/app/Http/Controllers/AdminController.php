@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\NuovoProdottoRequest;
-use App\Http\Requests\NuovoTecnicoEsternoRequest;
+use App\Http\Requests\NuovoTecnicoRequest;
+use App\Http\Requests\NuovoStaffRequest;
 use App\Http\Requests\NuovoMalfunzionamentoRequest;
 use App\Http\Requests\NuovoInterventoRequest;
 use App\Http\Requests\NuovaFaqRequest;
@@ -188,6 +189,7 @@ class AdminController extends Controller {
         $tecniciEsterni=[];
         $staff=[];
         $centriEsterni=[];
+        $centriInterni=[];
         foreach ($utenti as $utente){
             if ($utente->categoria=='staff'){
                 array_push($staff,$utente);
@@ -200,13 +202,16 @@ class AdminController extends Controller {
         foreach ($centri as $centro){
             if ($centro->tipologia=='esterna'){
                 array_push($centriEsterni,$centro);
-            }    
+            }else if($centro->tipologia=='interna'){
+                array_push($centriInterni,$centro);
+            }     
         }
             
         return view('gestioneUtenti', ['staff' => $staff,
                                     'tecniciInterni'=>$tecniciInterni,
                                     'tecniciEsterni'=>$tecniciEsterni,
-                                    'centriEsterni'=>$centriEsterni]);
+                                    'centriEsterni'=>$centriEsterni,
+                                    'centriInterni'=>$centriInterni]);
     }
     
     public function cancella($id) {
@@ -222,6 +227,38 @@ class AdminController extends Controller {
         return redirect('gestioneUtenti');
     }
     
+    public function formAggiungiTecnicoInterno(){
+        
+        $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenzaInterni()->pluck('codice_centro','codice_centro');
+        return view('RegistrazioneTecnicoInterno')
+                    ->with('filtro_codice', $filtro_codice);
+    }
+    
+    public function aggiungiTecnicoInterno(NuovoTecnicoRequest $request) {
+        
+        $tecnico = new Utente;
+        $tecnico->fill($request->validated());
+        $centro = CentroAssistenza::where('codice_centro', '=', $request->codice_centro)->value('nome_centro');
+        $tecnico->codice_centro = $request->codice_centro;
+        $tecnico->username=$request->username;
+        $tecnico->password=Hash::make($request->password);
+        $tecnico->categoria='tecnico';
+        $tecnico->specializzazione = NULL;
+        $tecnico->occupazione = 'interna';
+        $tecnico->nome_centro = $centro;
+        $tecnico->email=$request->email;
+        $tecnico->nome=$request->nome;
+        $tecnico->cognome=$request->cognome;
+        $tecnico->via=$request->via;
+        $tecnico->citta=$request->citta;
+        $tecnico->cap=$request->cap;
+        $tecnico->sesso=$request->sesso;
+        $tecnico->cellulare=$request->cellulare;
+        $tecnico->save();
+
+        return redirect('gestioneUtenti');
+    }
+    
     public function formAggiungiTecnicoEsterno(){
         
         $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenzaEsterni()->pluck('codice_centro','codice_centro');
@@ -229,7 +266,7 @@ class AdminController extends Controller {
                     ->with('filtro_codice', $filtro_codice);
     }
     
-    public function aggiungiTecnicoEsterno(NuovoTecnicoEsternoRequest $request) {
+    public function aggiungiTecnicoEsterno(NuovoTecnicoRequest $request) {
         
         $tecnico = new Utente;
         $tecnico->fill($request->validated());
@@ -254,7 +291,35 @@ class AdminController extends Controller {
         return redirect('gestioneUtenti');
     }
     
+    public function formAggiungiStaff(){
 
+        return view('RegistrazioneStaff');
+                    
+    }
+    
+    public function aggiungiStaff(NuovoStaffRequest $request) {
+        
+        $staff = new Utente;
+        $staff->fill($request->validated());
+        $staff->codice_centro = NULL;
+        $staff->username=$request->username;
+        $staff->password=Hash::make($request->password);
+        $staff->categoria='staff';
+        $staff->specializzazione = $request->specializzazione;
+        $staff->occupazione = NULL;
+        $staff->nome_centro = NULL;
+        $staff->email=$request->email;
+        $staff->nome=$request->nome;
+        $staff->cognome=$request->cognome;
+        $staff->via=$request->via;
+        $staff->citta=$request->citta;
+        $staff->cap=$request->cap;
+        $staff->sesso=$request->sesso;
+        $staff->cellulare=$request->cellulare;
+        $staff->save();
+
+        return redirect('gestioneUtenti');
+    }
 
     public function FormOrganizzatori($id) {
         

@@ -75,6 +75,32 @@ Route::get('/gestioneUtenti', 'AdminController@vediutenti')
         ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
+//admin aggiunta staff
+
+Route::get('/AggiungiStaff', 'AdminController@formAggiungiStaff')
+        ->name('formAggiungiStaff')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::post('/AggiungiStaff', 'AdminController@aggiungiStaff')
+        ->name('AggiungiStaff')
+        ->middleware('can:isAdmin');
+
+//admin aggiunta tecnico interno
+
+Route::get('/AggiungiTecnicoInterno', 'AdminController@formAggiungiTecnicoInterno')
+        ->name('formAggiungiTecnicoInterno')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::post('/AggiungiTecnicoInterno', 'AdminController@aggiungiTecnicoInterno')
+        ->name('AggiungiTecnicoInterno')
+        ->middleware('can:isAdmin');
+
+//admin aggiunta centro assistenza esterno
+
+//admin aggiunta tecnico esterno
+
 Route::get('/AggiungiTecnicoEsterno', 'AdminController@formAggiungiTecnicoEsterno')
         ->name('formAggiungiTecnicoEsterno')
         ->middleware('can:isAdmin')

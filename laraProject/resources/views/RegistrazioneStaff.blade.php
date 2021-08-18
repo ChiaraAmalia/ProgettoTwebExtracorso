@@ -5,28 +5,21 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="address">
-                <div class="wrapper fadeInDown">AGGIUNGI TECNICO ESTERNO</div>
+                <div class="wrapper fadeInDown">AGGIUNGI STAFF</div>
 
                 <div class="address">
-                    {{ Form::open(array('route' => 'AggiungiTecnicoEsterno')) }}
-                    
-                        <!--Codice centro Utente Registrazione-->
-                        <div class="address">
-                            <div class="form-group row">
-                                {{ Form::label('codice_centro', 'Codice del centro esterno', ['class' => 'label-input']) }}
-                                <div class="col-md-6">
-                                {{ Form::select('codice_centro', $filtro_codice, '',['class' => 'input', 'placeholder'=>'Scegli il codice del centro', 'id' => 'codice_centro']) }}
-                                    @if ($errors->first('codice_centro'))
-                                            <ul class="errors">
-                                            @foreach ($errors->get('codice_centro') as $message)
-                                            <li>{{ $message }}</li>
-                                            @endforeach
-                                            </ul>
-                                        @endif
-                                </div>
+                    {{ Form::open(array('route' => 'AggiungiStaff')) }}
+                        
+                    <!--Specializzazione staff-->
+                    <?php $specializzazione=['lavatrice'=>'lavatrice','lavastoviglie'=>'lavastoviglie','forno'=>'forno','frigorifero'=>'frigorifero','asciugatrice'=>'asciugatrice']; ?>
+                    <div class="address">
+                        <div class="form-group row">
+                            {{ Form::label('specializzazione', 'Specializzazione staff', ['class' => 'label-input']) }}
+                            <div class="col-md-6">
+                            {{ Form::select('specializzazione',$specializzazione,'',['class' => 'input', 'placeholder'=>'Scegli la specializzazione','id' => 'specializzazione']) }}
                             </div>
                         </div>
-                        
+                    </div>
                          <!--Nome Utente Registrazione-->
                         <div class="address">
                             <div class="form-group row">

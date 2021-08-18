@@ -29,4 +29,8 @@ class CentroAssistenza extends Model{
     public function getCentriAssistenzaEsterni(){
         return CentroAssistenza::where('tipologia','=','esterna')->get();
     }
+    
+    public function getCentriAssistenzaInterni(){
+        return CentroAssistenza::where('tipologia','=','interna')->get();
+    }
 }

@@ -29,11 +29,11 @@ class AggiornamentoProdottoRequest extends FormRequest {
             'rumore' => 'required|string',
             'consumo_en_annuo' => 'required|string',
             'luce_interna' => 'required|string',
-            'programmi' => 'required|max:2500',
+            'programmi' => 'required|string|max:2500',
             'classe_energetica' => 'required|string',
-            'descrizione' => 'required|max:2500',
-            'tecniche_buonuso' => 'required|max:2500',
-            'modalita_installazione' => 'required|max:2500'
+            'descrizione' => 'required|string|max:2500',
+            'tecniche_buonuso' => 'required|string|max:2500',
+            'modalita_installazione' => 'required|string|max:2500'
         ];
     }
 

@@ -46,9 +46,9 @@
                             {{ Form::label('risposta', 'Risposta', ['class' => 'label-input']) }}
                             <div class="col-md-6">
                             {{ Form::text('risposta', old('risposta'), ['class' => 'input','id' => 'risposta']) }}
-                                @if ($errors->first('email'))
+                                @if ($errors->first('risposta'))
                                     <ul class="errors">
-                                    @foreach ($errors->get('email') as $message)
+                                    @foreach ($errors->get('risposta') as $message)
                                     <li>{{ $message }}</li>
                                     @endforeach
                                     </ul>

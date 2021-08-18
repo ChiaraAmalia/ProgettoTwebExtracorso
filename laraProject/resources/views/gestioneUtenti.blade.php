@@ -30,8 +30,34 @@
 @section('content')
 
 <div class="table-users">
+    
+        <div class="headertable">CENTRI DI ASSISTENZA INTERNI</div>
+   <table class="user" cellspacing="0">
+      <tr>
+         <th>Codice Centro</th>
+         <th>Nome Centro</th>
+         <th>Indirizzo</th>
+         <th>Citta</th>
+         <th>CAP</th>
+         <th>Telefono</th>
+         
+      </tr>
+    @isset($centriInterni)
+    @foreach ($centriInterni as $centroInterno)
+      <tr>
+         <td>{{ $centroInterno->codice_centro }}</td> 
+         <td>{{ $centroInterno->nome_centro }}</td>
+         <td>{{ $centroInterno->indirizzo }}</td>
+         <td>{{ $centroInterno->citta }} </td>
+         <td>{{ $centroInterno->cap }}</td>
+         <td>{{ $centroInterno->telefono }}</td>
+      </tr>
+    @endforeach
+    @endisset()
+   </table> 
+        
    <div class="headertable">TECNICI INTERNI
-       <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
+       <a href="{{route('formAggiungiTecnicoInterno')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
    </div>
    <table class="user" cellspacing="0">
       <tr>
@@ -44,6 +70,8 @@
          <th>CAP</th>
          <th>Sesso</th>
          <th>Cellulare</th>
+         <th>Nome Centro</th>
+         <th>Codice Centro</th>
          <th></th>
       </tr>
     @isset($tecniciInterni)
@@ -58,12 +86,45 @@
          <td> {{ $tecnicoInterno->cap }} </td>
          <td> {{ $tecnicoInterno->sesso }} </td>
          <td> {{ $tecnicoInterno->cellulare }} </td>
+         <td> {{ $tecnicoInterno->nome_centro }} </td>
+         <td> {{ $tecnicoInterno->codice_centro }} </td>
          <td> <a href="{{route('EliminaUtente',[$tecnicoInterno->id])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
          <td> <a href="{{route('modificaorganizzatore',[$tecnicoInterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
       </tr>
     @endforeach
     @endisset()
    </table>
+        
+   <div class="headertable">CENTRI DI ASSISTENZA ESTERNI
+    <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
+   </div>
+   <table class="user" cellspacing="0">
+      <tr>
+         <th>Codice Centro</th>
+         <th>Nome Centro</th>
+         <th>Indirizzo</th>
+         <th>Citta</th>
+         <th>CAP</th>
+         <th>Telefono</th>
+         <th>Descrizione</th>
+         
+      </tr>
+    @isset($centriEsterni)
+    @foreach ($centriEsterni as $centroEsterno)
+      <tr>
+         <td>{{ $centroEsterno->codice_centro }}</td> 
+         <td>{{ $centroEsterno->nome_centro }}</td>
+         <td>{{ $centroEsterno->indirizzo }}</td>
+         <td>{{ $centroEsterno->citta }} </td>
+         <td>{{ $centroEsterno->cap }}</td>
+         <td>{{ $centroEsterno->telefono }}</td>
+         <td>{{ $centroEsterno->descrizione }}</td>
+         <td> <a href="{{route('eliminaCentro',[$centroEsterno->codice_centro])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
+         <td> <a href="{{route('modificaorganizzatore',[$centroEsterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
+      </tr>
+    @endforeach
+    @endisset()
+   </table> 
    
    <div class="headertable">TECNICI ESTERNI
    <a href="{{route('formAggiungiTecnicoEsterno')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
@@ -106,7 +167,7 @@
 
 
 <div class="headertable">STAFF
-    <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
+    <a href="{{route('formAggiungiStaff')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
 </div>
    <table class="user" cellspacing="0">
       <tr>
@@ -119,6 +180,7 @@
          <th>CAP</th>
          <th>Cellulare</th>
          <th>Sesso</th>
+         <th>Specializzazione</th>
          
       </tr>
     @isset($staff)
@@ -133,43 +195,14 @@
          <td>{{ $staf->cap }}</td>
          <td> {{ $staf->cellulare }} </td>
          <td> {{ $staf->sesso }} </td>
+         <td> {{ $staf->specializzazione }} </td>
          <td> <a href="{{route('EliminaUtente',[$staf->id])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
          <td> <a href="{{route('modificaorganizzatore',[$staf])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
       </tr>
     @endforeach
     @endisset()
-   </table>
-    
-<div class="headertable">CENTRI DI ASSISTENZA ESTERNI
-    <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
-</div>
-   <table class="user" cellspacing="0">
-      <tr>
-         <th>Codice Centro</th>
-         <th>Nome Centro</th>
-         <th>Indirizzo</th>
-         <th>Citta</th>
-         <th>CAP</th>
-         <th>Telefono</th>
-         <th>Descrizione</th>
-         
-      </tr>
-    @isset($centriEsterni)
-    @foreach ($centriEsterni as $centroEsterno)
-      <tr>
-         <td>{{ $centroEsterno->codice_centro }}</td> 
-         <td>{{ $centroEsterno->nome_centro }}</td>
-         <td>{{ $centroEsterno->indirizzo }}</td>
-         <td>{{ $centroEsterno->citta }} </td>
-         <td>{{ $centroEsterno->cap }}</td>
-         <td>{{ $centroEsterno->telefono }}</td>
-         <td>{{ $centroEsterno->descrizione }}</td>
-         <td> <a href="{{route('eliminaCentro',[$centroEsterno->codice_centro])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
-         <td> <a href="{{route('modificaorganizzatore',[$centroEsterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
-      </tr>
-    @endforeach
-    @endisset()
    </table> 
+
 </div>
 
 @endsection

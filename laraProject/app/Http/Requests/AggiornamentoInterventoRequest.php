@@ -35,7 +35,7 @@ class AggiornamentoInterventoRequest extends FormRequest{
      */
     public function rules() {
         return [
-            'descrizione' => 'required|max:2500',
+            'descrizione' => 'required|string|max:2500',
         ];
     }
 

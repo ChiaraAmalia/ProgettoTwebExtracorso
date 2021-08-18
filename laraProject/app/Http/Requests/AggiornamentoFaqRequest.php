@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class NuovoTecnicoEsternoRequest extends FormRequest {
+class AggiornamentoFaqRequest extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,10 @@ class NuovoTecnicoEsternoRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'email' => 'required|string|email|unique:users|max:255',
-            'username' => 'required|string|min:8|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'via' => 'required|string',
-            'citta' => 'required|string',
-            'cap' => 'required|min:5|max:5',
-            'sesso' => 'required|string',           
+            'domanda' => 'required|string|unique:faq|max:255',
+            'risposta' => 'required|string|max:255'
+            
         ];
     }
 
 }
-
