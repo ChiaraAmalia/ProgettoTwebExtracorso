@@ -89,7 +89,7 @@
          <td> {{ $tecnicoInterno->nome_centro }} </td>
          <td> {{ $tecnicoInterno->codice_centro }} </td>
          <td> <a href="{{route('EliminaUtente',[$tecnicoInterno->id])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
-         <td> <a href="{{route('modificaorganizzatore',[$tecnicoInterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
+         <td> <a href="{{route('modificafaq',[$tecnicoInterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
       </tr>
     @endforeach
     @endisset()
@@ -120,7 +120,7 @@
          <td>{{ $centroEsterno->telefono }}</td>
          <td>{{ $centroEsterno->descrizione }}</td>
          <td> <a href="{{route('eliminaCentro',[$centroEsterno->codice_centro])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
-         <td> <a href="{{route('modificaorganizzatore',[$centroEsterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
+         <td> <a href="{{route('ModificaCentroEsterno',[$centroEsterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
       </tr>
     @endforeach
     @endisset()
@@ -159,7 +159,7 @@
          <td> {{ $tecnicoEsterno->nome_centro }} </td>
          <td> {{ $tecnicoEsterno->codice_centro }} </td>
          <td> <a href="{{route('EliminaUtente',[$tecnicoEsterno->id])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
-         <td> <a href="{{route('modificaorganizzatore',[$tecnicoEsterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
+         <td> <a href="{{route('modificafaq',[$tecnicoEsterno])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
       </tr>
     @endforeach
     @endisset()
@@ -197,7 +197,7 @@
          <td> {{ $staf->sesso }} </td>
          <td> {{ $staf->specializzazione }} </td>
          <td> <a href="{{route('EliminaUtente',[$staf->id])}}" onclick="return ConfirmDelete()"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Elimina</button></a> </td>
-         <td> <a href="{{route('modificaorganizzatore',[$staf])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
+         <td> <a href="{{route('modificafaq',[$staf])}}"><button class="btn btn-primary btn-sm" type="button" style="background-color: #0080FF;border: none">Modifica</button></a> </td>
       </tr>
     @endforeach
     @endisset()

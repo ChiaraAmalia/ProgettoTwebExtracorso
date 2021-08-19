@@ -26,4 +26,7 @@ class Utente extends Model{
         return Utente::all();      
     }
    
+    public function getTecnici() {
+        return Utente::where('categoria','=','tecnico')->get();      
+    }
 }

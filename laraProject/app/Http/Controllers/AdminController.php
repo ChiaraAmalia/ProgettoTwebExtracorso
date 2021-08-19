@@ -18,6 +18,7 @@ use App\Http\Requests\NuovoStaffRequest;
 use App\Http\Requests\NuovoMalfunzionamentoRequest;
 use App\Http\Requests\NuovoInterventoRequest;
 use App\Http\Requests\NuovoCentroEsternoRequest;
+use App\Http\Requests\AggiornamentoCentriEsterniRequest;
 use App\Http\Requests\NuovaFaqRequest;
 
 
@@ -221,13 +222,6 @@ class AdminController extends Controller {
         return redirect('gestioneUtenti');
     }
     
-    public function eliminaCentro($codice_centro) {       
-          
-        Utente::where('codice_centro', '=', $codice_centro)->delete();
-        CentroAssistenza::find($codice_centro)->delete();
-        return redirect('gestioneUtenti');
-    }
-    
     public function formAggiungiTecnicoInterno(){
         
         $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenzaInterni()->pluck('codice_centro','codice_centro');
@@ -279,6 +273,40 @@ class AdminController extends Controller {
         $centro->descrizione=$request->descrizione;
         $centro->save();
 
+        return redirect('gestioneUtenti');
+    }
+    
+    public function formModificaCentroEsterno($codice_centro) {
+        $centro = CentroAssistenza::find($codice_centro);
+        return view('ModificaCentroEsterno', ['centro' => $centro]);
+    }
+    
+    public function update(AggiornamentoCentriEsterniRequest $request, $codice_centro){
+        $centro = CentroAssistenza::find($codice_centro);
+        $esterni = $this->_utenteModel->getTecnici();
+        $centro->fill($request->validated());
+        $centro->nome_centro = $request->nome_centro;
+        
+        foreach($esterni as $testerno){
+            if($testerno->codice_centro == $codice_centro){
+                $testerno->nome_centro = $centro->nome_centro;
+                $testerno->save();
+            }
+        }
+        $centro->indirizzo=$request->indirizzo;
+        $centro->citta=$request->citta;
+        $centro->cap=$request->cap;
+        $centro->telefono=$request->telefono;
+        $centro->descrizione=$request->descrizione;
+        $centro->save();
+
+        return redirect('gestioneUtenti');
+    }
+    
+    public function eliminaCentro($codice_centro) {       
+          
+        Utente::where('codice_centro', '=', $codice_centro)->delete();
+        CentroAssistenza::find($codice_centro)->delete();
         return redirect('gestioneUtenti');
     }
     
@@ -344,6 +372,5 @@ class AdminController extends Controller {
         return redirect('gestioneUtenti');
     }
 
-
-
+    
 }

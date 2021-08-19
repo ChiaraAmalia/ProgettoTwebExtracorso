@@ -12,29 +12,44 @@
  */
 
 // ROTTE PUBBLICHE
+
+//visualizzazione home pubblica
+
 Route::view('/', 'homePubblica')
         ->name('homePubblica')
         ->middleware('preventBackHistory');
+
+//visualizzazione faq
 
 Route::get('/faq', 'ControllerPubblico@mostrafaq')
         ->name('faq')
         ->middleware('preventBackHistory');
 
+//visualizzazione info
+
 Route::get('/info', 'ControllerPubblico@mostraCentriAssistenza')
         ->name('info')
         ->middleware('preventBackHistory');
+
+//visualizzazione catalogo non filtrato
 
 Route::get('/catalogo', 'ControllerPubblico@mostraCatalogo')
         ->name('catalogo')
         ->middleware('preventBackHistory');
 
+//visualizzazione catalogo filtrato
+
 Route::post('/catalogo', 'ControllerPubblico@mostraCatalogoFiltrato')
         ->name('catalogoFiltrato')
         ->middleware('preventBackHistory');
 
+//visualizzazione dettagli prodotto
+
 Route::get('/catalogo/dettagliProdotto/{codice_prodotto}', 'ControllerPubblico@mostraDettagli')
         ->name('dettagliProdotto')
         ->middleware('preventBackHistory');
+
+//visualizzazione malfunzionamenti solo per tecnici, staff e amministratore
 
 Route::get('/catalogo/dettagliProdotto/{codice_prodotto}/dettagliMalfunzionamento/{codice_malfunzionamento}', 'ControllerPubblico@mostraMalfunzionamenti')
         ->name('dettagliMalfunzionamento')
@@ -49,9 +64,12 @@ Route::post('login', 'Auth\LoginController@login');
 
 Route::post('logout', 'Auth\LoginController@logout')
         ->name('logout');
-//FINE
+
+
 // ROTTE POST AUTENTICAZIONE
+ 
 //rotte tecnico
+
 Route::view('/tecnico', 'AreaUtente2')
         ->name('tecnico')
         ->middleware('can:isTecnico')
@@ -65,74 +83,12 @@ Route::view('/amministratore', 'AreaAdmin')
         ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
+//ADMIN rotta per la visualizzazione della gestione delle faq
+
 Route::get('/gestioneFAQ', 'AdminController@mostrafaq')
         ->name('gestioneFAQ')
         ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
-
-Route::get('/gestioneUtenti', 'AdminController@vediutenti')
-        ->name('gestioneUtenti')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
-//admin aggiunta staff
-
-Route::get('/AggiungiStaff', 'AdminController@formAggiungiStaff')
-        ->name('formAggiungiStaff')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
-Route::post('/AggiungiStaff', 'AdminController@aggiungiStaff')
-        ->name('AggiungiStaff')
-        ->middleware('can:isAdmin');
-
-//admin aggiunta tecnico interno
-
-Route::get('/AggiungiTecnicoInterno', 'AdminController@formAggiungiTecnicoInterno')
-        ->name('formAggiungiTecnicoInterno')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
-Route::post('/AggiungiTecnicoInterno', 'AdminController@aggiungiTecnicoInterno')
-        ->name('AggiungiTecnicoInterno')
-        ->middleware('can:isAdmin');
-
-//admin aggiunta centro assistenza esterno
-
-Route::get('/AggiungiCentroEsterno', 'AdminController@formAggiungiCentroEsterno')
-        ->name('formAggiungiCentroEsterno')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
-Route::post('/AggiungiCentroEsterno', 'AdminController@aggiungiCentroEsterno')
-        ->name('AggiungiCentroEsterno')
-        ->middleware('can:isAdmin');
-
-//admin aggiunta tecnico esterno
-
-Route::get('/AggiungiTecnicoEsterno', 'AdminController@formAggiungiTecnicoEsterno')
-        ->name('formAggiungiTecnicoEsterno')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
-Route::post('/AggiungiTecnicoEsterno', 'AdminController@aggiungiTecnicoEsterno')
-        ->name('AggiungiTecnicoEsterno')
-        ->middleware('can:isAdmin');
-
-Route::resource('admin', 'AdminController');
-
-Route::get('/modificaorganizzatore/{id}/modifica', 'AdminController@FormOrganizzatori')
-        ->name('modificaorganizzatore')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
-Route::get('EliminaUtente/{id}', 'AdminController@cancella')
-        ->name('EliminaUtente')
-        ->middleware('can:isAdmin');
-
-Route::get('EliminaCentro/{codice_centro}', 'AdminController@eliminaCentro')
-        ->name('eliminaCentro')
-        ->middleware('can:isAdmin');
 
 //ADMIN gestione FAQ
 Route::get('EliminaFAQ/{id}', 'AdminController@cancellafaq')
@@ -154,7 +110,106 @@ Route::get('/modificafaq/{id}/modifica', 'AdminController@FormFAQ')
         ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
-//ADMIN gestione prodotto
+//ADMIN rotta per la visualizzazione della gestione degli utenti
+
+Route::get('/gestioneUtenti', 'AdminController@vediutenti')
+        ->name('gestioneUtenti')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+//ADMIN aggiunta staff
+
+Route::get('/AggiungiStaff', 'AdminController@formAggiungiStaff')
+        ->name('formAggiungiStaff')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::post('/AggiungiStaff', 'AdminController@aggiungiStaff')
+        ->name('AggiungiStaff')
+        ->middleware('can:isAdmin');
+
+//ADMIN aggiunta tecnico interno
+
+Route::get('/AggiungiTecnicoInterno', 'AdminController@formAggiungiTecnicoInterno')
+        ->name('formAggiungiTecnicoInterno')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::post('/AggiungiTecnicoInterno', 'AdminController@aggiungiTecnicoInterno')
+        ->name('AggiungiTecnicoInterno')
+        ->middleware('can:isAdmin');
+
+//ADMIN aggiunta centro assistenza esterno
+
+Route::get('/AggiungiCentroEsterno', 'AdminController@formAggiungiCentroEsterno')
+        ->name('formAggiungiCentroEsterno')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::post('/AggiungiCentroEsterno', 'AdminController@aggiungiCentroEsterno')
+        ->name('AggiungiCentroEsterno')
+        ->middleware('can:isAdmin');
+
+//ADMIN modifica centro esterno
+
+Route::get('/ModificaCentroEsterno/{codice_centro}/modifica', 'AdminController@formModificaCentroEsterno')
+        ->name('ModificaCentroEsterno')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::resource('admin', 'AdminController');
+
+//ADMIN eliminazione del centro
+
+Route::get('EliminaCentro/{codice_centro}', 'AdminController@eliminaCentro')
+        ->name('eliminaCentro')
+        ->middleware('can:isAdmin');
+
+//ADMIN aggiunta tecnico esterno
+
+Route::get('/AggiungiTecnicoEsterno', 'AdminController@formAggiungiTecnicoEsterno')
+        ->name('formAggiungiTecnicoEsterno')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::post('/AggiungiTecnicoEsterno', 'AdminController@aggiungiTecnicoEsterno')
+        ->name('AggiungiTecnicoEsterno')
+        ->middleware('can:isAdmin');
+
+//ADMIN eliminazione utente che sia tecnico o staff
+
+Route::get('EliminaUtente/{id}', 'AdminController@cancella')
+        ->name('EliminaUtente')
+        ->middleware('can:isAdmin');
+
+//GESIONE PRODOTTO
+
+//ADMIN inserimento prodotto
+
+Route::get('/inserisciProdotto', 'AdminController@mostraFormInserimentoProdotto')
+        ->name('inserisciProdotto')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::post('/inserisciProdotto', 'AdminController@inserisci')
+        ->name('inserisci')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::get('/EliminaProdotto/{id}', 'AdminController@eliminaProdotto')
+        ->name('EliminaProdotto')
+        ->middleware('can:isAdmin');
+
+//ADMIN modifica prodotto
+
+Route::get('/ModificaProdotto/{codice_prodotto}/modifica', 'AdminController@formModificaProdotto')
+        ->name('ModificaProdotto')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::resource('prod', 'ControllerProdotto')->middleware('can:isAdmin');
+
+//ADMIN visualizzazione delle pagine per la gestione di interventi e malfunzionamenti
 
 Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}', 'AdminController@AdminGestioneMalfunzionamenti')
         ->name('gestioneMalfunzionamentiProdotto')
@@ -166,15 +221,7 @@ Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneIn
         ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
-Route::get('/EliminaProdotto/{id}', 'AdminController@eliminaProdotto')
-        ->name('EliminaProdotto')
-        ->middleware('can:isAdmin');
-
-//malfunzionamenti
-
-Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/EliminaMalfunzionamento/{codice_malfunzionamento}', 'AdminController@eliminaMalfunzionamento')
-        ->name('eliminaMalfuzionamentoAdmin')
-        ->middleware('can:isAdmin');
+//ADMIN gestione malfunzionamenti
 
 Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'AdminController@formInserisciMalfunzionamentoAdmin')
         ->name('inserisciMalfunzionamento');
@@ -182,7 +229,19 @@ Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMa
 Route::post('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'AdminController@inserisciMalfunzionamentoAdmin')
         ->name('AggiungiMalfunzionamento');
 
-//interventi
+Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/EliminaMalfunzionamento/{codice_malfunzionamento}', 'AdminController@eliminaMalfunzionamento')
+        ->name('eliminaMalfuzionamentoAdmin')
+        ->middleware('can:isAdmin');
+
+//ADMIN e STAFF modifica malfunzionamento
+
+Route::get('/ModificaMalfunzionamento/{codice_malfunzionamento}/modifica', 'ControllerMalfunzionamento@formModificaMalfunzionamento')
+        ->name('ModificaMalfunzionamento')
+        ->middleware('preventBackHistory');
+
+Route::resource('malf', 'ControllerMalfunzionamento');
+
+//ADMIN gestione interventi
 
 Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}/AggiungiIntervento', 'AdminController@formInserisciInterventoAdmin')
         ->name('inserisciIntervento')
@@ -196,36 +255,7 @@ Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneIn
         ->name('eliminaInterventoAdmin')
         ->middleware('can:isAdmin');
 
-//inserimento prodotto
-
-Route::get('/inserisciProdotto', 'AdminController@mostraFormInserimentoProdotto')
-        ->name('inserisciProdotto')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
-Route::post('/inserisciProdotto', 'AdminController@inserisci')
-        ->name('inserisci')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
-//ADMIN modifica prodotto
-
-Route::get('/ModificaProdotto/{codice_prodotto}/modifica', 'AdminController@formModificaProdotto')
-        ->name('ModificaProdotto')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
-Route::resource('prod', 'ControllerProdotto')->middleware('can:isAdmin');
-
-//modifica malfunzionamento
-
-Route::get('/ModificaMalfunzionamento/{codice_malfunzionamento}/modifica', 'ControllerMalfunzionamento@formModificaMalfunzionamento')
-        ->name('ModificaMalfunzionamento')
-        ->middleware('preventBackHistory');
-
-Route::resource('malf', 'ControllerMalfunzionamento');
-
-//modifica intervento
+//ADMIN e STAFF modifica intervento
 
 Route::get('/ModificaIntervento/{codice_intervento}/modifica', 'ControllerIntervento@formModificaIntervento')
         ->name('ModificaIntervento')
@@ -233,16 +263,20 @@ Route::get('/ModificaIntervento/{codice_intervento}/modifica', 'ControllerInterv
 
 Route::resource('interv', 'ControllerIntervento');
 
-//rotte staff (utente livello 3)
+//rotte STAFF (utente livello 3)
 Route::view('/staff', 'AreaUtente3')
         ->name('staff')
         ->middleware('can:isStaff')
         ->middleware('preventBackHistory');
 
+//STAFF gestione prodotti
+
 Route::get('/gestioneProdotti/{id}', 'ControllerLivello3@mostraGestioneProdotti')
         ->name('gestioneProdotti')
         ->middleware('can:isStaff')
         ->middleware('preventBackHistory');
+
+//STAFF visualizzazione delle pagine per la gestione di interventi e malfunzionamenti
 
 Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}', 'ControllerLivello3@mostraGestioneMalfunzionamenti')
         ->name('gestioneMalfunzionamenti')
@@ -254,7 +288,7 @@ Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/Ge
         ->middleware('can:isStaff')
         ->middleware('preventBackHistory');
 
-//malfunzionamenti
+//STAFF gestione malfunzionamenti
 
 Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'ControllerLivello3@formInserisciMalfunzionamento')
         ->name('inserisciMalfunzionamentoStaff');
@@ -266,7 +300,7 @@ Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/El
         ->name('eliminaMalfunzionamentoStaff')
         ->middleware('can:isStaff');
 
-//interventi
+//STAFF gestione interventi
 
 Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}/AggiungiIntervento', 'ControllerLivello3@formInserisciIntervento')
         ->name('inserisciInterventoStaff')
@@ -281,16 +315,6 @@ Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/Ge
         ->middleware('can:isStaff');
 
 Route::resource('staff', 'ControllerLivello3');
-
-Route::get('/ModificaEvento/{id}/modifica', 'ControllerLivello3@modificaEvento')
-        ->name('ModificaEvento')
-        ->middleware('can:isOrganizer')
-        ->middleware('preventBackHistory');
-
-Route::get('/statisticheOrga/{codice_evento}/vedi', 'ControllerLivello3@statistiche')
-        ->name('statisticheOrga')
-        ->middleware('can:isOrganizer')
-        ->middleware('preventBackHistory');
 
 
 
