@@ -344,57 +344,6 @@ class AdminController extends Controller {
         return redirect('gestioneUtenti');
     }
 
-    public function FormOrganizzatori($id) {
-        
-        $organizzatore= Utente::find($id);
-        return view('ModificaOrganizzatore', ['organizzatore' => $organizzatore]);
-    }
 
-
-    
-    public function statistiche($id) {
-        $organizzatore=Utente::find($id);
-        $tutti_eventi=Evento::all();
-        $id_eventi=[];
-        $tutti_biglietti=Biglietto::all();
-        $biglietti=[];
-        $incasso=0;
-        $biglietti_totali=0;
-        $biglietti_rimasti=0;
-        $biglietti_venduti=0;
-        $percentuale = 0;
-        
-        foreach ($tutti_eventi as $evento){
-            if ($evento->societa_organizzatrice==$organizzatore->nome_societa_organizzatrice){
-            array_push($id_eventi,$evento->codice_evento);
-            $biglietti_totali=$biglietti_totali+$evento->totale_biglietti_evento;
-            $biglietti_rimasti=$biglietti_rimasti+$evento->biglietti_rimanenti;
-            }
-        }
-        foreach ($tutti_biglietti as $biglietto) {
-            foreach ($id_eventi as $id){
-                if($biglietto->codice_evento==$id){
-                    array_push($biglietti,$biglietto);
-                }
-            }
-        }
-        foreach ($biglietti as $bigl){
-            $incasso=$incasso+$bigl->prezzo_acquisto;
-            $biglietti_venduti=$biglietti_venduti+$bigl->quantita;
-        }
-        
-        if($biglietti_totali != 0){
-            $percentuale = round((($biglietti_venduti*100)/$biglietti_totali),2);
-        }
-        
-        $percent_bv=$percentuale;
-       
-        return view('Statistiche', ['organizzatore' => $organizzatore,
-                                    'incasso'=>$incasso,
-                                    'biglietti_venduti'=>$biglietti_venduti,
-                                    'biglietti_totali'=>$biglietti_totali,
-                                    'biglietti_rimasti'=>$biglietti_rimasti,
-                                    'percent_bv'=>$percent_bv]); 
-    }
 
 }
