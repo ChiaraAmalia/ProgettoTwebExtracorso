@@ -96,7 +96,7 @@
    </table>
         
    <div class="headertable">CENTRI DI ASSISTENZA ESTERNI
-    <a href="{{route('AggiungiFAQ')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
+    <a href="{{route('formAggiungiCentroEsterno')}}"><button class="btn btn-sm" type="button">Inserisci nuovo</button></a>
    </div>
    <table class="user" cellspacing="0">
       <tr>

@@ -17,6 +17,7 @@ use App\Http\Requests\NuovoTecnicoRequest;
 use App\Http\Requests\NuovoStaffRequest;
 use App\Http\Requests\NuovoMalfunzionamentoRequest;
 use App\Http\Requests\NuovoInterventoRequest;
+use App\Http\Requests\NuovoCentroEsternoRequest;
 use App\Http\Requests\NuovaFaqRequest;
 
 
@@ -255,6 +256,28 @@ class AdminController extends Controller {
         $tecnico->sesso=$request->sesso;
         $tecnico->cellulare=$request->cellulare;
         $tecnico->save();
+
+        return redirect('gestioneUtenti');
+    }
+    
+    public function formAggiungiCentroEsterno(){
+
+        return view('AggiuntaCentroEsterno');
+                    
+    }
+    
+    public function aggiungiCentroEsterno(NuovoCentroEsternoRequest $request) {
+        
+        $centro = new CentroAssistenza;
+        $centro->fill($request->validated());
+        $centro->tipologia='esterna';
+        $centro->nome_centro = $request->nome_centro;
+        $centro->indirizzo=$request->indirizzo;
+        $centro->citta=$request->citta;
+        $centro->cap=$request->cap;
+        $centro->telefono=$request->telefono;
+        $centro->descrizione=$request->descrizione;
+        $centro->save();
 
         return redirect('gestioneUtenti');
     }

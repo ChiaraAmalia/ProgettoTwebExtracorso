@@ -99,6 +99,15 @@ Route::post('/AggiungiTecnicoInterno', 'AdminController@aggiungiTecnicoInterno')
 
 //admin aggiunta centro assistenza esterno
 
+Route::get('/AggiungiCentroEsterno', 'AdminController@formAggiungiCentroEsterno')
+        ->name('formAggiungiCentroEsterno')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::post('/AggiungiCentroEsterno', 'AdminController@aggiungiCentroEsterno')
+        ->name('AggiungiCentroEsterno')
+        ->middleware('can:isAdmin');
+
 //admin aggiunta tecnico esterno
 
 Route::get('/AggiungiTecnicoEsterno', 'AdminController@formAggiungiTecnicoEsterno')
