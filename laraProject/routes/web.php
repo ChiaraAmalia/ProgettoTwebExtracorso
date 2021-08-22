@@ -176,6 +176,25 @@ Route::post('/AggiungiTecnicoEsterno', 'AdminController@aggiungiTecnicoEsterno')
         ->name('AggiungiTecnicoEsterno')
         ->middleware('can:isAdmin');
 
+//ADMIN modifica tecnico
+
+Route::get('/ModificaTecnico/{id}/modifica', 'AdminController@formModificaTecnico')
+        ->name('ModificaTecnico')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+Route::resource('tecnicoModifica', 'ControllerModificaTecnico')->middleware('can:isAdmin');
+
+//ADMIN modifica staff
+
+Route::get('/ModificaStaff/{id}/modifica', 'AdminController@formModificaStaff')
+        ->name('ModificaStaff')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
+
+
+Route::resource('staffModifica', 'ControllerModificaStaff')->middleware('can:isAdmin');
+
 //ADMIN eliminazione utente che sia tecnico o staff
 
 Route::get('EliminaUtente/{id}', 'AdminController@cancella')

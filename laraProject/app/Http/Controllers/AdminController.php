@@ -254,6 +254,28 @@ class AdminController extends Controller {
         return redirect('gestioneUtenti');
     }
     
+        
+    public function formModificaTecnico($id) {
+        
+        $tecnico = Utente::find($id);
+        if($tecnico->occupazione == 'interna'){
+            $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenzaInterni()->pluck('codice_centro','codice_centro');
+            return view('ModificaTecnico', ['tecnico' => $tecnico, 'filtro_codice' => $filtro_codice]);
+        }
+        elseif($tecnico->occupazione == 'esterna'){
+            $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenzaEsterni()->pluck('codice_centro','codice_centro');
+            return view('ModificaTecnico', ['tecnico' => $tecnico, 'filtro_codice' => $filtro_codice]);
+        }
+    }
+    
+    public function formModificaStaff($id){
+        
+        $staff = Utente::find($id);
+        
+        return view ('ModificaStaff') 
+                    ->with('staff', $staff);
+    }
+    
     public function formAggiungiCentroEsterno(){
 
         return view('AggiuntaCentroEsterno');
