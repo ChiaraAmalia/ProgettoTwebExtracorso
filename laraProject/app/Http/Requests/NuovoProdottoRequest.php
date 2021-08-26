@@ -29,10 +29,10 @@ class NuovoProdottoRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'nome_prodotto' => 'required|max:100',
+            'nome_prodotto' => 'required',
             'tipologia' => 'required',
-            'rumore' => 'required|max:20',
-            'consumo_en_annuo' => 'required|max:20',
+            'rumore' => 'required',
+            'consumo_en_annuo' => 'required',
             'luce_interna' => 'required',
             'programmi' => 'required|max:2500',
             'classe_energetica' => 'required',

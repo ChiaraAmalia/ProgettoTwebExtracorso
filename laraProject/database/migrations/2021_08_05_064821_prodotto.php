@@ -16,7 +16,7 @@ class Prodotto extends Migration
         Schema::create('prodotto', function (Blueprint $table){
             $table->bigIncrements('codice_prodotto')->unsigned()->index();
             $table->string('nome_prodotto')->nullable();
-            $table->enum('tipologia',['lavatrice','lavastoviglie','forno','frigorifero','asciugatrice']);
+            $table->enum('tipologia',['lavatrice','lavastoviglie','forno','frigorifero','asciugatrice'])->nullable();;
             $table->string('rumore')->nullable();
             $table->string('consumo_en_annuo')->nullable();
             $table->string('luce_interna')->nullable();
