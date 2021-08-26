@@ -20,16 +20,18 @@ class Catalogo {
 
         return Prodotto::where('codice_prodotto', $codice_prodotto)->first();
     }
-
+    
     public function getProdottiFiltrati($descrizione = null) {
         
         $nasterisco = substr_count($descrizione, '*');
         if($nasterisco == 1){
-            $asterisco = str_replace("*", "", $descrizione);
-            return Prodotto::where('descrizione', 'LIKE', '%' . $asterisco . '%')->get();                      
+            if(substr_compare($descrizione, '*', -strlen('*')) === 0){
+                $asterisco = str_replace("*", "",$descrizione);
+                return Prodotto::where('descrizione', 'LIKE', '%' . $asterisco . '%')->get();
+            }
         }
         else if($nasterisco == 0){
-            return Prodotto::where('descrizione', 'LIKE', '%' . $descrizione . '%')->get(); 
+            return Prodotto::where('descrizione', $descrizione)->get(); 
         }
     }
 
