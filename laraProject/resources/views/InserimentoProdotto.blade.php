@@ -1,7 +1,7 @@
 
 @extends('layout.zonaAdmin')
 
-@section('title', 'Inserimento Evento')
+@section('title', 'Inserimento Prodotto')
 
 
 @section('scripts')
