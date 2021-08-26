@@ -210,8 +210,10 @@ Route::get('/inserisciProdotto', 'AdminController@mostraFormInserimentoProdotto'
         ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
-Route::post('/inserisciProdotto', 'AdminController@inserisci')
-        ->name('inserisci');
+Route::post('/inserisciProdotto', 'AdminController@inserisciProdotto')
+        ->name('inserisci')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
 
 Route::get('/EliminaProdotto/{id}', 'AdminController@eliminaProdotto')
         ->name('EliminaProdotto')

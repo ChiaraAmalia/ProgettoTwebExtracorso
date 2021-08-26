@@ -66,7 +66,7 @@ class AdminController extends Controller {
         return view('InserimentoProdotto');
     }
     
-    public function inserisci(NuovoProdottoRequest $request) {
+    public function inserisciProdotto(NuovoProdottoRequest $request) {
         if ($request->hasFile('immagine')) {
             $image = $request->file('immagine');
             $imageName = $image->getClientOriginalName();
