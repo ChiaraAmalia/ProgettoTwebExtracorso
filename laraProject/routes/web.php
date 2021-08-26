@@ -258,7 +258,6 @@ Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/EliminaMal
 
 Route::get('/ModificaMalfunzionamento/{codice_malfunzionamento}/modifica', 'ControllerMalfunzionamento@formModificaMalfunzionamento')
         ->name('ModificaMalfunzionamento')
-        ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
 Route::resource('malf', 'ControllerMalfunzionamento');
@@ -282,7 +281,6 @@ Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneIn
 
 Route::get('/ModificaIntervento/{codice_intervento}/modifica', 'ControllerIntervento@formModificaIntervento')
         ->name('ModificaIntervento')
-        ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
 Route::resource('interv', 'ControllerIntervento');
