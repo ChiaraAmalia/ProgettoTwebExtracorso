@@ -1,4 +1,4 @@
-@extends('layout.zonaUtente3')
+@extends('layout.zonaAdmin')
 
 @section('title', 'Inserimento Prodotto')
 

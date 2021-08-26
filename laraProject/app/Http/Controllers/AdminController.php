@@ -94,7 +94,7 @@ class AdminController extends Controller {
             $image->move($destinationPath, $imageName);
         }
 
-        return response()->json(['redirect' => route('admin')]);
+        return response()->json(['redirect' => route('catalogo')]);
     }
     
     public function formModificaProdotto($codice_prodotto) {

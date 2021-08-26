@@ -30,6 +30,7 @@ class NuovoProdottoRequest extends FormRequest {
     public function rules() {
         return [
             'nome_prodotto' => 'required',
+            'image' => 'file|max:1024',
             'tipologia' => 'required',
             'rumore' => 'required',
             'consumo_en_annuo' => 'required',
