@@ -85,7 +85,7 @@
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                     <div class="d-flex flex-column mt-4">
                         <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
-                            <button class="btn btn-primary btn-sm" type="button" style='background-color: #ff8c00;text-shadow: 2px 2px 4px black;'>Dettagli</button>
+                            <button class="btn btn-primary btn-sm" type="button" style='background-color: #ff8c00;text-shadow: 2px 2px 4px black;'>Scheda tecnica</button>
                         </a>
                         @can('isStaff')
                         @if($prodotto->tipologia==Auth::user()->specializzazione)

@@ -47,7 +47,7 @@
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                     <div class="d-flex flex-column mt-4">
                         <a href="{{route('dettagliProdotto',[$prodotto->codice_prodotto])}}">
-                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Dettagli</button>
+                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">Scheda tecnica</button>
                         </a>
                         <a href="{{route('gestioneMalfunzionamenti',[Auth::user()->id,$prodotto->codice_prodotto])}}">
                             <button class="btn btn-outline-primary btn-sm mt-2" type="button">Gestione Malfunzionamenti</button>

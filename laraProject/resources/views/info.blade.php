@@ -56,9 +56,9 @@
                         <figure><img src="images/catalogo1.jpg" alt="img" /></figure>
                         <h3>Utilizzo del catalogo:</h3>
                         
-                        <p> Nel catalogo è possibile trovare i nostri prodotti con la relativa scheda tecnica associata a ciascun prodotto.
-                        Nella scheda tecnica di ogni prodotto è possibile visualizzare la foto e un'eventuale descrizione, le tecniche di buon uso,
-                        modalità di installazione, malfunzionamenti associati con eventuale descrizione riguardante gli interventi tecnici da eseguire.</p>
+                        <p> Nel catalogo è possibile trovare i nostri prodotti con la relativa scheda tecnica associata.
+                        Nella scheda tecnica di ogni prodotto è possibile visualizzare la foto del prodotto, informazioni generali e un'eventuale descrizione, le tecniche di buon uso,
+                        modalità di installazione ed, effettuato il login, anche i malfunzionamenti e i relativi interventi.</p>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
@@ -68,8 +68,7 @@
                         
                         <p> Ciascun tecnico, messo a disposizione dalla nostra azienda, è in grado di risolvere qualsiasi problema gli si presenti sottomano.
                         Attraverso il catalogo, ciascun tecnico può accedere alla scheda tecnica di ogni prodotto e visualizzare eventuali descrizioni riguardanti i malfunzionamenti 
-                        riscontrati con il prodotto. Associata a ciascun malfunzionamento, è possibile prendere visione della soluzione al problema, aggiustando l'elettrodomestico
-                        in modo tempestivo.</p>
+                        riscontrati con il prodotto. Associati a ciascun malfunzionamento, è possibile prendere visione degli interventi da effettuare sul prodotto.</p>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
@@ -77,7 +76,7 @@
                         <figure><img src="images/cerca2.jpg" alt="img" /></figure>
                         <h3>Ricerca dei prodotti nel catalogo:</h3>
                         
-                        <p>Viene messa, a disposizione degli utenti, la possibilità di ricercare i prodotti all'interno del catalogo, eventualmente attraverso l'uso del carattere wild-card "*",
+                        <p>Viene messa, a disposizione degli utenti, la possibilità di ricercare i prodotti all'interno del catalogo, mediante la sua descrizione, eventualmente parziale, attraverso l'uso del carattere wild-card "*",
                         ammesso solo come ultimo carattere del pattern di ricerca(ad esempio, "lav*" permette di estrarre le schede tecniche di lavatrici, lavastoviglie, ecc...).</p>
                     </div>
                 </div>

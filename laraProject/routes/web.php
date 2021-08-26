@@ -212,8 +212,7 @@ Route::get('/inserisciProdotto', 'AdminController@mostraFormInserimentoProdotto'
 
 Route::post('/inserisciProdotto', 'AdminController@inserisci')
         ->name('inserisci')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
+        ->middleware('can:isAdmin');
 
 Route::get('/EliminaProdotto/{id}', 'AdminController@eliminaProdotto')
         ->name('EliminaProdotto')
@@ -243,10 +242,13 @@ Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneIn
 //ADMIN gestione malfunzionamenti
 
 Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'AdminController@formInserisciMalfunzionamentoAdmin')
-        ->name('inserisciMalfunzionamento');
+        ->name('inserisciMalfunzionamento')
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
 
 Route::post('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'AdminController@inserisciMalfunzionamentoAdmin')
-        ->name('AggiungiMalfunzionamento');
+        ->name('AggiungiMalfunzionamento')
+        ->middleware('can:isAdmin');
 
 Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/EliminaMalfunzionamento/{codice_malfunzionamento}', 'AdminController@eliminaMalfunzionamento')
         ->name('eliminaMalfuzionamentoAdmin')
@@ -256,6 +258,7 @@ Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/EliminaMal
 
 Route::get('/ModificaMalfunzionamento/{codice_malfunzionamento}/modifica', 'ControllerMalfunzionamento@formModificaMalfunzionamento')
         ->name('ModificaMalfunzionamento')
+        ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
 Route::resource('malf', 'ControllerMalfunzionamento');
@@ -264,7 +267,8 @@ Route::resource('malf', 'ControllerMalfunzionamento');
 
 Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}/AggiungiIntervento', 'AdminController@formInserisciInterventoAdmin')
         ->name('inserisciIntervento')
-        ->middleware('can:isAdmin');
+        ->middleware('can:isAdmin')
+        ->middleware('preventBackHistory');
 
 Route::post('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}/AggiungiIntervento', 'AdminController@inserisciInterventoAdmin')
         ->name('AggiungiIntervento')
@@ -278,6 +282,7 @@ Route::get('/catalogo/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneIn
 
 Route::get('/ModificaIntervento/{codice_intervento}/modifica', 'ControllerIntervento@formModificaIntervento')
         ->name('ModificaIntervento')
+        ->middleware('can:isAdmin')
         ->middleware('preventBackHistory');
 
 Route::resource('interv', 'ControllerIntervento');
@@ -310,10 +315,13 @@ Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/Ge
 //STAFF gestione malfunzionamenti
 
 Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'ControllerLivello3@formInserisciMalfunzionamento')
-        ->name('inserisciMalfunzionamentoStaff');
+        ->name('inserisciMalfunzionamentoStaff')
+        ->middleware('can:isStaff')
+        ->middleware('preventBackHistory');
 
 Route::post('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/AggiungiMalfunzionamento', 'ControllerLivello3@inserisciMalfunzionamento')
-        ->name('AggiungiMalfunzionamentoStaff');
+        ->name('AggiungiMalfunzionamentoStaff')
+        ->middleware('can:isStaff');
 
 Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/EliminaMalfunzionamento/{codice_malfunzionamento}', 'ControllerLivello3@eliminaMalfunzionamento')
         ->name('eliminaMalfunzionamentoStaff')
@@ -323,7 +331,8 @@ Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/El
 
 Route::get('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}/AggiungiIntervento', 'ControllerLivello3@formInserisciIntervento')
         ->name('inserisciInterventoStaff')
-        ->middleware('can:isStaff');
+        ->middleware('can:isStaff')
+        ->middleware('preventBackHistory');
 
 Route::post('/gestioneProdotti/{id}/GestioneMalfunzionamenti/{codice_prodotto}/GestioneInterventi/{codice_malfunzionamento}/AggiungiIntervento', 'ControllerLivello3@inserisciIntervento')
         ->name('AggiungiInterventoStaff')
