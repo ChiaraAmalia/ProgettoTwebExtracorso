@@ -6,9 +6,9 @@
                             <li>Tel. 0714599670</li>
                             <li>e-mail: info@electrostar.it</li>
                             <li>P.IVA: 0123456789</li>
-                            <!--<li>
-                                <a href="{{ asset('/Relazionenostra.pdf') }}">Documentazione del progetto</a>
-                            </li>-->
+                            <li>
+                                <a href="{{ asset('/Relazione.pdf') }}">Documentazione del progetto</a>
+                            </li>
                 </ul>             
         </div>
 </footer>

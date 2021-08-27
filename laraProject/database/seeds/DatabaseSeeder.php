@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
               'cap' => 90128, 'sesso' => 'F', 'cellulare' => 3333332548],
             [ 'codice_centro' => 10, 'username' => 'tecnico10', 'password' => Hash::make('Giovannina'), 'categoria' => 'tecnico', 'specializzazione' => Null, 'occupazione' => 'interna',
               'nome_centro' => 'ElectroStar Roma', 'email' => 'giovanna.rita@alise.it', 'email_verified_at' => Null, 'nome' => 'Giovanna', 'cognome' => 'Verdi', 'via' => 'Sarti', 'citta' => 'Perugia',
-              'cap' => 34572, 'sesso' => 'F', 'cellulare' => 39384729184],            
+              'cap' => 34572, 'sesso' => 'F', 'cellulare' => 3938472918],            
             [ 'codice_centro' => Null, 'username' => 'staffstaff', 'password' => Hash::make('iQRzJDM0'), 'categoria' => 'staff', 'specializzazione' => 'lavatrice', 'occupazione' => NULL,
               'nome_centro' => Null, 'email' => 'marco.ferrero7@pmail.com', 'email_verified_at' => Null, 'nome' => 'Marco', 'cognome' => 'Ferrero', 'via' => 'Sudini', 'citta' => 'Roma',
               'cap' => 23918, 'sesso' => 'M', 'cellulare' => 3920173645],

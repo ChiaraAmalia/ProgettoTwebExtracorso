@@ -63,7 +63,7 @@ class ControllerPubblico extends Controller {
  
     public function mostraDettagli($codice_prodotto) {
 
-        //Mostra la finestra con i dettagli dell'evento selezionato
+        //Mostra la finestra con i dettagli del prodotto selezionato
         $prodotto = $this->_catalogoModel->getProdottoByCodice($codice_prodotto);
         $malfunzionamenti = $this->_malfunzionamentiModel->getMalfunzionamentiProdotto($codice_prodotto);
         $nome_prodotto = $prodotto->nome_prodotto;

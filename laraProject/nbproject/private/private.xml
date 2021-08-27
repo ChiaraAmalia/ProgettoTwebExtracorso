@@ -3,10 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Progetto_Extracorso/ProgettoTwebExtracorso/laraProject/resources/views/ModificaStaff.blade.php</file>
-            <file>file:/C:/xampp/htdocs/Progetto_Extracorso/ProgettoTwebExtracorso/laraProject/app/Http/Controllers/AdminController.php</file>
-            <file>file:/C:/xampp/htdocs/Progetto_Extracorso/ProgettoTwebExtracorso/laraProject/routes/web.php</file>
-            <file>file:/C:/xampp/htdocs/Progetto_Extracorso/ProgettoTwebExtracorso/laraProject/app/Http/Controllers/ControllerModificaStaff.php</file>
+            <file>file:/C:/xampp/htdocs/Progetto_Extracorso/ProgettoTwebExtracorso/laraProject/resources/views/layout/footer.blade.php</file>
         </group>
     </open-files>
 </project-private>

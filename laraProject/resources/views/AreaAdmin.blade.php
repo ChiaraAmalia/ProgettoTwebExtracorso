@@ -19,6 +19,9 @@
                 <a href="{{ route('gestioneUtenti') }}" title="gestioneUtenti">
                     <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Gestione utenti"/>
                 </a>
+                <a href="{{ route('catalogo') }}" title="gestioneProdotti">
+                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Gestione Prodotti"/>
+                </a>
         </div>
     </div>
 </div>
