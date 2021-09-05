@@ -28,7 +28,7 @@
                         <h3>Chi siamo?</h3>
                         
                         <p> ElectroStar è un'azienda che vende elettrodomestici su tutto il territorio nazionale come
-                        frigoriferi, televisori, lavatrici, lavastoviglie, forni elettrici, piani cottura e molte altre
+                        frigoriferi, lavatrici, lavastoviglie, forni elettrici, asciugatrici e molte altre
                         attrezzature per la casa</p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                         <figure><img src="images/iscr1.jpg" alt="img" /></figure>
                         <h3>I nostri centri assistenza:</h3>
                         
-                        <p>Abbiamo centri assistenza sparsi su tutto il territorio nazionale, per soffisfare al meglio la nostra clientela.
+                        <p>Abbiamo centri assistenza sparsi su tutto il territorio nazionale, per soddisfare al meglio la nostra clientela.
                         Se vuoi lavorare presso uno dei nostri centri, scrivici al seguente indirizzo <a href= "mailto:tecnologiewebprogettotw@gmail.com"> e-mail.</a></p>
                     </div> 
                 </div>
@@ -48,7 +48,7 @@
                         <h3>I nostri tecnici:</h3>
                         
                         <p>Prepariamo i nostri tecnici con un corso di formazione approfondito, per un totale di 50 ore, in modo tale
-                            che i nostri tecnici siano sempre pronti a risolvere le problematiche dei nostri elettrodomestici.<br></p>
+                            che siano sempre pronti a risolvere le problematiche dei nostri elettrodomestici.<br></p>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
@@ -85,13 +85,13 @@
             <br><br><h1>Centri assistenza presenti sul nostro territorio</h1>
             <div>
                 <center>
-                <table class="tab-info" style="width: 80%;">
+                <table class="tab-info" style="width: 75%;">
 
                     <tr><th colspan="6">Centri assistenza esterni all'azienda</th></tr> 
-                    <tr><th>Nome Centro</th><th>Indirizzo</th><th>Città</th><th>CAP</th><th>Telefono</th><th>Tipologia</th></tr> 
+                    <tr><th>Nome Centro</th><th>Indirizzo</th><th>Città</th><th>CAP</th><th>Telefono</th></tr> 
                         @isset($centri)
                         @foreach ($centri as $centro)
-                    <tr><th>{{ $centro->nome_centro }}</th><td>{{ $centro->indirizzo }}</td><td>{{ $centro->citta }}</td><td>{{ $centro->cap }}</td><td>{{ $centro->telefono }}</td><td>{{ $centro->tipologia }}</td></tr>
+                    <tr><th>{{ $centro->nome_centro }}</th><td>{{ $centro->indirizzo }}</td><td>{{ $centro->citta }}</td><td>{{ $centro->cap }}</td><td>{{ $centro->telefono }}</td></tr>
                         @endforeach
                         @endisset
                 </table>

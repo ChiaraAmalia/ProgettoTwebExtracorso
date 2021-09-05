@@ -24,7 +24,7 @@ class AggiornamentoFaqRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'domanda' => 'required|string|unique:faq|max:255',
+            'domanda' => 'required|string|max:255',
             'risposta' => 'required|string|max:255'
             
         ];

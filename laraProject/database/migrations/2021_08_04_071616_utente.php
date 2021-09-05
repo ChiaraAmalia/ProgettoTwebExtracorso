@@ -21,7 +21,6 @@ class Utente extends Migration
             $table->string('password');
             $table->enum('categoria',['tecnico','staff','amministratore']);
             $table->enum('specializzazione',['lavatrice','lavastoviglie','forno','frigorifero','asciugatrice'])->nullable();
-            $table->enum('occupazione',['interna','esterna'])->nullable();
             $table->string('nome_centro',200)->nullable();
             $table->string('email',40)->unique();
             $table->timestamp('email_verified_at')->nullable();

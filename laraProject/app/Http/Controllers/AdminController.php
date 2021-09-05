@@ -187,33 +187,23 @@ class AdminController extends Controller {
     public function vediUtenti(){
         $utenti=Utente::all();
         $centri = CentroAssistenza::all();
-        $tecniciInterni=[];
         $tecniciEsterni=[];
         $staff=[];
         $centriEsterni=[];
-        $centriInterni=[];
         foreach ($utenti as $utente){
             if ($utente->categoria=='staff'){
                 array_push($staff,$utente);
-            }else if ($utente->categoria=='tecnico' and $utente->occupazione=='interna'){
-                array_push($tecniciInterni,$utente);
-            }else if ($utente->categoria=='tecnico' and $utente->occupazione=='esterna'){
+            }else if ($utente->categoria=='tecnico'){
                 array_push($tecniciEsterni,$utente);
             }
         }
         foreach ($centri as $centro){
-            if ($centro->tipologia=='esterna'){
-                array_push($centriEsterni,$centro);
-            }else if($centro->tipologia=='interna'){
-                array_push($centriInterni,$centro);
-            }     
+            array_push($centriEsterni,$centro);   
         }
             
         return view('gestioneUtenti', ['staff' => $staff,
-                                    'tecniciInterni'=>$tecniciInterni,
                                     'tecniciEsterni'=>$tecniciEsterni,
-                                    'centriEsterni'=>$centriEsterni,
-                                    'centriInterni'=>$centriInterni]);
+                                    'centriEsterni'=>$centriEsterni]);
     }
     
     public function cancella($id) {
@@ -222,50 +212,12 @@ class AdminController extends Controller {
         return redirect('gestioneUtenti');
     }
     
-    public function formAggiungiTecnicoInterno(){
-        
-        $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenzaInterni()->pluck('codice_centro','codice_centro');
-        return view('RegistrazioneTecnicoInterno')
-                    ->with('filtro_codice', $filtro_codice);
-    }
-    
-    public function aggiungiTecnicoInterno(NuovoTecnicoRequest $request) {
-        
-        $tecnico = new Utente;
-        $tecnico->fill($request->validated());
-        $centro = CentroAssistenza::where('codice_centro', '=', $request->codice_centro)->value('nome_centro');
-        $tecnico->codice_centro = $request->codice_centro;
-        $tecnico->username=$request->username;
-        $tecnico->password=Hash::make($request->password);
-        $tecnico->categoria='tecnico';
-        $tecnico->specializzazione = NULL;
-        $tecnico->occupazione = 'interna';
-        $tecnico->nome_centro = $centro;
-        $tecnico->email=$request->email;
-        $tecnico->nome=$request->nome;
-        $tecnico->cognome=$request->cognome;
-        $tecnico->via=$request->via;
-        $tecnico->citta=$request->citta;
-        $tecnico->cap=$request->cap;
-        $tecnico->sesso=$request->sesso;
-        $tecnico->cellulare=$request->cellulare;
-        $tecnico->save();
-
-        return redirect('gestioneUtenti');
-    }
-    
         
     public function formModificaTecnico($id) {
         
         $tecnico = Utente::find($id);
-        if($tecnico->occupazione == 'interna'){
-            $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenzaInterni()->pluck('codice_centro','codice_centro');
-            return view('ModificaTecnico', ['tecnico' => $tecnico, 'filtro_codice' => $filtro_codice]);
-        }
-        elseif($tecnico->occupazione == 'esterna'){
-            $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenzaEsterni()->pluck('codice_centro','codice_centro');
-            return view('ModificaTecnico', ['tecnico' => $tecnico, 'filtro_codice' => $filtro_codice]);
-        }
+        $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenza()->pluck('codice_centro','codice_centro');
+        return view('ModificaTecnico', ['tecnico' => $tecnico, 'filtro_codice' => $filtro_codice]);
     }
     
     public function formModificaStaff($id){
@@ -286,7 +238,6 @@ class AdminController extends Controller {
         
         $centro = new CentroAssistenza;
         $centro->fill($request->validated());
-        $centro->tipologia='esterna';
         $centro->nome_centro = $request->nome_centro;
         $centro->indirizzo=$request->indirizzo;
         $centro->citta=$request->citta;
@@ -334,7 +285,7 @@ class AdminController extends Controller {
     
     public function formAggiungiTecnicoEsterno(){
         
-        $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenzaEsterni()->pluck('codice_centro','codice_centro');
+        $filtro_codice = $this->_centriAssistenzaModel->getCentriAssistenza()->pluck('codice_centro','codice_centro');
         return view('RegistrazioneTecnicoEsterno')
                     ->with('filtro_codice', $filtro_codice);
     }
@@ -349,7 +300,6 @@ class AdminController extends Controller {
         $tecnico->password=Hash::make($request->password);
         $tecnico->categoria='tecnico';
         $tecnico->specializzazione = NULL;
-        $tecnico->occupazione = 'esterna';
         $tecnico->nome_centro = $centro;
         $tecnico->email=$request->email;
         $tecnico->nome=$request->nome;
@@ -379,7 +329,6 @@ class AdminController extends Controller {
         $staff->password=Hash::make($request->password);
         $staff->categoria='staff';
         $staff->specializzazione = $request->specializzazione;
-        $staff->occupazione = NULL;
         $staff->nome_centro = NULL;
         $staff->email=$request->email;
         $staff->nome=$request->nome;

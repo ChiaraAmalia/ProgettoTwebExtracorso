@@ -128,17 +128,6 @@ Route::post('/AggiungiStaff', 'AdminController@aggiungiStaff')
         ->name('AggiungiStaff')
         ->middleware('can:isAdmin');
 
-//ADMIN aggiunta tecnico interno
-
-Route::get('/AggiungiTecnicoInterno', 'AdminController@formAggiungiTecnicoInterno')
-        ->name('formAggiungiTecnicoInterno')
-        ->middleware('can:isAdmin')
-        ->middleware('preventBackHistory');
-
-Route::post('/AggiungiTecnicoInterno', 'AdminController@aggiungiTecnicoInterno')
-        ->name('AggiungiTecnicoInterno')
-        ->middleware('can:isAdmin');
-
 //ADMIN aggiunta centro assistenza esterno
 
 Route::get('/AggiungiCentroEsterno', 'AdminController@formAggiungiCentroEsterno')
