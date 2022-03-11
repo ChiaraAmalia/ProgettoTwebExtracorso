@@ -58,31 +58,31 @@ Viene implementata anche qui la funzionalità di logout, per terminare la propri
 ### LEGENDA
 
 <p align="center">
-<img src="https://github.com/ChiaraAmalia/ProgettoTWEB/blob/main/imm/legenda.png">
+<img src="https://github.com/ChiaraAmalia/ProgettoTWEBExtracorso/blob/main/imm/legenda.png">
 </p>
   
 ### Livello “OSPITE”:
 
 <p align="center">
-<img src="https://github.com/ChiaraAmalia/ProgettoTWEB/blob/main/imm/livello_1.png">
+<img src="https://github.com/ChiaraAmalia/ProgettoTWEBExtracorso/blob/main/imm/livello_1.png">
 </p>
   
 ### Livello “TECNICO":
 
 <p align="center">
-<img src="https://github.com/ChiaraAmalia/ProgettoTWEB/blob/main/imm/livello_2.png">
+<img src="https://github.com/ChiaraAmalia/ProgettoTWEBExtracorso/blob/main/imm/livello_2.png">
 </p>
 
 ### Livello “STAFF":
 
 <p align="center">
-<img src="https://github.com/ChiaraAmalia/ProgettoTWEB/blob/main/imm/livello_3.png">
+<img src="https://github.com/ChiaraAmalia/ProgettoTWEBExtracorso/blob/main/imm/livello_3.png">
 </p>
 
 ### Livello “AMMINISTRATORE":
 
 <p align="center">
-<img src="https://github.com/ChiaraAmalia/ProgettoTWEB/blob/main/imm/livello_4.png">
+<img src="https://github.com/ChiaraAmalia/ProgettoTWEBExtracorso/blob/main/imm/livello_4.png">
 </p>
 
 ## Autori
