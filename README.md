@@ -1,4 +1,4 @@
-# Progetto TECNOLOGIE WEB INTRACORSO
+# Progetto TECNOLOGIE WEB EXTRACORSO
 
 Realizzazione di un sito Web per la Gestione dell’Assistenza Tecnica On-Line
 
